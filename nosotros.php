@@ -2,7 +2,7 @@
 <html lang="en">
 
   <head>
-    <title>Home - Page</title>
+    <title>Nosotros</title>
     <?php require('./components/head.html'); ?>
     <link rel="stylesheet" href="./styles/styles.css?v=<?php echo rand(1, 1000); ?>">
   </head>
@@ -15,7 +15,7 @@
     <main>
       <section class="container mt-8">
         <div class="row justify-content-center">
-          <div class="col-lxx-6 col-md-11 col-sm-12">
+          <div class="col-lxx-6 col-md-11 col-sm-12 p-4">
             <h2 class="fw-bold text-primary mb-3">Nuestro compromiso</h2>
             <p class="h5 mb-5">
               Queremos compartir contigo nuestra historia, valores y el propósito que impulsa cada acción que tomamos. Somos más que una plataforma, compañía de oportunidades laborales; somos un equipo comprometido en construir puentes hacia el éxito profesional en Europa para los usuarios de América Central y del Sur.
@@ -52,7 +52,7 @@
 
                   <div class="col"></div>
 
-                  <div class="col-md-5">
+                  <div class="col-md-5 d-none-sm">
                     <div class="position-relative">
                       <img src="./media/img/objetivos.png" class="position-absolute img-panel w-100" alt="" />
                     </div>
@@ -70,7 +70,7 @@
 
                   <div class="col"></div>
 
-                  <div class="col-md-5">
+                  <div class="col-md-5 d-none-sm">
                     <div class="position-relative">
                       <img src="./media/img/vision.png" class="position-absolute img-panel w-100" alt="" />
                     </div>
@@ -94,7 +94,7 @@
 
       <section class="container mt-16">
         <div class="row justify-content-center">
-          <div class="col-md-5">
+          <div class="col-md-5 d-none-sm">
             <div class="position-relative">
               <img
                 alt=""
@@ -119,7 +119,7 @@
 
           <div class="col"></div>
 
-          <div class="col-md-5">
+          <div class="col-md-5 p-4">
             <h3 class="fw-bold text-primary mt-5">Nuestros objetivos</h3>
             <p class="h6 mt-5">
               Proporcionar información detallada y actualizada sobre oportunidades laborales en Europa, incluidos requisitos, perfiles demandados y pasos a seguir, garantizando que esté siempre al alcance de ustedes.

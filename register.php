@@ -2,7 +2,7 @@
 <html lang="en">
 
   <head>
-    <title>Home - Page</title>
+    <title>Registro</title>
     <?php require('./components/head.html'); ?>
     <link rel="stylesheet" href="./styles/styles.css?v=<?php echo rand(1, 1000); ?>">
   </head>
@@ -15,7 +15,7 @@
     <main>
       <section class="container">
         <div class="row mt-9">
-          <div class="col-md-5">
+          <div class="col-md-5 mb-5">
             <h3 class="fw-bold">¿Estás buscando una forma confiable y segura de obtener tu visa y tu empleo?</h3>
 
             <p class="h5 mt-4">
