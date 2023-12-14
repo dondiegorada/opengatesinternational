@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Noticias</title>
+    <title>Home</title>
     <?php require('./components/head.html'); ?>
     <link rel="stylesheet" href="./styles/styles.css?v=<?php echo rand(1, 1000); ?>">
   </head>
@@ -23,7 +23,7 @@
       <section class="container mt-6">
         <div class="row justify-content-center">
           <div class="col-lxx-6 col-lg-10 col-sm-12 text-center">
-            <p class="h5 mb-5 p-2">
+            <p class="h5 mb-5">
               Mantente al día con las últimas novedades en oportunidades laborales en Europa. Aquí, te ofrecemos noticias actualizadas regularmente sobre cambios en políticas de visados, tendencias laborales, historias de éxito y eventos relacionados con la búsqueda de empleo en el continente europeo.
             </p>
           </div>
@@ -54,11 +54,11 @@
                 <div class="carousel-item <?php echo ( $new['title'] == strtr($title, "-", " ") ? 'active': '' ); ?>">
                   <div class="container">
                     <div class="row">
-                      <div class="col-xl-5 col-sm-4 mb-3">
+                      <div class="col-5">
                         <img src="<?php echo $new['img']; ?>" class="d-block object-fit-cover w-100" height="350" alt="...">
                       </div>
 
-                      <div class="col-xl-7 col-sm-8 p-5">
+                      <div class="col-7 p-5">
                         <h3 class="fw-bold"><?php echo $new['title']; ?></h3>
                         <p class="my-3"><?php echo $new['description']; ?></p>
                       </div>

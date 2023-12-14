@@ -39,7 +39,7 @@
 
       <section class="container mt-10">
         <div class="row">
-          <div class="col-lg-3 col-sm-6 mb-sm-1">
+          <div class="col-sm-3 mb-sm-0">
             <div class="card">
               <div class="card-body d-flex align-items-center p-4">
                 <img src="./media/img/pasaporte.png" alt="" />
@@ -48,7 +48,7 @@
             </div>
           </div>
         
-          <div class="col-lg-3 col-sm-6 mb-sm-1">
+          <div class="col-sm-3">
             <div class="card">
               <div class="card-body d-flex align-items-center p-4">
                 <img src="./media/img/viajar.png" alt="" />
@@ -57,7 +57,7 @@
             </div>
           </div>
 
-          <div class="col-lg-3 col-sm-6 mb-sm-1">
+          <div class="col-sm-3">
             <div class="card">
               <div class="card-body d-flex align-items-center p-4">
                 <img src="./media/img/destino.png" alt="" />
@@ -66,7 +66,7 @@
             </div>
           </div>
 
-          <div class="col-lg-3 col-sm-6 mb-sm-1">
+          <div class="col-sm-3">
             <div class="card">
               <a class="icon-link icon-link-hover" href="./register.php">
                 <div class="card-body d-flex align-items-center p-4">
@@ -123,7 +123,7 @@
       <section class="container-fluid container-form mt-9">
         <div class="container">
           <div class="row pt-13">
-            <div class="col-md-5 mb-5">
+            <div class="col-md-5">
               <h3 class="fw-bold">¿Estás buscando una forma confiable y segura de obtener tu visa y tu empleo?</h3>
 
               <p class="h5 mt-4">
@@ -134,7 +134,7 @@
             <div class="col"></div>
 
             <div class="col-md-6">
-              <h2 class="fw-bold text-center-sm">¡Registrate ahora!</h2>
+              <h2 class="fw-bold">¡Registrate ahora!</h2>
             
               <form id="form" class="p-2">
                 <div class="mb-4">
@@ -197,7 +197,7 @@
         </div>
       </section>
 
-      <section class="container mt-16 d-none-sm">
+      <section class="container mt-16">
         <div class="row justify-content-center">
           <div class="col-5">
             <img src="./media/img/travelers-img.png" alt="">
@@ -291,17 +291,17 @@
             </a>
           </div>
 
-          <div class="col-md-6 d-none-sm">
+          <div class="col-md-6">
             <div class="position-relative">
               <img
                 alt=""
-                class="allipse-317"
+                class="position-absolute allipse-317"
                 src="./media/img/ellipse-317.png"
               />
               
               <img
                 alt=""
-                class="allipse-318"
+                class="position-absolute allipse-318"
                 src="./media/img/ellipse-318.png"
               />
             </div>
@@ -335,7 +335,7 @@
 
       <section class="container mt-16">
         <div class="row justify-content-center">
-          <div class="col-md-5 d-none-sm">
+          <div class="col-md-5">
             <div class="position-relative">
               <img
                 alt=""
@@ -360,7 +360,7 @@
 
           <div class="col"></div>
 
-          <div class="col-md-5 p-4">
+          <div class="col-md-5">
             <h3 class="fw-bold text-primary mt-5"><em>"Descubre Tu Futuro Laboral en Europa con Open Gates International"</em></h3>
             <p class="h6 mt-5">
               Entendemos la importancia de brindarte seguridad y tranquilidad en tu búsqueda laboral en Europa. Nuestra dedicación es garantizar que cada paso de tu viaje esté respaldado por información precisa, asistencia experta y recursos confiables.
