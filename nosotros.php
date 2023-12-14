@@ -94,8 +94,8 @@
 
       <section class="container mt-16">
         <div class="row justify-content-center">
-          <div class="col-md-5 d-none-sm">
-            <div class="position-relative">
+          <div class="col-md-5">
+            <div class="position-relative h-sm-30">
               <img
                 alt=""
                 class="position-absolute w-100"

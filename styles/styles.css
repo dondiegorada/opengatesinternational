@@ -349,6 +349,14 @@ h3, .h3 {
   .mt-sm-5 {
     margin-top: 3rem;
   }
+
+  .h-sm-30 {
+    height: 300px;
+  }
+
+  .h-sm-30 > img {
+    width: 70% !important;
+  }
 }
 
 @media only screen and (max-width: 992px) {
