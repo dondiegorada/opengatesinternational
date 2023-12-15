@@ -144,15 +144,12 @@
                 
                 <div class="mb-4">
                   <label for="inputPassword5" class="form-label">Telefóno</label>
-                  <input type="text" id="phone" class="form-control" aria-describedby="passwordHelpBlock">
+                  <input type="number" id="phone" class="form-control" aria-describedby="passwordHelpBlock">
                 </div>
                 
                 <div class="mb-4">
                   <label for="inputPassword5" class="form-label">Email</label>
                   <input type="email" id="email" class="form-control" aria-describedby="passwordHelpBlock">
-                  <!-- <div id="passwordHelpBlock" class="form-text">
-                    Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
-                  </div> -->
                 </div>
 
                 <div class="mb-5">
@@ -173,7 +170,7 @@
                 <div class="form-check form-switch mb-3">
                   <input class="form-check-input" type="checkbox" role="switch" id="check-terminos">
                   <label class="form-check-label" for="flexSwitchCheckDefault">
-                    Aceptar <a href="./terminos.html" class="text-primary">terminos y condiciones</a>
+                    Aceptar <a href="./terminos.php" class="text-primary">terminos y condiciones</a>
                   </label>
                 </div>
                 

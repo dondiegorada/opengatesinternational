@@ -37,7 +37,7 @@
 
                 <div class="col-md-6 mb-4">
                   <label for="inputPassword5" class="form-label">Telefóno</label>
-                  <input type="text" id="phone" class="form-control" aria-describedby="passwordHelpBlock" required>
+                  <input type="number" id="phone" class="form-control" aria-describedby="passwordHelpBlock" required>
                 </div>
                 
                 <div class="col-md-6 mb-4">
@@ -78,7 +78,7 @@
               <div class="form-check form-switch mb-3">
                 <input class="form-check-input" type="checkbox" role="switch" id="check-terminos">
                 <label class="form-check-label" for="flexSwitchCheckDefault">
-                  Aceptar <a href="./terminos.html" class="text-primary">terminos y condiciones</a>
+                  Aceptar <a href="./terminos.php" class="text-primary">terminos y condiciones</a>
                 </label>
               </div>
               
