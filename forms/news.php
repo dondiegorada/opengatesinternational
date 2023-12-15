@@ -27,7 +27,7 @@
         </a>
       </div>
       <div class="titulo">
-        <h2><img src="../media/imagenes/news/noticias.svg" height="60" alt="carga de imaganes"> Noticias</h2>
+        <h2>Noticias</h2>
       </div>
     </header>
 
