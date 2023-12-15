@@ -131,7 +131,8 @@ h3, .h3 {
   background-color: #3A506B91;
   border-radius: 30px;
   box-shadow: 4px 4px 30px 0px #5BC0BE4D;
-  left: -10px;
+  left: -60px;
+  position: absolute;
   top: 240px;
   z-index: -1;
 }
@@ -140,7 +141,8 @@ h3, .h3 {
   background-color: #3A506B91;
   border-radius: 30px;
   box-shadow: 4px 4px 30px 0px #5BC0BE4D;
-  right: -90px;
+  position: absolute;
+  right: -70px;
   top: 240px;
   z-index: -1;
 }
@@ -232,6 +234,16 @@ h3, .h3 {
   margin-right: 25px;
 }
 
+.img-rounded {
+  border-radius: 20px;
+  box-shadow: 4px 4px 60px 0px #5bc0be50;
+  height: 450px;
+}
+
+.position-relative-lg {
+  position: relative;
+}
+
 .d-none-lg {
   display: none;
 }
@@ -262,6 +274,14 @@ h3, .h3 {
 
 .mt-16 {
   margin-top: 16rem;
+}
+
+.mt-19 {
+  margin-top: 19rem;
+}
+
+.mt-25 {
+  margin-top: 25rem;
 }
 
 .ml-1 {
@@ -317,6 +337,17 @@ h3, .h3 {
     height: auto;
   }
 
+  .card-text-right, .card-text-left {
+    padding: 4rem !important;
+    position: initial;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  .card-ilustration {
+    top: -130px;
+  }
+
   h2 {
     font-size: 25px;
     line-height: 35px;
@@ -340,6 +371,10 @@ h3, .h3 {
 
   .mt-16 {
     margin-top: 12rem;
+  }
+
+  .mt-25 {
+    margin-top: 8rem;
   }
 
   .mb-sm-1 {
@@ -372,6 +407,27 @@ h3, .h3 {
     position: relative;
   }
 
+  .img-rounded {
+    height: 250px;
+  }
+
+  .card-ilustration {
+    top: 7px;
+  }
+
+  .card-text-left {
+    right: -40px;
+  }
+
+  .card-text-right {
+    left: -40px;
+  }
+
+  .card-text-right, .card-text-left {
+    padding: 3rem !important;
+    top: 170px;
+  }
+
   .p-5 {
     padding: 15px !important;
   }
@@ -387,7 +443,7 @@ h3, .h3 {
   }
 
   .card-text-left {
-    right: -80px;
+    right: -60px;
   }
 
   .img-panel {

@@ -197,15 +197,15 @@
         </div>
       </section>
 
-      <section class="container mt-16 d-none-sm">
+      <section class="container mt-16">
         <div class="row justify-content-center">
-          <div class="col-5">
-            <img src="./media/img/travelers-img.png" alt="">
+          <div class="col-md-5">
+            <img src="./media/img/polonia.jpg" class="w-100 object-fit-cover img-rounded" alt="Polonia">
           </div>
 
-          <div class="col-xxl-6 col-lg-7 position-relative">
-            <img src="./media/img/travelers-ilustration.png" class="card-ilustration position-absolute" alt="">
-            <div class="card-text-right position-absolute p-7">
+          <div class="col-xxl-6 col-md-7 position-relative-lg">
+            <img src="./media/img/travelers-ilustration.png" class="card-ilustration position-absolute d-none-sm" alt="">
+            <div class="card-text-right p-7">
               <h3 class="fw-bold">Polonia</h3>
               <p class="h5">
                 Polonia ha experimentado un sólido crecimiento económico en las últimas décadas, incluso durante períodos de recesión en Europa. Este crecimiento ha generado oportunidades laborales en varios sectores.
@@ -214,10 +214,10 @@
           </div>
         </div>
 
-        <div class="row justify-content-center mt-9">
-          <div class="col-xxl-6 col-lg-7 position-relative">
-            <img src="./media/img/travel-ilustration.png" class="card-ilustration position-absolute" alt="">
-            <div class="card-text-left position-absolute p-7">
+        <div class="row justify-content-center mt-25">
+          <div class="col-xxl-6 col-md-7 position-relative">
+            <img src="./media/img/travel-ilustration.png" class="card-ilustration position-absolute d-none-sm" alt="" />
+            <div class="card-text-left p-7">
               <h3 class="fw-bold">Alemania</h3>
               <p class="h5">
                 Alemania es la mayor economía de Europa y una de las más potentes del mundo, lo que la convierte en un destino muy atractivo para trabajar. Además, es un país con una rica historia, una cultura diversa y una naturaleza impresionante.
@@ -225,19 +225,19 @@
             </div>
           </div>
 
-          <div class="col-5">
-            <img src="./media/img/travel-img.png" alt="">
+          <div class="col-md-5">
+            <img src="./media/img/alemania.jpg" class="w-100 object-fit-cover img-rounded" alt="Alemania">
           </div>
         </div>
 
-        <div class="row justify-content-center mt-9">
-          <div class="col-5">
-            <img src="./media/img/collaborating-img.png" alt="">
+        <div class="row justify-content-center mt-25">
+          <div class="col-md-5">
+            <img src="./media/img/espana.jpg" height="450" class="w-100 object-fit-cover img-rounded" alt="España">
           </div>
 
-          <div class="col-xxl-6 col-lg-7 position-relative">
-            <img src="./media/img/collaborating-ilustration.png" class="card-ilustration position-absolute" alt="">
-            <div class="card-text-right position-absolute p-7">
+          <div class="col-xxl-6 col-md-7 position-relative">
+            <img src="./media/img/collaborating-ilustration.png" class="card-ilustration position-absolute d-none-sm" alt="">
+            <div class="card-text-right p-7">
               <h3 class="fw-bold">España</h3>
               <p class="h5">
                 España tiene una economía diversificada que abarca diversos sectores, como el turismo, la agricultura, la industria manufacturera, la tecnología y los servicios. Esto significa que hay oportunidades laborales en una variedad de campos.
@@ -247,7 +247,7 @@
         </div>
       </section>
 
-      <section class="container mt-16">
+      <section class="container mt-25">
         <div class="row">
           <div class="col-12">
             <h2 class="text-primary fw-bold text-center">¡información importante!</h2>
