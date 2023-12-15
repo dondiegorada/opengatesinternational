@@ -23,7 +23,7 @@
       </svg>
       <div class="back">
         <a type="button" href="../list/panel.php"> 
-          <img src="../media/imagenes/back.svg" alt="regresar" height="40">
+          <img src="../media/img/back.svg" alt="regresar" height="40">
         </a>
       </div>
       <div class="titulo">

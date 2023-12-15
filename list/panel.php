@@ -50,7 +50,7 @@
             <div class="card shadow-lg">
               <div class="card-body">
                 <h5 class="card-title text-light">Noticias</h5>
-                <p class="card-text text-light">Crea noticias del momento oportunidades laborales.</p>
+                <p class="card-text text-light">Crea noticias de oportunidades laborales.</p>
                 <a href="../forms/news.php" class="btn btn-primary">Entrar</a>
               </div>
             </div>
