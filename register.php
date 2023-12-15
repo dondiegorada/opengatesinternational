@@ -57,33 +57,31 @@
 
                 <div class="col-md-12 mb-4">
                   <label for="inputPassword5" class="form-label">Email</label>
-                  <input type="email" id="email" class="form-control" aria-describedby="passwordHelpBlock" required>
-                  <!-- <div id="passwordHelpBlock" class="form-text">
-                    Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
-                  </div> -->
+                  <input type="email" id="email" class="form-control" aria-describedby="passwordHelpBlock" required />
                 </div>
 
-                <div class="col-md-12 mb-4">
+                <!-- <div class="col-md-12 mb-4">
                   <label for="formFileSm" class="form-label">Hoja de vida</label>
                   <input class="form-control form-control" id="formFileSm" type="file">
-                </div>
+                </div> -->
 
                 <div class="col-md-12 mb-4">
-                <div class="mb-3">
-                  <label for="exampleFormControlTextarea1" class="form-label">Testimonios</label>
-                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                  <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Testimonios</label>
+                    <textarea class="form-control" id="testimonio" rows="3"></textarea>
+                  </div>
                 </div>
-              </div>
               
-              <div class="form-check form-switch mb-3">
-                <input class="form-check-input" type="checkbox" role="switch" id="check-terminos">
-                <label class="form-check-label" for="flexSwitchCheckDefault">
-                  Aceptar <a href="./terminos.php" class="text-primary">terminos y condiciones</a>
-                </label>
-              </div>
+                <div class="form-check form-switch mb-3">
+                  <input class="form-check-input" type="checkbox" role="switch" id="check-terminos">
+                  <label class="form-check-label" for="flexSwitchCheckDefault">
+                    Aceptar <a href="./terminos.php" class="text-primary">terminos y condiciones</a>
+                  </label>
+                </div>
               
-              <div class="gap-2">
-                <button type="submit" class="btn btn-primary" id="enviar" disabled>Enviar</button>
+                <div class="gap-2">
+                  <button type="submit" class="btn btn-primary" id="enviar" disabled>Enviar</button>
+                </div>
               </div>
             </form>
           </div>
