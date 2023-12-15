@@ -6,7 +6,7 @@
     private $passwd;
     private $dbname;
 
-    function __construct($host='localhost', $username='u172854659_jhonfgates', $passwd='a+7Rv~YN/', $dbname='u172854659_opengates') {
+    function __construct($host='172.18.0.2', $username='johndev', $passwd='ninguna', $dbname='oei') {
       $this->host = $host;
       $this->username = $username;
       $this->passwd = $passwd;
