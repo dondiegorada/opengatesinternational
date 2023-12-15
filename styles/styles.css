@@ -39,10 +39,11 @@ h3, .h3 {
 
 .container-form {
   background-image: url('../media/img/form.png');
-  height: 1116px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  height: 1116px;
+  margin-bottom: 5rem;
   position: relative;
 }
 
@@ -346,6 +347,10 @@ h3, .h3 {
 
   .card-ilustration {
     top: -130px;
+  }
+
+  .container-form {
+    margin-bottom: 10rem;
   }
 
   h2 {
