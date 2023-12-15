@@ -197,7 +197,7 @@
         </div>
       </section>
 
-      <section class="container mt-5">
+      <section class="container">
         <div class="row">
           <div class="col-12 text-center">
             <h2 class="fw-bold text-primary">Países y ciudades más recomendados para trabajar en Europa</h2>
