@@ -19,7 +19,7 @@
         <div class="row justify-content-center">
           <div class="col-lxx-6 col-md-11 col-sm-12 p-4">
             <h2 class="fw-bold text-primary mb-3">Nuestro compromiso</h2>
-            <p class="h5 mb-5">
+            <p class="h6 mb-5">
               Queremos compartir contigo nuestra historia, valores y el propósito que impulsa cada acción que tomamos. Somos más que una plataforma, compañía de oportunidades laborales; somos un equipo comprometido en construir puentes hacia el éxito profesional en Europa para los usuarios de América Central y del Sur.
             </p>
           </div>

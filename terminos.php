@@ -26,7 +26,7 @@
             
             <h5 class="fw-bold">1. Aceptación</h5>
             <p class="h5">
-              Al registrarte en Open Gates International, aceptas cumplir con estos términos y condiciones. Si no estás de acuerdo con alguna parte de estos términos, te pedimos que no utilices nuestros servicios.
+              Al registrarte en Opening Gates International, aceptas cumplir con estos términos y condiciones. Si no estás de acuerdo con alguna parte de estos términos, te pedimos que no utilices nuestros servicios.
             </p><br />
 
             <h5 class="fw-bold">2. Información del Usuario</h5>
@@ -41,7 +41,7 @@
 
             <h5 class="fw-bold">4. Uso Apropiado</h5>
             <p class="h5">
-              Te comprometes a utilizar Open Gates International de manera ética y conforme a todas las leyes y regulaciones aplicables. No puedes utilizar nuestros servicios para actividades ilegales, fraudulentas o inapropiadas.
+              Te comprometes a utilizar Opening Gates International de manera ética y conforme a todas las leyes y regulaciones aplicables. No puedes utilizar nuestros servicios para actividades ilegales, fraudulentas o inapropiadas.
             </p><br />
 
             <h5 class="fw-bold">6. Cambios en los Términos y Condiciones</h5>

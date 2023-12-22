@@ -1,8 +1,8 @@
 <?php
-  require("./class/db.class.php");
-  require("./class/cargaImagenesDAO.php");
+  // require("./class/db.class.php");
+  // require("./class/cargaImagenesDAO.php");
 
-  $cargaImagenes = new cargaImagenesDAO();
+  // $cargaImagenes = new cargaImagenesDAO();
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +24,7 @@
       <section class="container mt-8">
         <div class="row justify-content-center">
           <div class="col-lxx-6 col-lg-10 col-sm-12 text-center">
-            <h2>Bienvenido a Open Gates International</h2>
+            <h2>Bienvenido a Opening Gates International</h2>
             <p class="h5 mb-5">
               Tu guía confiable para encontrar empleo en Europa desde Centro y Sur América. Nos especializamos en brindar información precisa y útil sobre los procedimientos de visado y empleo en diversos países europeos.
             </p>
@@ -155,10 +155,10 @@
                     <input type="email" id="email" class="form-control" aria-describedby="passwordHelpBlock" required />
                   </div>
 
-                  <!-- <div class="col-md-12 mb-4">
+                  <div class="col-md-12 mb-4">
                     <label for="formFileSm" class="form-label">Hoja de vida</label>
                     <input class="form-control form-control" id="formFileSm" type="file">
-                  </div> -->
+                  </div>
 
                   <div class="col-md-12 mb-4">
                     <div class="mb-3">
@@ -195,7 +195,7 @@
         </div>
       </section>
 
-      <section class="container mt-16">
+      <section class="container mt-13">
         <div class="row justify-content-center">
           <div class="col-md-5">
             <img src="./media/img/polonia.jpg" class="w-100 object-fit-cover img-rounded" alt="Polonia">
@@ -205,7 +205,7 @@
             <img src="./media/img/travelers-ilustration.png" class="card-ilustration position-absolute d-none-sm" alt="">
             <div class="card-text-right p-7">
               <h3 class="fw-bold">Polonia</h3>
-              <p class="h5">
+              <p class="h6">
                 Polonia ha experimentado un sólido crecimiento económico en las últimas décadas, incluso durante períodos de recesión en Europa. Este crecimiento ha generado oportunidades laborales en varios sectores.
               </p>
             </div>
@@ -217,7 +217,7 @@
             <img src="./media/img/travel-ilustration.png" class="card-ilustration position-absolute d-none-sm" alt="" />
             <div class="card-text-left p-7">
               <h3 class="fw-bold">Alemania</h3>
-              <p class="h5">
+              <p class="h6">
                 Alemania es la mayor economía de Europa y una de las más potentes del mundo, lo que la convierte en un destino muy atractivo para trabajar. Además, es un país con una rica historia, una cultura diversa y una naturaleza impresionante.
               </p>
             </div>
@@ -237,7 +237,7 @@
             <img src="./media/img/collaborating-ilustration.png" class="card-ilustration position-absolute d-none-sm" alt="">
             <div class="card-text-right p-7">
               <h3 class="fw-bold">España</h3>
-              <p class="h5">
+              <p class="h6">
                 España tiene una economía diversificada que abarca diversos sectores, como el turismo, la agricultura, la industria manufacturera, la tecnología y los servicios. Esto significa que hay oportunidades laborales en una variedad de campos.
               </p>
             </div>
@@ -310,7 +310,7 @@
       <section class="container-fluid p-0 mt-16">
         <div id="carouselExample" class="carousel slide">
           <div class="carousel-inner"> <?php
-            $images = $cargaImagenes -> getImages(1);
+            // $images = $cargaImagenes -> getImages(1);
 
             if ( isset($images) ) {
               $i = 0;
@@ -372,7 +372,7 @@
           <div class="col"></div>
 
           <div class="col-md-5 p-4">
-            <h3 class="fw-bold text-primary mt-5"><em>"Descubre Tu Futuro Laboral en Europa con Open Gates International"</em></h3>
+            <h3 class="fw-bold text-primary mt-5"><em>"Descubre Tu Futuro Laboral en Europa con Opening Gates International"</em></h3>
             <p class="h6 mt-5">
               Entendemos la importancia de brindarte seguridad y tranquilidad en tu búsqueda laboral en Europa. Nuestra dedicación es garantizar que cada paso de tu viaje esté respaldado por información precisa, asistencia experta y recursos confiables.
             </p>

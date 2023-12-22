@@ -48,7 +48,7 @@ require '../librerias/PHPMailer/src/SMTP.php';
 
         //   // Destinatarios
         //   $mail -> setFrom($email, $nombres);   // Establecer de quién se enviará el mensaje
-        //   $mail -> addAddress('johndev983@gmail.com', 'Open Gates International');   // Establecer a donde se enviará el mensaje
+        //   $mail -> addAddress('johndev983@gmail.com', 'Opening Gates International');   // Establecer a donde se enviará el mensaje
         //  // $mail -> addCC('diego@lucistudio.info','Diego');
         //   //$mail -> addCC('bryansugi@gmail.com','Bryan');
         //   $mail -> addReplyTo($email, $nombres);   // A quien se respondera el email

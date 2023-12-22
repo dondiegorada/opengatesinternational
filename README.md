@@ -1,2 +1,2 @@
 # oei
-Open Gates International
+Opening Gates International

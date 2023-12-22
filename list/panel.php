@@ -30,7 +30,7 @@
     <div class="container p-4">
       <header>
         <h2 class="text-light">
-          <img src="../media/img/logo.png" alt="logo open gates international" height="60" class="rounded-circle"> Panel Administrativo
+          <img src="../media/img/logo.png" alt="logo Opening Gates International" height="60" class="rounded-circle"> Panel Administrativo
         </h2>
       </header>
         
