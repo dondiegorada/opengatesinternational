@@ -1,4 +1,4 @@
-FROM php:apache
+FROM php:8.2.7-apache
 RUN mkdir -p /var/www/html/app/
 COPY ./ /var/www/html/app/
 EXPOSE 80
