@@ -1,15 +1,9 @@
-<?php
-  require("./class/newsDAO.php");
-  $newsDAO = new newsDAO();
-
-  // $title = filter_input(INPUT_GET, 'new', FILTER_SANITIZE_STRING) ?? 'Colombianos-que-quieran-trabajar-en-Europa';
-  $title = $_GET['new'] ?? 'Colombianos-que-quieran-trabajar-en-Europa';
-?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Noticias</title>
+    <title>Opening Gates International</title>
+    <meta name="description" content="Trabajo en el exterior, tramita tu visa de trabajo, asesoría personalizada" />
+    <meta name="keywords" content="Trabajo, Visa, Europa" />
     <?php require('./components/head.html'); ?>
     <link rel="stylesheet" href="./styles/styles.css?v=<?php echo rand(1, 1000); ?>">
   </head>
@@ -31,43 +25,13 @@
       </section>
 
       <section class="container-fluid container-nosotros mt-6">
-        <div class="container"> <?php
-          $news = $newsDAO -> getAll();
-
-          foreach ($news as $new) {
-            if ($new['title'] == strtr($title, "-", " ")) { ?>
-              <h2 class="fw-bold text-primary"><?php echo $new['subtitle']; ?></h2>
-  
-              <p class="mt-5"><?php echo $new['content']; ?></p> <?php
-            }
-          } ?>
-        </div>
+        <div class="container" id="new"></div>
       </section>
 
       <section class="container-fluid mt-9">
         <div id="carouselExample" class="carousel slide">
-          <div class="carousel-inner carousel-inner-news"> <?php
-            $news = $newsDAO -> getAll();
+          <div class="carousel-inner carousel-inner-news" id="news"></div>
 
-            foreach ($news as $new) { ?>
-              <a href="./noticias.php?new=<?php echo strtr($new['title'], " ", "-"); ?>">
-                <div class="carousel-item <?php echo ( $new['title'] == strtr($title, "-", " ") ? 'active': '' ); ?>">
-                  <div class="container">
-                    <div class="row">
-                      <div class="col-xl-5 col-sm-4 mb-3">
-                        <img src="<?php echo $new['img']; ?>" class="d-block object-fit-cover w-100" height="350" alt="...">
-                      </div>
-
-                      <div class="col-xl-7 col-sm-8 p-5">
-                        <h3 class="fw-bold"><?php echo $new['title']; ?></h3>
-                        <p class="my-3"><?php echo $new['description']; ?></p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </a> <?php
-            } ?>
-          </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
@@ -93,6 +57,6 @@
     <script src="./librerias/popper.min.js"></script>
     <script src="./librerias/sweetalert2/dist/sweetalert2.js"></script>
     <script src="./librerias/wow/dist/wow.min.js"></script>
-    <script src="./js/index.js"></script>
+    <script src="./js/newsView.js?v=<?php echo rand(1, 1000); ?>"></script>
   </body>
 </html>

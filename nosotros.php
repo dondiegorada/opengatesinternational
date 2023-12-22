@@ -2,7 +2,9 @@
 <html lang="en">
 
   <head>
-    <title>Nosotros</title>
+    <title>Opening Gates International</title>
+    <meta name="description" content="Trabajo en el exterior, tramita tu visa de trabajo, asesoría personalizada" />
+    <meta name="keywords" content="Trabajo, Visa, Europa" />
     <?php require('./components/head.html'); ?>
     <link rel="stylesheet" href="./styles/styles.css?v=<?php echo rand(1, 1000); ?>">
   </head>
