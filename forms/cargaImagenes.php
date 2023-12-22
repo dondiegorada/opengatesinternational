@@ -122,7 +122,7 @@
                                                     <tr>
                                                         <td><a href="https://<?php echo $row['imagen']; ?>" target="_blank"><img src="https://<?php echo $row['imagen']; ?>" height="200" class=""></a></td>
                                                         <td><?php echo $row['alt']; ?></td>
-                                                        <td><button type="button" class="btn" onclick="deleteImages(<?php echo $row['banner_seccion_id']?>)"><img src="../media/imagenes/trash-bin.svg" height="50" alt="eliminar imagen"></button></td>
+                                                        <td><button type="button" class="btn" onclick="deleteImages(<?php echo $row['banner_seccion_id']?>)"><img src="../media/img/trash-bin.svg" height="50" alt="eliminar imagen"></button></td>
                                                     </tr>
                                                     <?php
                                                 }

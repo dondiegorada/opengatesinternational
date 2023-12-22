@@ -72,9 +72,10 @@ class cargaImagenes {
             $url = explode('/', $url);
    
             //ruta de la carpeta destino en el servidor
-            $carpeta_destino = $_SERVER['DOCUMENT_ROOT'].'/'.$url[1].'/media/imagenes/'.$name_imagen;
-            $move = move_uploaded_file($_FILES['imagen']['tmp_name'],$carpeta_destino);
-            $ruta = 'localhost/'.$url[1].'/media/imagenes/'.$name_imagen;
+            $carpeta_destino = $_SERVER['DOCUMENT_ROOT'].'/media/img/'.$name_imagen;
+            // exit(var_dump($carpeta_destino));
+            $move = move_uploaded_file($_FILES['imagen']['tmp_name'], $carpeta_destino);
+            $ruta = 'opengatesinternational.com/media/img/'.$name_imagen;
       
             //movemos la imagen del directorio temporal al directorio escogido
             if(!$move){
@@ -138,9 +139,9 @@ class cargaImagenes {
             $url = explode('/', $url);
    
             //ruta de la carpeta destino en el servidor
-            $carpeta_destino = $_SERVER['DOCUMENT_ROOT'].'/'.$url[1].'/media/imagenes/'.$name_imagen;
+            $carpeta_destino = $_SERVER['DOCUMENT_ROOT'].'/media/img/'.$name_imagen;
             $move = move_uploaded_file($_FILES['imagen']['tmp_name'],$carpeta_destino);
-            $ruta = 'localhost/'.$url[1].'/media/imagenes/'.$name_imagen;
+            $ruta = 'opengatesinternational.com/media/img/'.$name_imagen;
       
             //movemos la imagen del directorio temporal al directorio escogido
             if(!$move){
@@ -189,7 +190,7 @@ class cargaImagenes {
             $url = explode('/', $url);
    
             //ruta de la carpeta destino en el servidor
-            $carpeta_destino = $_SERVER['DOCUMENT_ROOT'].'/'.$url[1].'/media/imagenes/'.$file_name;
+            $carpeta_destino = $_SERVER['DOCUMENT_ROOT'].'/media/img/'.$file_name;
 
             $delete = unlink($carpeta_destino);
 

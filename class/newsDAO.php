@@ -1,92 +1,246 @@
 <?php
-class newsDAO {
-  public function getAll() {
-    $data = array(
-      0 => [
-        'title' => 'Alemania busca atraer profesionales',
-        'subtitle' => 'Dónde hay vacantes de América Latina y cuáles son los requisitos',
-        'img' => './media/img/electrician.jpg',
+  class newsDAO extends db {
+    function __construct() {
+      parent::__construct();
+    }
 
-        'description' => '
-          Son las palabras del ministro de Trabajo de Alemania, Hubertus Heil, en una entrevista con el Financial Times a principios de mayo.
+    public function getMaxId($Table ,$Column) {
+      $increment = 1;
+	    $select = "SELECT MAX($Column) AS max_consecutive FROM $Table";
+      $Max = $this -> query($select);
+	  
+      if (mysqli_num_rows($Max) > 0) {
+        if ($row = mysqli_fetch_assoc($Max)) {
+          $max_consecutive =  $row['max_consecutive'];
+        }
 
-          Un mes después, Heil y la ministra de Relaciones Exteriores germana, Annalena Baerbock, se encuentran en plena gira por Brasil, Colombia y Panamá con el ojo puesto, entre otras cosas, en facilitar la captación de profesionales cualificados para cubrir vacantes en su país.
-        
-          "América Latina y Europa son socios naturales", declaró Baerbock al inicio del viaje.
-        ',
+      } else {
+        $max_consecutive = 0;
+      }
 
-        'content' => '
-          Una de cada seis empresas en Alemania sufre escasez de mano de obra, según el último informe anual de la Agencia Federal de Trabajo (BA).
-          
-          Además,falta personal en 200 de un total de 1.200 profesiones evaluadas en el estudio, en comparación con 148 el año pasado.
+      return $max_consecutive += $increment;  
+    }
 
-          El problema no es nuevo. El gobierno alemán aprobó en 2020 la Ley de Inmigración Cualificada para atraer profesionales en sectores con falta de personal.
+    public function getImage(Int $id, String $column) {
+      $sql = "SELECT $column FROM news WHERE id = $id";
+      $result = $this -> query($sql);
 
-          Pero no ha sido suficiente y este año las autoridades han suavizado aún más los requisitos para vivir y trabajar legalmente en Alemania, que necesita unos 400.000 inmigrantes cualificados cada año, según estimaciones.
+      if (mysqli_num_rows($result) > 0) {
+        return mysqli_fetch_assoc($result)[$column];
+      }
+    }
 
-          Te explicamos cuáles son las profesiones más demandadas y qué requisitos hay que cumplir para aprovechar las oportunidades que ofrece el motor de Europa.
-        '
-      ],
+    // Funcion que obtiene todas las noticias
+    public function getNews() {
+      date_default_timezone_set('America/Bogota');
+      $time = date("Y-m-d H:i:s");
 
-      1 => [
-        'title' => 'Trabajar en el exterior',
-        'subtitle' => 'Las mejores oportunidades laborales para los que quieran mudarse en 2024',
-        'img' => './media/img/welder.jpg',
-        
-        'description' => '
-          Mantente al día con las últimas novedades en oportunidades laborales en Europa. Aquí, te ofrecemos noticias actualizadas regularmente sobre cambios en políticas de visados, tendencias laborales, historias de éxito y eventos relacionados con la búsqueda de empleo en el continente europeo.
-        ',
-        
-        'content' => '
-          La falta de mano de obra, la escasez de talentos y saberes específicos junto a las nuevas tendencias laborales que surgieron en la post pandemina hace que muchos países centrales deban implementar nuevas políticas de inmigración, tendientes a la búsqueda de recursos calificados para sostener sus entramados productivos y crecimiento de sus economías. La situación se transforma en una oportunidad para aquellos jóvenes que, en el contexto de la crisis económica que atraviesa el país, buscan emigrar.
+      $sql = "SELECT *, IF(status = 'A', 'Activo', 'Inactivo') AS status, TIMESTAMPDIFF(SECOND, createdAt, '$time') AS time FROM news ORDER BY id DESC";
+      $result = $this -> query($sql);
 
-          Por diferentes motivos, al menos cuatro países desarrollados están implementando una política amplia de atracción de profesionales mientras que más de una decena se suma con programas específicos de oportunidades laborales.
-        '
-      ],
+      $data = array();
+      if (mysqli_num_rows($result) > 0) {
+        for ($i = 0; $row = mysqli_fetch_assoc($result); $i++) {
+          $data[$i]['id'] = $row['id'];
+          $data[$i]['file'] = $row['file'];
+          $data[$i]['title'] = $row['title'];
+          $data[$i]['headline'] = $row['headline'];
+          $data[$i]['content'] = $row['content'];
+          $data[$i]['file_content'] = $row['file_content'];
+          $data[$i]['status'] = $row['status'];
+          $data[$i]['time'] = $this -> timeCreate($row['time']);
+        }
+      }
 
-      2 => [
-        'title' => 'Vacantes de empleo en Noruega',
-        'subtitle' => 'Las ofertas de trabajo son amplias. Tome nota del paso a paso y los requisitos.',
-        'img' => './media/img/tool.jpg',
-        
-        'description' => '
-          Noruega es el país número en el índice para una Vida Mejor de la Organización para la Cooperación y el Desarrollo Económicos (Ocde). La nación europea supera a Suiza, Islandia, Suecia, Finlandia, entre otros, tras el análisis de sus condiciones de vivienda, ingresos, empleo, comunidad, educación, medio ambiente, salud, compromiso cívico, satisfacción, seguridad y balance entre la vida y el trabajo.
-        ',
-        
-        'content' => '
-          La página tiene más de cuatro millones de vacantes en Europa. Lo que debe hacer es ingresar y filtrar las convocatorias para el país que desee, en este caso, el ejemplo se hace con Noruega, que tiene alrededor de 13.800 ofertas para distintos cargos.
+      return [
+        'success' => true,
+        'data' => $data
+      ];
+    }
 
-          Puede encontrar convocatorias para profesionales —como psicólogos, enfermeros, ingenieros, profesores, médicos y muchos más— o para cargos que no requieren títulos universitarios —como soldadores, secretarios, mecánicos, vendedores, meseros, asesores comerciales, entre otros.
+    // Funcion para obtener noticia segun ID
+    public function getNew($id, $admin) {
 
-          Tenga presente que el salario promedio en Noruega, para 2022, rondó los 65.935 euros al año, lo que significa unos 5.495 euros al mes (más de 24 millones de pesos colombianos), según cifras del portal Datos Macro. El costo de vida, por ende, es alto en ese país.
-        '
-      ],
+      $select = "SELECT id, file, title, headline, file_content, content, status, createdAt FROM news WHERE id = $id";
+      $result = $this -> query($select);
 
-      3 => [
-        'title' => 'Colombianos que quieran trabajar en Europa',
-        'subtitle' => 'Si quiere irse a España, esta es una importante oferta laboral.',
-        'img' => 'https://swiperjs.com/demos/images/nature-4.jpg',
-        
-        'description' => '
-          España es un país bastante popular para emigrar, especialmente cuando se trata de latinos. Y es que un gran porcentaje de los expatriados de esta región sienten gran afinidad con la cultura del país europeo. La cultura y el idioma son claves para que este país sea la gran oportunidad que muchos buscan ya sea para salir del país o para vivir en Europa, debido a que la facilidad de transporte y distancias, se pueden conocer varios países viviendo en territorio español.
-        ',
-        
-        'content' => '
-          Por este motivo es importante conocer los trabajos que se pueden desempeñar en España y a los cuales suelen aspirar los colombianos una vez llegan a ese país. Teniendo en cuenta que lo vivido por cada persona que llega es diferente, no obstante, hay una serie de empleos a los que se puede aspirar en 2023 una vez se llegue a Europa y más exactamente a España.
+      if (mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
 
-          Según una última publicación en la aplicación web de intermediación laboral del Sena, se están necesitando 20 enfermeros para trabajar en España y quienes estén interesados podrán participar de la convocatoria solamente si su perfil se ajusta completamente a lo solicitado.
+        if ($admin) { // Validamos si obtenemos desde administracion
+          $html = false;
 
-          Para poder aplicar se deberá registrar la hoja de vida en el Sena, manifestando el campo de interés laboral, de acuerdo a la solicitud de empleo que dice lo siguiente: “la selección final de los candidatos que se realiza de forma presencial, se cita a una entrevista de trabajo en Colombia en el mes indicado por la empresa”.
+          $row['title'] = $this -> changeLabels($row['title'], $html);
+          $row['headline'] = $this -> changeLabels($row['headline'], $html);
+          $row['content'] = $this -> changeLabels($row['content'], $html);
 
-          Afirma la vacante que en caso de no lograr postularse por la aplicación web, los aspirantes también podrán enviar la hoja de vida al correo servicioalciudadano@sena.edu.co, donde deberán incluir los datos personales y laborales completos que permitirán aspirar a la oferta laboral en España.
+        } else {
+          $row['createdAt'] = date("F j/Y", strtotime($row['createdAt']));
+        }
 
-          La oferta laboral es en la ciudad de Barcelona y para poder aplicar se deberá ser enfermero profesional en enfermería, por lo que tendrán prioridad los colombianos que ya tengan sus títulos homologados en el países europeo. El contrato sería a termino indefinido y no se requiere una experiencia previa en ese país.
+        return [
+          'success' => true,
+          'data' => $row
+        ];
 
-          El salario sería de $30.000 euros anuales que se reparten en pagos mensuales de casi 9 millones de pesos colombianos por trabajar la jornada completa en territorio español. “En caso de ser seleccionado, el empleador le indicará, las condiciones y requisitos de viáticos para desplazarse al país donde se ejecutará este vacante”, finaliza diciendo la oferta.
-        '
-      ]
-    );
-    
-    return $data;
+      } else {
+        return [
+          'success' => false
+        ];
+      }
+    }
+
+    // Funcion para guardar noticias
+    public function setNews($file, $title, $headline, $content, $file_content, $status) {
+      date_default_timezone_set('America/Bogota');
+
+      $id = $this -> getMaxId('news', 'id');
+      $createdAt = date('Y-m-d H:i:s');
+
+      $sql = "INSERT INTO news (id, file, title, headline, content, file_content, status, createdAt)
+              VALUES ($id, '$file', $title, $headline, $content, '$file_content', '$status', '$createdAt')";
+
+      $result = $this -> query($sql);
+
+      if ($result) {
+        return [
+          'success' => true,
+          'msg' => 'La noticia se creo con exito',
+        ];
+
+      } else {
+        throw new Exception("No se pudo crear la noticia, el motivo: ".$this -> error);
+      }
+    }
+
+    // Funcion para actualizar noticias
+    public function updateNews($id, $file, $title, $headline, $content, $file_content, $status) {
+      date_default_timezone_set('America/Bogota');
+
+      if (!$file) { $file = ''; } else { $file = "file = '$file',"; }
+      if (!$file_content) { $file_content = ''; } else { $file_content = "file_content = '$file_content',"; }
+      $updatedAt = date("Y-m-d H:i:s");
+
+      $insert = "UPDATE news SET $file title = $title, headline = $headline, $file_content content = $content, status = '$status', updatedAt = '$updatedAt' WHERE id = $id";
+      $result = $this -> query($insert);
+
+      if ($result) {
+        return [
+          'success' => true,
+          'msg' => 'La noticia se actualizo correctamente.'
+        ];
+      
+      } else {
+        return [
+          'success' => false,
+          'msg' => 'Error al actualizar noticia!... Comunicate con el departamento de desarrollo e informa del problema'
+        ];
+      }
+    }
+
+    // Funcion para eliminar noticia
+    public function deleteNews($id) {
+      $sql = "DELETE FROM news WHERE id = $id";
+      $result = $this -> query($sql);
+
+      if ($result) {
+        return [
+          'success' => true,
+          'msg' => 'La noticia se elimino con exito.'
+        ];
+
+      } else {
+        throw new Exception("No se pudo eliminar la noticia, el motivo: ".$this -> error);
+      }
+    }
+
+    public function timeCreate($tiempo_en_segundos) {
+      $dias = floor($tiempo_en_segundos / (3600 * 24));
+      $horas = floor($tiempo_en_segundos / 3600);
+      $minutos = floor(($tiempo_en_segundos - ($horas * 3600)) / 60);
+      $segundos = $tiempo_en_segundos - ($horas * 3600) - ($minutos * 60);
+
+      if ($dias >= 1) {
+        return 'Last updated '.$dias.' days ago.';
+      }
+
+      if ($horas >= 1) {
+        return 'Last updated '.$horas.' hours ago.';
+      }
+
+      if ($minutos >= 1) {
+        return 'Last updated '.$minutos.' minutes ago.';
+      }
+
+      if ($segundos >= 1) {
+        return 'Last updated '.$segundos.' seconds ago.';
+      }
+    }
+
+    public function changeLabels($content, $html) {
+      // Limpiamos para guardar en la bd
+      if ($html) {
+
+        // Agregamos etiqueta <p></p>
+        $content = str_replace("(p)", "<p>", $content);
+        $content = str_replace("(/p)", "</p>", $content);
+
+        // Agregamos etiqueta <b></b>
+        $content = str_replace("(b)", "<b>", $content);
+        $content = str_replace("(/b)", "</b>", $content);
+
+        // Agregamos etiqueta <i></i>
+        $content = str_replace("(i)", "<i>", $content);
+        $content = str_replace("(/i)", "</i>", $content);
+
+        // Agregamos etiqueta <u></u>
+        $content = str_replace("(u)", "<u>", $content);
+        $content = str_replace("(/u)", "</u>", $content);
+
+        // Agregamos etiqueta <br></br>
+        $content = str_replace("(br)", "<br>", $content);
+
+        // Agregamos etiqueta <a></a>
+        $content = str_replace("(a href=*", "<a href='", $content);
+        $content = str_replace("*)", "'>", $content);
+        $content = str_replace("(/a)", "</a>", $content);
+
+        // Agregamos comilla sencilla
+        $content = str_replace("*", "'", $content);
+
+      // Limpiamos para mostrar al actualizar
+      } else {
+
+        // Agregamos etiqueta (p)(/p)
+        $content = str_replace("<p>", "(p)", $content);
+        $content = str_replace("</p>", "(/p)", $content);
+
+        // Agregamos etiqueta (b)(/b)
+        $content = str_replace("<b>", "(b)", $content);
+        $content = str_replace("</b>", "(/b)", $content);
+
+        // Agregamos etiqueta (i)(/i)
+        $content = str_replace("<i>", "(i)", $content);
+        $content = str_replace("</i>", "(/i)", $content);
+
+        // Agregamos etiqueta (u)(/u)
+        $content = str_replace("<u>", "(u)", $content);
+        $content = str_replace("</u>", "(/u)", $content);
+
+        // Agregamos etiqueta (br)(/br)
+        $content = str_replace("<br>", "(br)", $content);
+
+        // Agregamos etiqueta (a)(/a)
+        $content = str_replace("<a href='", "(a href=*", $content);
+        $content = str_replace("'>", "*)", $content);
+        $content = str_replace("</a>", "(/a)", $content);
+
+        // Agregamos comilla sencilla
+        $content = str_replace("'", "*", $content);
+      }
+
+      return $content;
+    }
+
   }
-}
+?>

@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Niramit:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../styles/cargaImgs.css">
+    <link rel="stylesheet" href="../styles/cargaImgs.css?v=<?php echo rand(1, 1000); ?>">
   </head>
 
   <body>
@@ -157,17 +157,17 @@
                   </div>
 
                   <div class="col-md-4">
-                    <div class="card-deck">
-                      <div class="card" style="background-color: #222121; border: 0 solid; color: #FFFFFF;">
-                        <img src="https://cdn.pixabay.com/photo/2017/09/10/18/25/question-2736480_960_720.jpg" id="img-create" class="card-img-top" height="160" style="object-fit: cover;">
-                        <div class="card-body">
-                          <h5 class="card-title" id="text_title" style="color: #FFFFFF;">Title of the news</h5>
-                          <p class="card-text" id="text_headline">Here*s a longer description with supporting text below as a natural introduction to the additional content.
-                            
-                          <a href="#" class="text-danger">See more...</a>
-                        </div>
-                        <div class="card-footer">
-                          <small class="text-muted">Last updated 3 seconds ago.</small>
+                    <div class="swiper mySwiper">
+                      <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                          <div class="card">
+                            <img src="https://cdn.pixabay.com/photo/2017/09/10/18/25/question-2736480_960_720.jpg" id="img-create" class="card-img-top object-fit-cover" />
+
+                            <div class="card-body">
+                              <h6 class="fw-bold mb-3" id="text_title">Title of the news</h6>
+                              <p id="text_headline">Here*s a longer description with supporting text below as a natural introduction to the additional content.</p>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -276,9 +276,8 @@
           <i class="fa fa-times-circle text-danger close-modal fa-2x" onclick="$('.bd-example-modal-lg').modal('hide')" aria-hidden="true"></i>
           
           <div class="card" style="background-color: #222121; border: 0 solid; color: #FFFFFF;">
-            <img class="card-img-top" id="img-content" height="300" style="object-fit: cover;" alt="Card image cap">
             <div class="card-body card-content">
-              <h3 class="card-title text-warning text-center" style="font-weight: bolder;">Card title</h3>
+              <h3 class="card-title text-primary text-center" style="font-weight: bolder;">Card title</h3>
               <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
             </div>
           </div>

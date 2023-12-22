@@ -1,12 +1,16 @@
 <?php
-  require("./class/newsDAO.php");
-  $newsDAO = new newsDAO();
+  require("./class/db.class.php");
+  require("./class/cargaImagenesDAO.php");
+
+  $cargaImagenes = new cargaImagenesDAO();
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Home</title>
+    <title>Opening Gates International</title>
+    <meta name="description" content="Trabajo en el exterior, tramita tu visa de trabajo, asesoría personalizada" />
+    <meta name="keywords" content="Trabajo, Visa, Europa" />
     <?php require('./components/head.html'); ?>
     <link rel="stylesheet" href="./styles/styles.css?v=<?php echo rand(1, 1000); ?>" />
   </head>
@@ -85,24 +89,7 @@
       <section class="container mt-9">
         <!-- Swiper -->
         <div class="swiper mySwiper">
-          <div class="swiper-wrapper"> <?php
-            $news = $newsDAO -> getAll();
-            
-            foreach ($news as $new) { ?>
-              <div class="swiper-slide">
-                <div class="card">
-                  <a href="./noticias.php?new=<?php echo strtr($new['title'], " ", "-"); ?>">
-                    <img src="<?php echo $new['img'] ?>" class="card-img-top object-fit-cover" />
-                  </a>
-
-                  <div class="card-body">
-                    <h6 class="fw-bold mb-3"><?php echo $new['title']; ?></h6>
-                    <p><?php echo $new['subtitle']; ?></p>
-                  </div>
-                </div>
-              </div> <?php
-            } ?>
-          </div>
+          <div class="swiper-wrapper" id="news-cards"></div>
           <div class="swiper-pagination"></div>
         </div>
       </section>
@@ -322,17 +309,30 @@
 
       <section class="container-fluid p-0 mt-16">
         <div id="carouselExample" class="carousel slide">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img src="./media/img/electrician.jpg" class="d-block object-fit-cover w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-              <img src="./media/img/welder.jpg" class="d-block object-fit-cover w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-              <img src="./media/img/tool.jpg" class="d-block object-fit-cover w-100" alt="...">
-            </div>
+          <div class="carousel-inner"> <?php
+            $images = $cargaImagenes -> getImages(1);
+
+            if ( isset($images) ) {
+              $i = 0;
+              while ($row = mysqli_fetch_assoc( $images )) {
+                $i == 0 ? $active = "active" : $active = ""; ?>
+                  <div class="carousel-item <?php echo $active; ?>">
+                    <img class="d-block object-fit-cover w-100" src="http://<?php echo $row['imagen']; ?>" alt="<?php echo $row['alt']; ?>" />
+                  </div> <?php 
+                $i++;
+              }
+            
+            } else { ?>
+              <div class="carousel-item active">
+                <img class="d-block object-fit-cover w-100" src="./media/img/electrician.jpg" alt="imagen predeterminada" />
+              </div> 
+              
+              <div class="carousel-item">
+                <img class="d-block object-fit-cover w-100" src="./media/img/welder.jpg" alt="imagen predeterminada" />
+              </div> <?php
+            } ?>
           </div>
+          
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
@@ -408,25 +408,7 @@
     <script src="./librerias/sweetalert2/dist/sweetalert2.js"></script>
     <script src="./librerias/wow/dist/wow.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="./js/webcam.js?v=<?php echo rand(1, 1000); ?>"></script>
     <script src="./js/index.js"></script>
-
-    <script>
-      const swiper = new Swiper(".mySwiper", {
-        effect: "coverflow",
-        grabCursor: true,
-        centeredSlides: true,
-        slidesPerView: "auto",
-        coverflowEffect: {
-          rotate: 5,
-          stretch: 0,
-          depth: 100,
-          modifier: 1,
-          slideShadows: true,
-        },
-        pagination: {
-          el: ".swiper-pagination",
-        },
-      });
-    </script>
   </body>
 </html>
