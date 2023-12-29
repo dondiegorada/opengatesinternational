@@ -1,86 +1,28 @@
 $(document).ready(function() {
     new WOW().init();
-    save()
     saveCanvas()
-    terminosCondiciones()
     savePregunta()
+    terminosCondiciones();
+    save();
 })
 
 function terminosCondiciones() {
     $("#check-terminos").change(function() {
-        if ($(this).is(':checked')) {
-            $("#enviar").prop('disabled', false);
-        } else {
-            $("#enviar").prop('disabled', true);
-        }
+      if ($(this).is(':checked')) {
+        $("#enviar").prop('disabled', false);
+      } else {
+        $("#enviar").prop('disabled', true);
+      }
     })
-
+  
     $("#check-terminos-canvas").change(function() {
-        if ($(this).is(':checked')) {
-            $("#enviar-canvas").prop('disabled', false);
-        } else {
-            $("#enviar-canvas").prop('disabled', true);
-        }
+      if ($(this).is(':checked')) {
+        $("#enviar-canvas").prop('disabled', false);
+      } else {
+        $("#enviar-canvas").prop('disabled', true);
+      }
     })
-}
-
-function save() {
-
-    $('#form').on('submit', (e) => {
-        e.preventDefault()
-
-        let nombres = $("#name").val();
-        let telefono = $("#phone").val();
-        let email = $("#email").val();
-        let edad = $("#edad").val();
-        let comentario = $("#comentario").val();
-
-        var datos = `FUNCION=create&name=${nombres}&phone=${telefono}&email=${email}&edad=${edad}&comentario=${comentario}`;
-        $.ajax({
-            url: './process/customers.process.php',
-            type: 'POST',
-            data: datos,
-            dataType: 'json',
-            success: function(resp) {
-                const { exito, msg, duplicado } = resp
-
-                if (exito) {
-
-                    Swal.fire({
-                        title: 'Tu registro fue exitoso',
-                        text: msg,
-                        icon: 'success',
-                        confirmButtonColor: '#5BC0BE',
-                        confirmButtonText: 'Aceptar'
-                    })
-
-                    $("#form")[0].reset();
-
-                } else {
-
-                    if (duplicado) {
-                        Swal.fire({
-                            title: 'Registro duplicado',
-                            text: msg,
-                            icon: 'info',
-                            confirmButtonColor: '#5BC0BE',
-                            confirmButtonText: 'Aceptar'
-                        })
-
-                    } else {
-                        Swal.fire({
-                            title: 'Inconsistencia',
-                            text: msg,
-                            icon: 'error',
-                            confirmButtonText: 'Aceptar'
-                        })
-                    }
-
-                }
-            }
-        })
-    })
-}
+  }
 
 function saveCanvas() {
 
@@ -179,6 +121,64 @@ function savePregunta() {
                         confirmButtonColor: '#341054',
                         confirmButtonText: 'Aceptar'
                     })
+
+                }
+            }
+        })
+    })
+}
+
+function save() {
+
+    $('#form').on('submit', (e) => {
+        e.preventDefault()
+
+        let nombres = $("#name").val();
+        let telefono = $("#phone").val();
+        let email = $("#email").val();
+        let edad = $("#edad").val();
+        let comentario = $("#testimonio").val();
+
+        var datos = `FUNCION=create&name=${nombres}&phone=${telefono}&email=${email}&edad=${edad}&comentario=${comentario}`;
+        $.ajax({
+            url: './process/customers.process.php',
+            type: 'POST',
+            data: datos,
+            dataType: 'json',
+            success: function(resp) {
+                const { exito, msg, duplicado } = resp
+
+                if (exito) {
+
+                    Swal.fire({
+                        title: 'Tu registro fue exitoso',
+                        text: msg,
+                        icon: 'success',
+                        confirmButtonColor: '#5BC0BE',
+                        confirmButtonText: 'Aceptar'
+                    })
+
+                    $("#form")[0].reset();
+
+                } else {
+
+                    if (duplicado) {
+                        Swal.fire({
+                            title: 'Registro duplicado',
+                            text: msg,
+                            icon: 'info',
+                            confirmButtonColor: '#5BC0BE',
+                            confirmButtonText: 'Aceptar'
+                        })
+
+                    } else {
+                        Swal.fire({
+                            title: 'Inconsistencia',
+                            text: msg,
+                            icon: 'error',
+                            confirmButtonText: 'Aceptar'
+                        })
+                    }
 
                 }
             }

@@ -181,7 +181,7 @@
                     </div>
 
                     <input type="submit" class="btn btn-danger" value="Crear noticia">
-                    <button type="button" class="btn btn-secondary" onclick="showContent(false)"><i class="fa fa-eye" aria-hidden="true"></i> Demo</button>
+                    <!-- <button type="button" class="btn btn-secondary" onclick="showContent(false)"><i class="fa fa-eye" aria-hidden="true"></i> Demo</button> -->
                     <br><br>
                   </div>
                 </div>
