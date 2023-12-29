@@ -6,9 +6,9 @@
   use PHPMailer\PHPMailer\SMTP;
   use PHPMailer\PHPMailer\Exception;
 
-require '../librerias/PHPMailer/src/Exception.php';
-require '../librerias/PHPMailer/src/PHPMailer.php';
-require '../librerias/PHPMailer/src/SMTP.php';
+  require '../librerias/PHPMailer/src/Exception.php';
+  require '../librerias/PHPMailer/src/PHPMailer.php';
+  require '../librerias/PHPMailer/src/SMTP.php';
   // Requerimos la clase del api
 
   class customersProcess {
@@ -24,13 +24,40 @@ require '../librerias/PHPMailer/src/SMTP.php';
         $customersDAO = new customersDAO();
         $mail = new PHPMailer();
 
+        // if ( mime_content_type($_FILES['cv']['tmp_name']) !== 'application/pdf' ) {
+        //   exit( json_encode([
+        //     "msg" => "El tipo de archivo no es permitido. Formatos admitidos (pdf)",
+        //     "exito" => false
+        //   ]));
+        // }
+
+        // $arrayName = explode( '.', $_FILES['cv']['name'] );
+        // $size_array = count( $arrayName );
+        // $name_imagen = $arrayName[0].rand().".".$arrayName[$size_array - 1];
+
+        // $url = explode('/', $_SERVER['PHP_SELF']);
+
+        // // ruta de la carpeta destino en el servidor
+        // $carpeta_destino = $_SERVER['DOCUMENT_ROOT'].'/media/img/pdf/'.$name_imagen;
+        // $move = move_uploaded_file( $_FILES['cv']['tmp_name'], $carpeta_destino);
+        // $ruta = 'opengatesinternational.com/media/img/pdf/'.$name_imagen;
+        $ruta = '';
+  
+        // movemos la imagen del directorio temporal al directorio escogido
+        // if ( !$move ) {
+        //   exit( echo json_encode([
+        //     "msg" => "Inconsistencia guardado la imagen",
+        //     "exito" => false
+        //   ]));
+        // }
+
         $nombres = filter_input(INPUT_POST, "name", FILTER_SANITIZE_STRING);
         $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_STRING);
         $telefono = filter_input(INPUT_POST, "phone", FILTER_SANITIZE_STRING);
-        $comentario = filter_input(INPUT_POST, "testimonio", FILTER_SANITIZE_STRING) ?? '';
+        $comentario = filter_input(INPUT_POST, "comentario", FILTER_SANITIZE_STRING) ?? '';
         
-        //apuntamos a la funcion
-        $resp = $customersDAO -> create($nombres,$email,$comentario,$telefono);
+        // Apuntamos a la funcion
+        $resp = $customersDAO -> create( $nombres, $email, $comentario, $telefono, $ruta );
         echo json_encode($resp);
 
         // if(count($resp)>0){
@@ -174,4 +201,4 @@ require '../librerias/PHPMailer/src/SMTP.php';
       }
     }
   }
-  $customersProcess = new customersProcess();
+  $customersProcess = new CustomersProcess();

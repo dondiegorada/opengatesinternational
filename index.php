@@ -155,10 +155,10 @@
                     <input type="email" id="email" class="form-control" aria-describedby="passwordHelpBlock" required />
                   </div>
 
-                  <div class="col-md-12 mb-4">
+                  <!-- <div class="col-md-12 mb-4">
                     <label for="formFileSm" class="form-label">Hoja de vida</label>
                     <input class="form-control form-control" id="formFileSm" type="file">
-                  </div>
+                  </div> -->
 
                   <div class="col-md-12 mb-4">
                     <div class="mb-3">

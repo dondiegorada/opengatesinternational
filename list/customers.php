@@ -63,7 +63,7 @@
                 <th>Telefono</th>
                 <th>Email</th>
                 <th>Edad</th>
-                <th>Dudas</th>
+                <th>Testimonios</th>
                 <th>Estado</th>
                 <th>Fecha de registro</th>
                 <th colspan="2">Opción</th>
@@ -110,7 +110,7 @@
     <script src="../framework/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../librerias/popper.min.js"></script>
     <script src="../librerias/sweetalert2/dist/sweetalert2.js"></script>
-    <script src="../js/modelos.js?v=<?php echo rand(1, 1000); ?>"></script>
+    <script src="../js/users.js?v=<?php echo rand(1, 1000); ?>"></script>
       
   </body>
 </html>

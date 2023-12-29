@@ -32,7 +32,7 @@
     }
   }
 
-  public function create ($nombres,$email,$comentario,$telefono) {
+  public function create ( $nombres, $email, $comentario, $telefono, $ruta ) {
 
     date_default_timezone_set('America/Bogota');
 
@@ -40,7 +40,7 @@
     $fecha_registro = date('Y-m-d H:i:s');
     $apellidos = '';
 
-    //debemos partir los nombre
+    // Debemos partir los nombre
     $posiciones = explode(" ", $nombres);
 
     if(count($posiciones)>3){
@@ -64,7 +64,6 @@
         "msg" => "Ya te registraste anteriormente, si no es así intenta cambiando el email o el numero de télefono",
         "duplicado" => true
       ];
-
     }
 
     $modelo_id = $this -> getMaxId('customers','_id');

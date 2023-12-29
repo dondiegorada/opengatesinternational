@@ -30,21 +30,21 @@
           <div class="col-md-6">
             <h2 class="fw-bold">¡Registrate ahora!</h2>
           
-            <form id="form" class="p-2">
+            <form id="form" class="p-2" method="POST" enctype="multipart/form-data">
               <div class="row">
                 <div class="col-md-12 mb-4">
                   <label for="inputPassword5" class="form-label">Nombres y Apellidos</label>
-                  <input type="text" id="name" class="form-control" aria-describedby="passwordHelpBlock" required />
+                  <input type="text" id="name" name="name" class="form-control" aria-describedby="passwordHelpBlock" required />
                 </div>
 
                 <div class="col-md-6 mb-4">
                   <label for="inputPassword5" class="form-label">Telefóno</label>
-                  <input type="number" id="phone" class="form-control" aria-describedby="passwordHelpBlock" required>
+                  <input type="number" id="phone" name="phone" class="form-control" aria-describedby="passwordHelpBlock" required>
                 </div>
                 
                 <div class="col-md-6 mb-4">
                   <label for="inputPassword5" class="form-label">Edad</label>
-                  <select class="form-select" id="edad" aria-label="Floating label seleccione edad" required> <?php
+                  <select class="form-select" id="edad" name="edad" aria-label="Floating label seleccione edad" required> <?php
                     $year = array(18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39); ?>
 
                     <option selected>Seleccione</option> <?php
@@ -59,18 +59,18 @@
 
                 <div class="col-md-12 mb-4">
                   <label for="inputPassword5" class="form-label">Email</label>
-                  <input type="email" id="email" class="form-control" aria-describedby="passwordHelpBlock" required />
+                  <input type="email" id="email" name="email" class="form-control" aria-describedby="passwordHelpBlock" required />
                 </div>
 
-                <div class="col-md-12 mb-4">
+                <!-- <div class="col-md-12 mb-4">
                   <label for="formFileSm" class="form-label">Hoja de vida</label>
-                  <input class="form-control form-control" id="formFileSm" type="file">
-                </div>
+                  <input class="form-control form-control" id="cv" name="cv" type="file">
+                </div> -->
 
                 <div class="col-md-12 mb-4">
                   <div class="mb-3">
                     <label for="exampleFormControlTextarea1" class="form-label">Testimonios</label>
-                    <textarea class="form-control" id="testimonio" rows="3"></textarea>
+                    <textarea class="form-control" id="testimonio" name="testimonio" rows="3"></textarea>
                   </div>
                 </div>
               
@@ -104,6 +104,7 @@
     <script src="./librerias/popper.min.js"></script>
     <script src="./librerias/sweetalert2/dist/sweetalert2.js"></script>
     <script src="./librerias/wow/dist/wow.min.js"></script>
+    <!-- <script src="./js/users.js?v=<?php echo rand(1, 1000); ?>"></script> -->
     <script src="./js/index.js?v=<?php echo rand(1, 1000); ?>"></script>
   </body>
 </html>
