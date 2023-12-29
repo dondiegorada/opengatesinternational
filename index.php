@@ -1,8 +1,8 @@
 <?php
-  // require("./class/db.class.php");
-  // require("./class/cargaImagenesDAO.php");
+  require("./class/db.class.php");
+  require("./class/cargaImagenesDAO.php");
 
-  // $cargaImagenes = new cargaImagenesDAO();
+  $cargaImagenes = new cargaImagenesDAO();
 ?>
 
 <!DOCTYPE html>
@@ -15,33 +15,35 @@
     <link rel="stylesheet" href="./styles/styles.css?v=<?php echo rand(1, 1000); ?>" />
   </head>
 
-  <body class="container-home">
-    <header>
-      <?php require('./components/navbar.html'); ?>
-    </header>
-
+  <body>
     <main>
-      <section class="container mt-8">
-        <div class="row justify-content-center">
-          <div class="col-lxx-6 col-lg-10 col-sm-12 text-center">
-            <h2>Bienvenido a Opening Gates International</h2>
-            <p class="h5 mb-5">
-              Tu guía confiable para encontrar empleo en Europa desde Centro y Sur América. Nos especializamos en brindar información precisa y útil sobre los procedimientos de visado y empleo en diversos países europeos.
-            </p>
-            
-            <a
-              aria-controls="registro"
-              class="btn btn-lg btn-primary"
-              href="./register.php"
-              type="button"
-            >
-              ¡Registrate ahora!
-            </a>
-          </div>
-        </div>
-      </section>
+      <div class="container-home">
+        <header>
+          <?php require('./components/navbar.html'); ?>
+        </header>
 
-      <section class="container mt-10">
+        <section class="container mt-5">
+          <div class="row justify-content-center">
+            <div class="col-lxx-6 col-lg-10 col-sm-12 text-center" style="position: relative; z-index: 1;">
+              <h2>Bienvenido a Opening Gates International</h2>
+              <p class="h5 mb-5">
+                Tu guía confiable para encontrar empleo en Europa desde Centro y Sur América. Nos especializamos en brindar información precisa y útil sobre los procedimientos de visado y empleo en diversos países europeos.
+              </p>
+              
+              <a
+                aria-controls="registro"
+                class="btn btn-lg btn-primary"
+                href="./register.php"
+                type="button"
+              >
+                ¡Registrate ahora!
+              </a>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <section class="container" style="margin-top: -60px">
         <div class="row">
           <div class="col-lg-3 col-sm-6 mb-sm-1">
             <div class="card">
@@ -86,7 +88,7 @@
         </div>
       </section>
 
-      <section class="container mt-9">
+      <section class="container">
         <!-- Swiper -->
         <div class="swiper mySwiper">
           <div class="swiper-wrapper" id="news-cards"></div>

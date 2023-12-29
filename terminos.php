@@ -56,7 +56,7 @@
 
             <h5 class="fw-bold">8. Contacto</h5>
             <p class="h5">
-              Si tienes alguna pregunta sobre estos términos y condiciones, puedes contactarnos en info@opengatesinternational.com.
+              Si tienes alguna pregunta sobre estos términos y condiciones, puedes contactarnos en info@oginternational.com.co.
             </p><br />
           </div>
         </div>

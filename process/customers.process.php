@@ -68,7 +68,7 @@
         //   $mail -> Host = 'smtp.gmail.com';
         //   $mail -> SMTPAuth = true;   // Habilita la autenticación SMTP
         //   $mail -> CharSet="UTF-8";
-        //   $mail -> Username = 'no-reply@opengatesinternational.com';   // Nombre de usuario SMTP
+        //   $mail -> Username = 'no-reply@oginternational.com.co';   // Nombre de usuario SMTP
         //   $mail -> Password = 'Opengates2023)';   // Contraseña SMTP
         //   $mail -> SMTPSecure = PHPMailer :: ENCRYPTION_SMTPS;   // Habilita el cifrado TLS implícito
         //   $mail -> Port = 465;
