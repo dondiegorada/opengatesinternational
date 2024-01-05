@@ -20,7 +20,7 @@
           <div class="col-lxx-6 col-md-11 col-sm-12 p-4">
             <h2 class="fw-bold text-primary mb-3">Nuestro compromiso</h2>
             <p class="h6 mb-5">
-              Queremos compartir contigo nuestra historia, valores y el propósito que impulsa cada acción que tomamos. Somos más que una plataforma, compañía de oportunidades laborales; somos un equipo comprometido en construir puentes hacia el éxito profesional en Europa para los usuarios de América Central y del Sur.
+              Operamos de manera eficaz gracias a un proceso de reclutamiento efectivo y una selección profesional de candidatos. Nuestra presencia se extiende a lo largo y ancho del país, asegurando la contratación de empleados con las calificaciones deseadas en diversas industrias. Nos especializamos en personalizar la contratación según las necesidades específicas de nuestros clientes, garantizando que los empleados seleccionados cumplan con requisitos específicos y sean capaces de desempeñar eficientemente las tareas encomendadas.
             </p>
           </div>
         </div>
