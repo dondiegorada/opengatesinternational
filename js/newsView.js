@@ -30,7 +30,7 @@ function renderNews( data ) {
   data.forEach(({ id, file, title, content }) => {
     $('#news').append(`
       <a href="./noticias.php?new=${ title.replaceAll(' ', '-') }">
-        <div class="carousel-item ${ id == 1 ? 'active': '' }">
+        <div class="carousel-item ${ id == data[0].id ? 'active': '' }">
           <div class="container">
             <div class="row">
               <div class="col-xl-5 col-sm-4 mb-3">
@@ -44,7 +44,7 @@ function renderNews( data ) {
                   class="my-3"
                 >
                   ${ content }
-                </p>...
+                </p>
               </div>
             </div>
           </div>

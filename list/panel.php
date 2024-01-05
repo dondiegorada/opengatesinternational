@@ -14,7 +14,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel</title>
-    <link rel="icon" type="image/png" href="../media/imagenes/logo.png">
+    <link rel="icon" type="image/png" href="../media/img/logo.png">
     <link rel="stylesheet" href="../framework/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../librerias/animate.css/animate.min.css">
     <link rel="stylesheet" href="../librerias/sweetalert2/dist/sweetalert2.min.css">
@@ -30,7 +30,10 @@
     <div class="container p-4">
       <header>
         <h2 class="text-light">
-          <img src="../media/img/logo.png" alt="logo Opening Gates International" height="60" class="rounded-circle"> Panel Administrativo
+          <img src="../media/img/logo.jpg" alt="logo Opening Gates International"
+            height="60" class="rounded-circle"
+            style="border-radius: 50%"
+          /> Panel Administrativo
         </h2>
       </header>
         

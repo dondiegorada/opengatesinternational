@@ -21,15 +21,16 @@
       return $max_consecutive += $increment;  
     }
 
-  public function getAll() {
+  public function getAll( $estado ) {
     $sql = "SELECT _id, nombres, apellidos, telefono, email, edad, comentario, fecha_registro,
-          (CASE estado WHEN 'P' THEN 'Pendiente' WHEN 'A' THEN 'Aprobado' ELSE 'Rechazado' END)AS estado FROM customers ORDER BY _id DESC";
+          (CASE estado WHEN 'P' THEN 'Pendiente' WHEN 'A' THEN 'Aprobado' ELSE 'Rechazado' END)AS estado FROM customers WHERE estado = '$estado' ORDER BY _id DESC";
     
     $result = $this -> query($sql);
 
     if (mysqli_num_rows($result) > 0) {
       return $result;
     }
+
   }
 
   public function create ( $nombres, $email, $comentario, $telefono, $ruta ) {

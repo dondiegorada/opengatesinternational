@@ -71,7 +71,7 @@
             </thead>
                 
             <tbody> <?php
-              $customers = $customersDAO -> getAll();
+              $customers = $customersDAO -> getAll('P');
 
               if (isset($customers)) {
                 while ($row = mysqli_fetch_assoc($customers)) { ?>
@@ -84,7 +84,11 @@
                     <td><?php echo $row['comentario']; ?></td>
                     <td><span class="badge bg-danger"><?php echo $row['estado']; ?></span></td>
                     <td><?php echo $row['fecha_registro']; ?></td>
-                    <!-- <td><button type="button" class="btn" onclick="seleccionar(<?php echo $row['modelo_id']?>)"><img src="../media/img/comprobado.svg" height="50" alt="aprobar"></button></td> -->
+                    <td>
+                      <button type="button" class="btn" onclick="seleccionar(<?php echo $row['_id']?>)">
+                        <img src="../media/img/comprobado.svg" height="30" alt="aprobar" />
+                      </button>
+                    </td>
                     <td>
                       <button type="button" class="btn" onclick="declinar(<?php echo $row['_id']?>)">
                         <img src="../media/img/cerrar.svg" height="30" alt="declinar" />
@@ -102,6 +106,106 @@
               } ?>
             </tbody>
           </table>
+        </div>
+      </section>
+
+      <section class="container mt-5">
+        <h3>Lista de modelos aprobadas</h3>
+        <div class="table-responseve">
+          <table class="table table-striped table-bordered">
+              <thead>
+                  <tr>
+                      <th>Nombres</th>
+                      <th>Apellidos</th>
+                      <th>Telefono</th>
+                      <th>Email</th>
+                      <th>Edad</th>
+                      <th>Dudas</th>
+                      <th>Estado</th>
+                      <th>Fecha de registro</th>
+                      <th>Opción</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <?php
+                  $modelos = $customersDAO -> getAll('A');
+
+                  if(isset($modelos)){
+                      while($row = mysqli_fetch_assoc($modelos)){
+                      ?>
+                      <tr>
+                          <td><?php echo $row['nombres']; ?></td>
+                          <td><?php echo $row['apellidos']; ?></td>
+                          <td><?php echo $row['telefono']; ?></td>
+                          <td><?php echo $row['email']; ?></td>
+                          <td><?php echo $row['edad']; ?></td>
+                          <td><?php echo $row['comentario']; ?></td>
+                          <td><span class="badge bg-warning"><?php echo $row['estado']; ?></span></td>
+                          <td><?php echo $row['fecha_registro']; ?></td>
+                          <td>
+                            <button type="button" class="btn" onclick="declinar(<?php echo $row['_id']?>)">
+                              <img src="../media/img/cerrar.svg" height="30" alt="declinar">
+                            </button>
+                          </td>
+                      </tr>
+                      <?php
+                      }
+                  }else{
+
+                  }
+                  ?>
+              </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="container mt-5">
+        <h3>Lista de modelos rechazadas</h3>
+        <div class="table-responseve">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
+                        <th>Telefono</th>
+                        <th>Email</th>
+                        <th>Edad</th>
+                        <th>Dudas</th>
+                        <th>Estado</th>
+                        <th>Fecha de registro</th>
+                        <th>Opción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $modelos = $customersDAO -> getAll('R');
+
+                    if(isset($modelos)){
+                        while($row = mysqli_fetch_assoc($modelos)){
+                        ?>
+                        <tr>
+                            <td><?php echo $row['nombres']; ?></td>
+                            <td><?php echo $row['apellidos']; ?></td>
+                            <td><?php echo $row['telefono']; ?></td>
+                            <td><?php echo $row['email']; ?></td>
+                            <td><?php echo $row['edad']; ?></td>
+                            <td><?php echo $row['comentario']; ?></td>
+                            <td><span class="badge bg-dark"><?php echo $row['estado']; ?></span></td>
+                            <td><?php echo $row['fecha_registro']; ?></td>
+                            <td>
+                              <button type="button" class="btn" onclick="seleccionar(<?php echo $row['_id']?>)">
+                                <img src="../media/img/comprobado.svg" height="30" alt="aprobar">
+                              </button>
+                            </td>
+                        </tr>
+                        <?php
+                        }
+                    }else{
+
+                    }
+                    ?>
+                </tbody>
+            </table>
         </div>
       </section>
     </main>

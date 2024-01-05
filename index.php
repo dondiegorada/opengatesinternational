@@ -214,7 +214,7 @@
           </div>
         </div>
 
-        <div class="row justify-content-center mt-25">
+        <!-- <div class="row justify-content-center mt-25">
           <div class="col-xxl-6 col-md-7 position-relative">
             <img src="./media/img/travel-ilustration.png" class="card-ilustration position-absolute d-none-sm" alt="" />
             <div class="card-text-left p-7">
@@ -244,7 +244,7 @@
               </p>
             </div>
           </div>
-        </div>
+        </div> -->
       </section>
 
       <section class="container mt-25">
@@ -312,7 +312,7 @@
       <section class="container-fluid p-0 mt-16">
         <div id="carouselExample" class="carousel slide">
           <div class="carousel-inner"> <?php
-            // $images = $cargaImagenes -> getImages(1);
+            $images = $cargaImagenes -> getImages(1);
 
             if ( isset($images) ) {
               $i = 0;

@@ -58,95 +58,95 @@
         
         // Apuntamos a la funcion
         $resp = $customersDAO -> create( $nombres, $email, $comentario, $telefono, $ruta );
-        echo json_encode($resp);
 
-        // if(count($resp)>0){
+        if ( count($resp) > 0 ) {
 
-        //   //$mail -> SMTPDebug = SMTP::DEBUG_SERVER;
-        //   $mail -> isSMTP();   // PHPMailer necesita usar SMTP
-        //   //$mail->SMTPDebug = SMTP::DEBUG_SERVER;
-        //   $mail -> Host = 'smtp.gmail.com';
-        //   $mail -> SMTPAuth = true;   // Habilita la autenticación SMTP
-        //   $mail -> CharSet="UTF-8";
-        //   $mail -> Username = 'no-reply@oginternational.com.co';   // Nombre de usuario SMTP
-        //   $mail -> Password = 'Opengates2023)';   // Contraseña SMTP
-        //   $mail -> SMTPSecure = PHPMailer :: ENCRYPTION_SMTPS;   // Habilita el cifrado TLS implícito
-        //   $mail -> Port = 465;
+          $duplicado = $resp['duplicado'];
+          
+          if ( !$duplicado ) {
+            $mail = new PHPMailer;
+            $mail->isSMTP();
+            $mail->SMTPDebug = 0;
+            $mail->Host = 'smtp.hostinger.com';
+            $mail->Port = 587;
+            $mail->SMTPAuth = true;
+            $mail ->CharSet="UTF-8";
+            $mail->Username = 'no-reply@oginternational.com.co';
+            $mail->Password = 'Opengates2023)';
+            $mail->setFrom('no-reply@oginternational.com.co', 'oginternational.com.co'); 
+            $mail->addReplyTo($email, $nombres);
+            $mail->addAddress('info@oginternational.com.co', 'Opening Gates International');   // Establecer a donde se enviará el mensaje
 
-        //   // Destinatarios
-        //   $mail -> setFrom($email, $nombres);   // Establecer de quién se enviará el mensaje
-        //   $mail -> addAddress('johndev983@gmail.com', 'Opening Gates International');   // Establecer a donde se enviará el mensaje
-        //  // $mail -> addCC('diego@lucistudio.info','Diego');
-        //   //$mail -> addCC('bryansugi@gmail.com','Bryan');
-        //   $mail -> addReplyTo($email, $nombres);   // A quien se respondera el email
+            // Archivos adjuntos
+            //$mail->addAttachment('/var/tmp/file.tar.gz');   // Agregar archivos adjuntos
+            //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');   // Nombre opcional
 
-        //   // Archivos adjuntos
-        //   //$mail->addAttachment('/var/tmp/file.tar.gz');   // Agregar archivos adjuntos
-        //   //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');   // Nombre opcional
+            // Contenido
+            $mail -> isHTML(true);   // Establecer el formato de correo electrónico en HTML
+            $mail -> Subject = 'Solicitud para encontrar empleo en Europa desde Centro y Sur América';   //Asunto del mensaje
+            $mail -> Body = "<!DOCTYPE html>
+            <html>
+              <head>
+                <style>
 
-        //   // Contenido
-        //   $mail -> isHTML(true);   // Establecer el formato de correo electrónico en HTML
-        //   $mail -> Subject = 'Solicitud para encontrar empleo en Europa desde Centro y Sur América';   //Asunto del mensaje
-        //   $mail -> Body = "<!DOCTYPE html>
-        //   <html>
-        //     <head>
-        //       <style>
+                  .cuerpo_mensaje{
+                    width:100%;
+                    background-color:#110E0C;
+                    color: #ffffff;
+                    height: auto;
+                    padding: 15px;
+                    display: inline-flex
+                  }
 
-        //         .cuerpo_mensaje{
-        //           width:100%;
-        //           background-color:#110E0C;
-        //           color: #ffffff;
-        //           height: auto;
-        //           padding: 15px;
-        //           display: inline-flex
-        //         }
+                  .image{
+                    padding: 5px;
+                    width: 30%;
+                  }
 
-        //         .image{
-        //           padding: 5px;
-        //           width: 30%;
-        //         }
+                  .text{
+                    padding: 5px;
+                    width: 60%;
+                  }
 
-        //         .text{
-        //           padding: 5px;
-        //           width: 60%;
-        //         }
+                  .im{
+                    color: #ffffff;
+                  }
 
-        //         .im{
-        //           color: #ffffff;
-        //         }
+                </style>
+              </head>
+              <body>
+                <div class='cuerpo_mensaje'>
 
-        //       </style>
-        //     </head>
-        //     <body>
-        //       <div class='cuerpo_mensaje'>
-
-        //           <div class='image'>
-        //               <img src='https://res.cloudinary.com/ucam-com/image/upload/v1636647393/img-administracion/imagenes/logo_mzwz6w.png' width='80%' height='auto'></img>
-        //           </div>
+                    <div class='image'>
+                        <img src='https://oginternational.com.co/media/img/logo.jpg' width='80%' height='auto' style='border-radius: 50%'></img>
+                    </div>
 
 
-        //           <div class='text'>
-        //           <span style='style'color: #ffffff !important'>
-        //                 <h1 style'color: #ffffff !important'>Solicitud para encontrar empleo en Europa desde Centro y Sur América</h1>
-        //                 <h2 style'color: #ffa500 !important'>Descripción</h2>
-        //                 $comentario
-        //                 <p>Telefono: $telefono</p>
-        //                 <p>Email: $email</p>
-        //           </span>
-        //           </div>
+                    <div class='text'>
+                    <span style='style'color: #ffffff !important'>
+                          <h1 style'color: #ffffff !important'>Solicitud para encontrar empleo en Europa desde Centro y Sur América</h1>
+                          <h2 style'color: #ffa500 !important'>Descripción</h2>
+                          $comentario
+                          <p>Telefono: $telefono</p>
+                          <p>Email: $email</p>
+                    </span>
+                    </div>
 
-        //       </div>
+                </div>
 
-        //     </body>
-        //   </html>";
+              </body>
+            </html>";
 
-        //   if (!$mail->send()) {
-        //     //echo "error: ".$mail->ErrorInfo;
-        //     echo json_encode(['msg' => 'Ocurrio una inconsistencia por favor intenta mas tarde', 'exito'=>false]);
-        //   }else {
-        //     echo json_encode($resp);
-        //   }
-        // }
+            if (!$mail->send()) {
+              echo "error: ".$mail->ErrorInfo;
+              echo json_encode(['msg' => 'Ocurrio una inconsistencia por favor intenta mas tarde', 'exito'=>false]);
+            } else {
+              echo json_encode($resp);
+            }
+          } else{
+            echo json_encode($resp);
+          }
+        }
 
       } catch(Exception $ex) {
         echo "Ha sucedido el siguiente error: ".$ex->getMessage();
