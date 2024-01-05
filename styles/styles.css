@@ -46,7 +46,6 @@ h3, .h3 {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.7);
-  /* z-index: -1; */
 }
 
 .container-form {
@@ -54,9 +53,20 @@ h3, .h3 {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 1116px;
-  margin-bottom: 5rem;
+  height: 100vh;
   position: relative;
+  width: 100%;
+}
+
+.container-form::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(0,0,0);
+  background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(200,199,199,0.5018382352941176) 82%, rgba(89,89,89,0.5690651260504201) 100%);
 }
 
 .container-nosotros {
@@ -319,6 +329,11 @@ h3, .h3 {
 
 .pl-3 {
   padding-left: 3rem;
+}
+
+.z-index-1 {
+  position: relative;
+  z-index: 1;
 }
 
 @media only screen and (max-width: 600px) {

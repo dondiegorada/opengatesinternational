@@ -1,8 +1,8 @@
 <?php
-  require("./class/db.class.php");
-  require("./class/cargaImagenesDAO.php");
+  // require("./class/db.class.php");
+  // require("./class/cargaImagenesDAO.php");
 
-  $cargaImagenes = new cargaImagenesDAO();
+  // $cargaImagenes = new cargaImagenesDAO();
 ?>
 
 <!DOCTYPE html>
@@ -110,7 +110,7 @@
       </section>
 
       <section class="container-fluid container-form mt-9">
-        <div class="container">
+        <div class="container z-index-1">
           <div class="row pt-13">
             <div class="col-md-5 mb-5">
               <h3 class="fw-bold">¿Estás buscando una forma confiable y segura de obtener tu visa y tu empleo?</h3>
@@ -186,7 +186,7 @@
         </div>
       </section>
 
-      <section class="container">
+      <section class="container mt-16">
         <div class="row">
           <div class="col-12 text-center">
             <h2 class="fw-bold text-primary">Países y ciudades más recomendados para trabajar en Europa</h2>
