@@ -1,8 +1,8 @@
 <?php
-  // require("./class/db.class.php");
-  // require("./class/cargaImagenesDAO.php");
+  require("./class/db.class.php");
+  require("./class/cargaImagenesDAO.php");
 
-  // $cargaImagenes = new cargaImagenesDAO();
+  $cargaImagenes = new cargaImagenesDAO();
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +22,7 @@
           <?php require('./components/navbar.html'); ?>
         </header>
 
-        <section class="container mt-5">
+        <section class="container mt-7">
           <div class="row justify-content-center">
             <div class="col-lxx-6 col-lg-10 col-sm-12 text-center" style="position: relative; z-index: 1;">
               <h2>Bienvenido a Opening Gates International</h2>
@@ -109,13 +109,13 @@
         </div>
       </section>
 
-      <section class="container-fluid container-form mt-9">
+      <section class="container-fluid container-form-home mt-9">
         <div class="container z-index-1">
-          <div class="row pt-13">
+          <div class="row pt-8">
             <div class="col-md-5 mb-5">
-              <h3 class="fw-bold">¿Estás buscando una forma confiable y segura de obtener tu visa y tu empleo?</h3>
+              <h3 class="fw-bold text-primary">¿Estás buscando una forma confiable y segura de obtener tu visa y tu empleo?</h3>
 
-              <p class="h5 mt-4">
+              <p class="h5 fw-bold mt-4">
                 registrate y deja tus datos de contacto, podrás acceder a un servicio personalizado y gratuito que te ayudará a encontrar el trabajo y la visa que mejor se adapten a tu perfil y a tus expectativas.
               </p>
             </div>
@@ -123,7 +123,7 @@
             <div class="col"></div>
 
             <div class="col-md-6">
-              <h2 class="fw-bold text-center-sm">¡Registrate ahora!</h2>
+              <h2 class="fw-bold text-center-sm text-primary">¡Registrate ahora!</h2>
             
               <form id="form" class="p-2">
                 <div class="row">
@@ -186,7 +186,7 @@
         </div>
       </section>
 
-      <section class="container mt-16">
+      <section class="container mt-17">
         <div class="row">
           <div class="col-12 text-center">
             <h2 class="fw-bold text-primary">Países y ciudades más recomendados para trabajar en Europa</h2>

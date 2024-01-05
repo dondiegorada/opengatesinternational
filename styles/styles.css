@@ -48,7 +48,7 @@ h3, .h3 {
   background: rgba(0, 0, 0, 0.7);
 }
 
-.container-form {
+.container-form, .container-form-home {
   background-image: url('../media/img/form.jpg');
   background-position: center;
   background-repeat: no-repeat;
@@ -67,6 +67,17 @@ h3, .h3 {
   height: 100%;
   background: rgb(0,0,0);
   background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(200,199,199,0.5018382352941176) 82%, rgba(89,89,89,0.5690651260504201) 100%);
+}
+
+.container-form-home::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(0,0,0);
+  background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(166,166,166,0.5018382352941176) 40%, rgba(0,0,0,1) 100%);
 }
 
 .container-nosotros {
@@ -267,6 +278,10 @@ h3, .h3 {
   position: relative;
 }
 
+.text-dark {
+  color: #000000 !important;
+}
+
 .d-none-lg {
   display: none;
 }
@@ -299,6 +314,10 @@ h3, .h3 {
   margin-top: 16rem;
 }
 
+.mt-17 {
+  margin-top: 13rem;
+}
+
 .mt-19 {
   margin-top: 19rem;
 }
@@ -317,6 +336,10 @@ h3, .h3 {
 
 .p-7 {
   padding: 7rem;
+}
+
+.pt-8 {
+  padding-top: 8rem;
 }
 
 .pt-10 {
@@ -405,6 +428,10 @@ h3, .h3 {
     margin-top: 12rem;
   }
 
+  .mt-17 {
+    margin-top: 19rem;
+  }
+
   .mt-25 {
     margin-top: 8rem;
   }
@@ -459,6 +486,10 @@ h3, .h3 {
   .p-5 {
     padding: 15px !important;
   }
+
+  .mt-7 {
+    margin-top: 3rem;
+  }
 }
 
 @media only screen and (min-width: 1400px) {
@@ -488,5 +519,9 @@ h3, .h3 {
 
   .mt-10 {
     margin-top: 13rem;
+  }
+
+  .pt-8 {
+    padding-top: 11rem;
   }
 }
