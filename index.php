@@ -115,7 +115,7 @@
             <div class="col-md-5 mb-5">
               <h3 class="fw-bold text-primary">¿Estás buscando una forma confiable y segura de obtener tu visa y tu empleo?</h3>
 
-              <p class="h5 fw-bold mt-4">
+              <p class="h5 fw-bold text-dark mt-4">
                 registrate y deja tus datos de contacto, podrás acceder a un servicio personalizado y gratuito que te ayudará a encontrar el trabajo y la visa que mejor se adapten a tu perfil y a tus expectativas.
               </p>
             </div>
