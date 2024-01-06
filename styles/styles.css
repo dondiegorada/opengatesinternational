@@ -104,6 +104,13 @@ h3, .h3 {
   position: relative;
 }
 
+.content-form {
+  background-color: #0000004d;
+  padding: 80px 40px;
+  border-radius: 15px;
+  height: fit-content;
+}
+
 .navbar {
   background-color: transparent !important;
 }
@@ -511,6 +518,10 @@ h3, .h3 {
 
   .carousel-inner {
     height: 850px;
+  }
+
+  .content-form {
+    padding: 120px 60px;
   }
 
   .mt-7 {

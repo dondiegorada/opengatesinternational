@@ -88,7 +88,7 @@
         </div>
       </section>
 
-      <section class="container">
+      <section class="container mt-5">
         <!-- Swiper -->
         <div class="swiper mySwiper">
           <div class="swiper-wrapper" id="news-cards"></div>
@@ -112,10 +112,10 @@
       <section class="container-fluid container-form-home mt-9">
         <div class="container z-index-1">
           <div class="row pt-8">
-            <div class="col-md-5 mb-5">
-              <h3 class="fw-bold text-primary">¿Estás buscando una forma confiable y segura de obtener tu visa y tu empleo?</h3>
+            <div class="col-md-5 content-form mb-5">
+              <h3 class="fw-bold">¿Estás buscando una forma confiable y segura de obtener tu visa y tu empleo?</h3>
 
-              <p class="h5 fw-bold mt-4">
+              <p class="h5 mt-4">
                 registrate y deja tus datos de contacto, podrás acceder a un servicio personalizado y gratuito que te ayudará a encontrar el trabajo y la visa que mejor se adapten a tu perfil y a tus expectativas.
               </p>
             </div>
