@@ -75,7 +75,7 @@ class cargaImagenes {
             $carpeta_destino = $_SERVER['DOCUMENT_ROOT'].'/media/img/'.$name_imagen;
             // exit(var_dump($carpeta_destino));
             $move = move_uploaded_file($_FILES['imagen']['tmp_name'], $carpeta_destino);
-            $ruta = 'opengatesinternational.com/media/img/'.$name_imagen;
+            $ruta = 'oginternational.com.co/media/img/'.$name_imagen;
       
             //movemos la imagen del directorio temporal al directorio escogido
             if(!$move){
@@ -141,7 +141,7 @@ class cargaImagenes {
             //ruta de la carpeta destino en el servidor
             $carpeta_destino = $_SERVER['DOCUMENT_ROOT'].'/media/img/'.$name_imagen;
             $move = move_uploaded_file($_FILES['imagen']['tmp_name'],$carpeta_destino);
-            $ruta = 'opengatesinternational.com/media/img/'.$name_imagen;
+            $ruta = 'oginternational.com.co/media/img/'.$name_imagen;
       
             //movemos la imagen del directorio temporal al directorio escogido
             if(!$move){
