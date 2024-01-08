@@ -88,7 +88,7 @@
         </div>
       </section>
 
-      <section class="container mt-5">
+      <section class="container mt-7">
         <!-- Swiper -->
         <div class="swiper mySwiper">
           <div class="swiper-wrapper" id="news-cards"></div>

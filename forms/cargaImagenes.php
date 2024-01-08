@@ -14,7 +14,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,27 +30,30 @@
     <link href="https://fonts.googleapis.com/css2?family=Niramit:wght@300&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="../styles/cargaImgs.css">
-</head>
-<body>
-<header>
-    <div class="header">
+  </head>
+
+  <body>
+    <header>
+      <div class="header">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-            <path fill="#F1EDE9" fill-opacity="1" d="M0,64L80,96C160,128,320,192,480,186.7C640,181,800,107,960,74.7C1120,43,1280,53,1360,58.7L1440,64L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z">
-            </path>
+          <path fill="#F1EDE9" fill-opacity="1" d="M0,64L80,96C160,128,320,192,480,186.7C640,181,800,107,960,74.7C1120,43,1280,53,1360,58.7L1440,64L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z">
+          </path>
         </svg>
+      
         <div class="back">
-            <a type="button" href="../list/panel.php"> 
-                <img src="../media/img/back.svg" alt="regresar" height="40">
-            </a>
+          <a type="button" href="../list/panel.php"> 
+            <img src="../media/img/back.svg" alt="regresar" height="40" />
+          </a>
         </div>
+        
         <div class="titulo">
-            <h2>Carga de imagenes</h2>
+          <h2>Carga de imagenes</h2>
         </div>
-    </div>
-</header>
-<main>
-    <div class="container">
-        <section>
+      </div>
+    </header>
+
+    <main class="container">
+      <section>
         <h3>Carga las imagenes segun la sección</h3>
 
         <form class="row g-3 p-4 align-items-center" id="formImgs" method="POST" enctype="multipart/form-data">
@@ -143,15 +146,13 @@
                 <?php } ?>
                 
             </div>
-        </section>
-    </div>
-</main>
+      </section>
+    </main>
 
-<script src="../librerias/jquery-3.5.1.min.js"></script>
-<script src="../framework/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="../librerias/popper.min.js"></script>
-<script src="../librerias/sweetalert2/dist/sweetalert2.js"></script>
-<script src="../js/cargaImagenes.js"></script>
-    
-</body>
+    <script src="../librerias/jquery-3.5.1.min.js"></script>
+    <script src="../framework/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../librerias/popper.min.js"></script>
+    <script src="../librerias/sweetalert2/dist/sweetalert2.js"></script>
+    <script src="../js/cargaImagenes.js"></script>
+  </body>
 </html>
