@@ -293,6 +293,14 @@ h3, .h3 {
   display: none;
 }
 
+.icon-x {
+  background-color: #FFFFFF;
+  border-radius: 50%;
+  width: 23px;
+  height: 25px;
+  padding: 1px;
+}
+
 .mt-6 {
   margin-top: 6rem;
 }
