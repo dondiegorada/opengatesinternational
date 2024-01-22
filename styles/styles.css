@@ -289,6 +289,12 @@ h3, .h3 {
   color: #000000 !important;
 }
 
+.card-header-primary {
+  background-color: #5BC0BE9F;
+  border-color: #5BC0BE9F;
+  font-weight: bolder;
+}
+
 .d-none-lg {
   display: none;
 }
