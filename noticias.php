@@ -25,7 +25,63 @@
       </section>
 
       <section class="container-fluid container-nosotros mt-6">
-        <div class="container" id="new"></div>
+        <h3 class="fw-bold text-primary text-center">
+          Tarjeta de residencia permanente y tarjeta de residencia temporal: ¿de qué se trata exactamente?
+        </h3>
+      
+        <div class="row mt-5">
+          <div class="col-xxl-9 col-lg-8 mb-4">
+            <div class="card">
+              <h5 class="card-header card-header-primary">¿La tarjeta de residencia permanente tiene un período de validez?</h5>
+              
+              <div class="card-body">
+                <p class="card-text">
+                  Vale la pena saber que el permiso de residencia permanente es indefinido, pero la tarjeta de residencia en sí tiene una validez de 10 años. Pasado este tiempo, el extranjero está obligado a obtener un nuevo documento basándose en el procedimiento de reposición de tarjeta. Deberá presentar una solicitud adecuada con al menos 30 días de antelación sin tener que volver a realizar el trámite para la obtención del permiso de residencia permanente.
+                </p>
+
+                <p class="card-text"><small class="text-muted">Enero 22, 7:16 am</small></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xxl-3 col-lg-4">
+            <div class="row">
+              <div class="col-sm-12 mb-4">
+                <div class="card">
+                  <h5 class="card-header card-header-primary">Tarjeta de residencia temporal: ¿cómo conseguirla?</h5>
+                  
+                  <div class="card-body">
+                    <p class="card-text">
+                      Una tarjeta de residencia no es más que un permiso de residencia temporal y trabajo. Este documento es un permiso uniforme que le da derecho a trabajar y residir legalmente en Polonia sin necesidad de visa. Esta solución está dedicada a los extranjeros que desean permanecer en Polonia por más de 3 meses. Es uno de los tres documentos que legalizan el trabajo y la estancia de los extranjeros en nuestro país; además de ellos, también se puede encontrar la tarjeta de residente y la tarjeta de residencia permanente.
+                    </p>
+
+                    <p class="card-text"><small class="text-muted">Enero 15, 5:16 pm</small></p>
+                  </div>
+                </div>
+
+                <div class="container" id="new"></div>
+              </div>
+
+              <div class="col-sm-12">
+                <div class="card">
+                  <h5 class="card-header card-header-primary">Tarjeta de residencia permanente y tarjeta de residencia temporal: ¿de qué se trata exactamente?</h5>
+                  
+                  <div class="card-body">
+                    <p class="card-text">
+                      Los extranjeros que decidan vivir y trabajar en Polonia deberán contar con los documentos necesarios para hacerlo de forma legal y legal. Uno de los que no hay que olvidar es el permiso de residencia temporal y luego (si se cumplen las condiciones) el permiso de residencia permanente. Te explicamos en qué se diferencian entre sí, cuál es el período de validez de estos documentos y qué ha cambiado en la Ley de Extranjería a principios de 2022.
+                    </p>
+
+                    <p class="card-text"><small class="text-muted">Enero 10, 10:02 am</small></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-9">
+            <div class="container" id="new"></div>
+          </div>
+        </div>
       </section>
 
       <section class="container-fluid mt-9">
