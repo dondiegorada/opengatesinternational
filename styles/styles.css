@@ -421,7 +421,12 @@ h3, .h3 {
   }
 
   .container-form {
+    height: auto;
     margin-bottom: 10rem;
+  }
+
+  .container-form-home {
+    height: auto;
   }
 
   h2 {
@@ -450,7 +455,7 @@ h3, .h3 {
   }
 
   .mt-17 {
-    margin-top: 19rem;
+    margin-top: 10rem;
   }
 
   .mt-25 {
