@@ -21,7 +21,7 @@ function renderNew( data ) {
   const { headline, content } = !!news ? news : data[0];
 
   $('#new').append(`
-    <h2 class="fw-bold text-primary">${ headline }</h2>
+    <h4 class="fw-bold text-primary">${ headline }</h4>
     <p class="mt-5">${ content }</p>
   `);
 }

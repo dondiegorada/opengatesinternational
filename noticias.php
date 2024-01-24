@@ -25,11 +25,7 @@
       </section>
 
       <section class="container-fluid container-nosotros mt-6">
-        <h3 class="fw-bold text-primary text-center">
-          Tarjeta de residencia permanente y tarjeta de residencia temporal: ¿de qué se trata exactamente?
-        </h3>
-      
-        <div class="row mt-5">
+        <div class="row">
           <div class="col-xxl-9 col-lg-8 mb-4">
             <div class="card">
               <h5 class="card-header card-header-primary">¿La tarjeta de residencia permanente tiene un período de validez?</h5>
@@ -42,6 +38,8 @@
                 <p class="card-text"><small class="text-muted">Enero 22, 7:16 am</small></p>
               </div>
             </div>
+
+            <div class="container mt-5" id="new"></div>
           </div>
 
           <div class="col-xxl-3 col-lg-4">
@@ -58,8 +56,6 @@
                     <p class="card-text"><small class="text-muted">Enero 15, 5:16 pm</small></p>
                   </div>
                 </div>
-
-                <div class="container" id="new"></div>
               </div>
 
               <div class="col-sm-12">
@@ -76,10 +72,6 @@
                 </div>
               </div>
             </div>
-          </div>
-
-          <div class="col-sm-9">
-            <div class="container" id="new"></div>
           </div>
         </div>
       </section>
