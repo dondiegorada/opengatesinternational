@@ -25,3 +25,5 @@ EXPOSE 80
 # docker network create oei-app
 # docker network connect oei-app [ID_CONTAINER]
 # docker network inspect
+
+# docker-php-ext-install mysqli
