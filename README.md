@@ -102,7 +102,7 @@ docker container run \
 -v $(pwd):/var/www/html/app/ \
 oei
 
-#MYSQL
+# MYSQL
 docker container run \
 -dp 3306:3306 \
 --name oei-db \
@@ -131,7 +131,7 @@ Habilitar la extensión de MYSQL en el contenedor de PHP.
 # Accede a el contendedor de PHP
 docker exec -it [ID_CONTENEDOR] bash
 
-# Instala extensión de MYSQL
+# Instala la extensión de MYSQL
 docker-php-ext-install mysqli
 ```
 

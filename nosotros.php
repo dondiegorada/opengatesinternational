@@ -94,6 +94,41 @@
         </div>
       </section>
 
+      <section class="container mt-10">
+        <h3 class="fw-bold text-primary mb-5">Conoce nuestro equipo de trabajo</h3>
+
+        <div class="row row-cols-1 row-cols-md-2 g-5">
+          <div class="col">
+            <div class="card card-primary">
+              <img src="./media/img/Diego_Hernandez.png" class="object-fit-cover mx-auto my-3" height="350" width="350" alt="...">
+              
+              <div class="card-body p-4">
+                <h4 class="card-title">Diego Hernandez</h4>
+                <p class="card-text"><strong>Representante</strong></p><br>
+
+                <p class="card-text">
+                  Soy Diego Hernández, orgulloso propietario de esta página, y mi misión es asegurarme de que cada cliente experimente una transición suave y exitosa hacia una calidad de vida mejor en Polonia. Como responsable de gestionar todos los aspectos relacionados con contratos y servicios, mi objetivo principal es brindar a nuestros clientes una experiencia inigualable. Mi compromiso con cada individuo que confía en nosotros va más allá de lo comercial. Me apasiona ayudar a las personas a encontrar una nueva vida y oportunidades en Polonia que quizás no pudieron obtener en su país de origen.
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col">
+            <div class="card card-primary">
+              <img src="./media/img/man.jpg" class="card-img-top object-fit-cover" height="350" alt="...">
+              <div class="card-body p-4">
+                <h4 class="card-title">Jose Palma</h4>
+                <p class="card-text"><strong>Asesor Comercial</strong></p><br>
+
+                <p class="card-text mb-4">
+                  Soy Jose Palma, un apasionado profesional con una sólida trayectoria en el ámbito de Recursos Humanos, Mi enfoque se basa en la creencia de que cada individuo tiene un potencial único, y mi misión es descubrir y maximizar esas habilidades. Garantizando un abanico de oportunidades laborales que abarquen distintos sectores, Con un enfoque proactivo y una visión centrada en las personas, estoy comprometido a crear un impacto positivo en la vida profesional de aquellos que confían en mi experiencia.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="container mt-16">
         <div class="row justify-content-center">
           <div class="col-md-5">
