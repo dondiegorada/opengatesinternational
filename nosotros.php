@@ -46,7 +46,7 @@
             <div class="tab-content" id="v-pills-tabContent">
               <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab" tabindex="0">
                 <div class="row">
-                  <div class="col-md-6 pl-3">
+                  <div class="col-lg-6 col-md-12 col-sm-12 pl-3">
                     <p class="h6">
                       Facilitar el sueño de una carrera internacional para todo tipo de personas, ofreciendo información precisa, asesoramiento legal integral y apoyo continuo en todo el proceso. Trabajamos incansablemente para simplificar los trámites y proporcionar una experiencia transparente y confiable.
                     </p>
@@ -64,7 +64,7 @@
 
               <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab" tabindex="0">
                 <div class="row">
-                  <div class="col-md-6 pl-3">
+                  <div class="col-lg-6 col-md-12 col-sm-12 pl-3">
                     <p class="h6">
                       Ser la principal plataforma, compañía en América Central y del Sur que empodere a los usuarios brindándoles acceso a oportunidades laborales en Europa. Nos esforzamos por construir un puente confiable y efectivo entre los talentos de la región y las empresas europeas.
                     </p>
@@ -95,41 +95,47 @@
       </section>
 
       <section class="container mt-10">
-        <h3 class="fw-bold text-primary mb-5">Conoce nuestro equipo de trabajo</h3>
+        <h3 class="fw-bold text-primary text-center mb-5">¡Conoce a los expertos que hacen posible nuestro éxito!</h3>
 
-        <div class="row row-cols-1 row-cols-md-2 g-5">
-          <div class="col">
-            <div class="card card-primary">
-              <img src="./media/img/Diego_Hernandez.png" class="object-fit-cover mx-auto my-3" height="350" width="350" alt="...">
-              
-              <div class="card-body p-4">
-                <h4 class="card-title">Diego Hernandez</h4>
-                <p class="card-text"><strong>Representante</strong></p><br>
+        <!-- Swiper -->
+        <div class="swiper mySwiperTeams">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide swiper-slide-teams">
+              <div class="card card-primary">
+                <img src="./media/img/Diego_Hernandez.png" class="object-fit-cover mx-auto my-3" height="250" width="250" alt="..." />
 
-                <p class="card-text">
-                  Soy Diego Hernández, orgulloso propietario de esta página, y mi misión es asegurarme de que cada cliente experimente una transición suave y exitosa hacia una calidad de vida mejor en Polonia. Como responsable de gestionar todos los aspectos relacionados con contratos y servicios, mi objetivo principal es brindar a nuestros clientes una experiencia inigualable. Mi compromiso con cada individuo que confía en nosotros va más allá de lo comercial. Me apasiona ayudar a las personas a encontrar una nueva vida y oportunidades en Polonia que quizás no pudieron obtener en su país de origen.
-                </p>
+                <div class="card-body p-5">
+                  <h4 class="card-title text-center">Diego Hernandez</h4>
+                  <p class="card-text text-center"><strong>Representante</strong></p><br>
+
+                  <p class="card-text">
+                    Soy Diego Hernández, orgulloso propietario de esta página, y mi misión es asegurarme de que cada cliente experimente una transición suave y exitosa hacia una calidad de vida mejor en Polonia. Como responsable de gestionar todos los aspectos relacionados con contratos y servicios, mi objetivo principal es brindar a nuestros clientes una experiencia inigualable. Mi compromiso con cada individuo que confía en nosotros va más allá de lo comercial. Me apasiona ayudar a las personas a encontrar una nueva vida y oportunidades en Polonia que quizás no pudieron obtener en su país de origen.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide swiper-slide-teams">
+              <div class="card card-primary">
+                <img src="./media/img/man.jpg" class="card-img-top object-fit-cover" height="350" alt="...">
+                <div class="card-body p-5">
+                  <h4 class="card-title text-center">Jose Palma</h4>
+                  <p class="card-text text-center"><strong>Talento Humano</strong></p><br>
+
+                  <p class="card-text mb-4">
+                    Soy Jose Palma, un apasionado profesional con una sólida trayectoria en el ámbito de Recursos Humanos, Mi enfoque se basa en la creencia de que cada individuo tiene un potencial único, y mi misión es descubrir y maximizar esas habilidades. Garantizando un abanico de oportunidades laborales que abarquen distintos sectores, Con un enfoque proactivo y una visión centrada en las personas, estoy comprometido a crear un impacto positivo en la vida profesional de aquellos que confían en mi experiencia.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
-          
-          <div class="col">
-            <div class="card card-primary">
-              <img src="./media/img/man.jpg" class="card-img-top object-fit-cover" height="350" alt="...">
-              <div class="card-body p-4">
-                <h4 class="card-title">Jose Palma</h4>
-                <p class="card-text"><strong>Asesor Comercial</strong></p><br>
 
-                <p class="card-text mb-4">
-                  Soy Jose Palma, un apasionado profesional con una sólida trayectoria en el ámbito de Recursos Humanos, Mi enfoque se basa en la creencia de que cada individuo tiene un potencial único, y mi misión es descubrir y maximizar esas habilidades. Garantizando un abanico de oportunidades laborales que abarquen distintos sectores, Con un enfoque proactivo y una visión centrada en las personas, estoy comprometido a crear un impacto positivo en la vida profesional de aquellos que confían en mi experiencia.
-                </p>
-              </div>
-            </div>
-          </div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
         </div>
       </section>
 
-      <section class="container mt-16">
+      <section class="container mt-8">
         <div class="row justify-content-center">
           <div class="col-md-5">
             <div class="position-relative h-sm-30">
@@ -191,6 +197,7 @@
     <script src="./librerias/popper.min.js"></script>
     <script src="./librerias/sweetalert2/dist/sweetalert2.js"></script>
     <script src="./librerias/wow/dist/wow.min.js"></script>
-    <script src="./js/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="./js/index.js?v=<?php echo rand(1, 1000); ?>"></script>
   </body>
 </html>

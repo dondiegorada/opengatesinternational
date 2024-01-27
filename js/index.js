@@ -185,3 +185,14 @@ function save() {
         })
     })
 }
+
+if ( document.getElementsByClassName('mySwiperTeams')[0] ) {
+  console.log('Estamos vivos');
+
+  const swiper = new Swiper(".mySwiperTeams", {
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+  });
+}

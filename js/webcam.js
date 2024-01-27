@@ -18,7 +18,7 @@ const getNews = () => {
               const { id, file, title, headline } = data[i];
 
               const html = `
-                <div class="swiper-slide">
+                <div class="swiper-slide swiper-slide-home">
                   <div class="card">
                     <a href="./noticias.php?new=${ title.replaceAll(' ', '-') }">
                       <img src="./media/img/news/${ file }" class="card-img-top object-fit-cover" />
