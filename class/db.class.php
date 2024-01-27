@@ -6,8 +6,8 @@
     private $passwd;
     private $dbname;
 
-    // function __construct($host='localhost', $username='u172854659_oei_user', $passwd='Oei2023*', $dbname='u172854659_oei') {
-    function __construct( $host='172.18.0.3', $username='johndev', $passwd='ninguna', $dbname='oei' ) {
+    function __construct($host='localhost', $username='u172854659_oei_user', $passwd='Oei2023*', $dbname='u172854659_oei') {
+    // function __construct( $host='172.18.0.3', $username='johndev', $passwd='ninguna', $dbname='oei' ) {
       $this->host = $host;
       $this->username = $username;
       $this->passwd = $passwd;
