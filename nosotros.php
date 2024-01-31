@@ -106,7 +106,7 @@
 
                 <div class="card-body p-5">
                   <h4 class="card-title text-center">Diego Hernandez</h4>
-                  <p class="card-text text-center"><strong>Representante</strong></p><br>
+                  <p class="card-text text-center"><strong>Gerente</strong></p><br>
 
                   <p class="card-text">
                     Soy Diego Hernández, orgulloso propietario de esta página, y mi misión es asegurarme de que cada cliente experimente una transición suave y exitosa hacia una calidad de vida mejor en Polonia. Como responsable de gestionar todos los aspectos relacionados con contratos y servicios, mi objetivo principal es brindar a nuestros clientes una experiencia inigualable. Mi compromiso con cada individuo que confía en nosotros va más allá de lo comercial. Me apasiona ayudar a las personas a encontrar una nueva vida y oportunidades en Polonia que quizás no pudieron obtener en su país de origen.
