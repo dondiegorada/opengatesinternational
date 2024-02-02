@@ -102,7 +102,7 @@
           <div class="swiper-wrapper">
             <div class="swiper-slide swiper-slide-teams">
               <div class="card card-primary">
-                <img src="./media/img/Diego_Hernandez.png" class="object-fit-cover mx-auto my-3" height="250" width="250" alt="..." />
+                <img src="./media/img/Diego_Hernandez.png" class="object-fit-cover mx-auto my-3" height="300" width="300" alt="..." />
 
                 <div class="card-body p-5">
                   <h4 class="card-title text-center">Diego Hernandez</h4>
@@ -117,7 +117,7 @@
 
             <div class="swiper-slide swiper-slide-teams">
               <div class="card card-primary">
-                <img src="./media/img/man.jpg" class="card-img-top object-fit-cover" height="350" alt="...">
+                <img src="./media/img/Jose_Palma.png" class="object-fit-cover mx-auto my-3" height="300" width="300" alt="...">
                 <div class="card-body p-5">
                   <h4 class="card-title text-center">Jose Palma</h4>
                   <p class="card-text text-center"><strong>Talento Humano</strong></p><br>
