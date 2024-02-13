@@ -1,6 +1,8 @@
 $( document ).ready( function () {
   terminosCondiciones();
-  getAll();
+  
+  if ( document.querySelector('tbody') )
+    getAll();
 })
 
 const seleccionar = (_id) => {
@@ -159,6 +161,7 @@ const search = async ( event ) => {
 
 const renderRow = ( data ) => {
   document.getElementById('tbody').innerHTML = '';
+  document.getElementById('count-registers').innerHTML = `<strong>Registros: ${ data.length }</strong>`;
   
   if (  data.length > 0 ) {
     for ( let i = 0; i < data.length; i++ ) {

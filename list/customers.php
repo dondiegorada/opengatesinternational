@@ -74,19 +74,23 @@
 
         <div class="tab-content" id="myTabContent">
           <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
-            <div class="mt-5 position-relative z-index-1">
-              <input
-                aria-describedby="passwordHelpBlock"
-                class="form-control"
-                id="search"
-                placeholder="Buscar..."
-                type="text"
-                onkeydown="search(this);"
-              />
-              
-              <!-- <div id="passwordHelpBlock" class="form-text">
-                Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
-              </div> -->
+            <div class="row mt-5 z-index-1">
+              <div class="col-md-10">
+                <input
+                  aria-describedby="passwordHelpBlock"
+                  class="form-control"
+                  id="search"
+                  placeholder="Buscar..."
+                  type="text"
+                  onkeydown="search(this);"
+                />
+                
+                <!-- <div id="passwordHelpBlock" class="form-text">
+                  Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+                </div> -->
+              </div>
+
+              <div class="col-md-2 text-center" id="count-registers"></div>
             </div>
 
             <div class="table-responseve mt-5">
