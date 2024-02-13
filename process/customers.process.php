@@ -51,10 +51,10 @@
         //   ]));
         // }
 
-        $nombres = filter_input(INPUT_POST, "name", FILTER_SANITIZE_STRING);
-        $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_STRING);
-        $telefono = filter_input(INPUT_POST, "phone", FILTER_SANITIZE_STRING);
-        $comentario = filter_input(INPUT_POST, "comentario", FILTER_SANITIZE_STRING) ?? '';
+        $nombres = htmlspecialchars( $_REQUEST['name'], ENT_QUOTES );
+        $email = htmlspecialchars( $_REQUEST['email'], ENT_QUOTES );
+        $telefono = htmlspecialchars( $_REQUEST['phone'], ENT_QUOTES );
+        $comentario = htmlspecialchars( $_REQUEST['comentario'], ENT_QUOTES ) ?? '';
         
         // Apuntamos a la funcion
         $resp = $customersDAO -> create( $nombres, $email, $comentario, $telefono, $ruta );
@@ -174,6 +174,52 @@
 
       } catch (Exception $ex) {
         echo "Ha sucedido el siguiente error: ".$ex->getMessage();
+      }
+    }
+
+    function getAll() {
+      try {
+        $modeloDAO = new customersDAO();
+
+        $status = htmlspecialchars( $_REQUEST['status'], ENT_QUOTES );
+        
+        $resp = $modeloDAO -> getAll( $status );
+        $data = array();
+
+        while ( $row = $resp -> fetch_object() ) {
+          array_push($data, $row);
+        }
+
+        echo json_encode([
+          "data" => $data ? $data : [],
+          "success" => true
+        ]);
+
+      } catch ( Exception $ex ) {
+        echo "Ha sucedido el siguiente error: ".$ex -> getMessage();
+      }
+    }
+
+    public function search () {
+      try {
+        $modeloDAO = new customersDAO();
+        
+        $search = htmlspecialchars( $_REQUEST['search'], ENT_QUOTES );
+        
+        $resp = $modeloDAO -> getByTerm( $search );
+        $data = array();
+
+        while ( $row = $resp -> fetch_object() ) {
+          array_push($data, $row);
+        }
+
+        echo json_encode([
+          "data" => $data ? $data : [],
+          "success" => true
+        ]);
+      
+      } catch ( Exception $ex ) {
+        echo "Ha sucedido el siguiente error: ".$ex -> getMessage();
       }
     }
 

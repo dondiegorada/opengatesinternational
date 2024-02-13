@@ -21,16 +21,27 @@
       return $max_consecutive += $increment;  
     }
 
-  public function getAll( $estado ) {
+  public function getAll ( String $estado ) : bool | mysqli_result {
     $sql = "SELECT _id, nombres, apellidos, telefono, email, edad, comentario, fecha_registro,
           (CASE estado WHEN 'P' THEN 'Pendiente' WHEN 'A' THEN 'Aprobado' ELSE 'Rechazado' END)AS estado FROM customers WHERE estado = '$estado' ORDER BY _id DESC";
     
     $result = $this -> query($sql);
 
-    if (mysqli_num_rows($result) > 0) {
-      return $result;
-    }
+    if ( mysqli_num_rows( $result ) > 0 ) return $result;
 
+    return false;
+  }
+
+  public function getByTerm ( String $term ) : bool | mysqli_result {
+    $sql = "SELECT *, (CASE estado WHEN 'P' THEN 'Pendiente' WHEN 'A' THEN 'Aprobado' ELSE 'Rechazado' END) AS estado
+            FROM customers
+            WHERE nombres LIKE '%$term%'";
+    
+    $result = $this -> query( $sql );
+
+    if ( !$result ) return false;
+    
+    return $result;
   }
 
   public function create ( $nombres, $email, $comentario, $telefono, $ruta ) {
