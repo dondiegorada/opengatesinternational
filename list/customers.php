@@ -74,141 +74,15 @@
 
         <div class="tab-content" id="myTabContent">
           <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
-            <div class="row mt-5 z-index-1">
-              <div class="col-md-10">
-                <input
-                  aria-describedby="passwordHelpBlock"
-                  class="form-control"
-                  id="search"
-                  placeholder="Buscar..."
-                  type="text"
-                  onkeydown="search(this);"
-                />
-                
-                <!-- <div id="passwordHelpBlock" class="form-text">
-                  Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
-                </div> -->
-              </div>
-
-              <div class="col-md-2 text-center" id="count-registers"></div>
-            </div>
-
-            <div class="table-responseve mt-5">
-              <table class="table table-striped table-bordered">
-                <thead>
-                  <tr>
-                    <th>Nombres</th>
-                    <th>Telefono</th>
-                    <th>Email</th>
-                    <th>Edad</th>
-                    <th>Testimonios</th>
-                    <th>Estado</th>
-                    <th>Fecha de registro</th>
-                    <th colspan="2">Opción</th>
-                  </tr>
-                </thead>
-                    
-                <tbody id="tbody"></tbody>
-              </table>
-            </div>
+            <?php include('./customers-pending.php'); ?>
           </div>
           
           <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
-            <div class="table-responseve mt-5">
-              <table class="table table-striped table-bordered">
-                  <thead>
-                      <tr>
-                          <th>Nombres</th>
-                          <th>Apellidos</th>
-                          <th>Telefono</th>
-                          <th>Email</th>
-                          <th>Edad</th>
-                          <th>Dudas</th>
-                          <th>Estado</th>
-                          <th>Fecha de registro</th>
-                          <th>Opción</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <?php
-                      $modelos = $customersDAO -> getAll('A');
-
-                      if ( $modelos ) {
-                          while($row = mysqli_fetch_assoc($modelos)){
-                          ?>
-                          <tr>
-                              <td><?php echo $row['nombres']; ?></td>
-                              <td><?php echo $row['apellidos']; ?></td>
-                              <td><?php echo $row['telefono']; ?></td>
-                              <td><?php echo $row['email']; ?></td>
-                              <td><?php echo $row['edad']; ?></td>
-                              <td><?php echo $row['comentario']; ?></td>
-                              <td><span class="badge bg-warning"><?php echo $row['estado']; ?></span></td>
-                              <td><?php echo $row['fecha_registro']; ?></td>
-                              <td>
-                                <button type="button" class="btn" onclick="declinar(<?php echo $row['_id']?>)">
-                                  <img src="../media/img/cerrar.svg" height="30" alt="declinar">
-                                </button>
-                              </td>
-                          </tr>
-                          <?php
-                          }
-                      }else{
-
-                      }
-                      ?>
-                  </tbody>
-              </table>
-            </div>
+            <?php include('./customers-approved.php'); ?>
           </div>
           
           <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
-            <div class="table-responseve mt-5">
-                <table class="table table-striped table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Nombres</th>
-                            <th>Apellidos</th>
-                            <th>Telefono</th>
-                            <th>Email</th>
-                            <th>Edad</th>
-                            <th>Dudas</th>
-                            <th>Estado</th>
-                            <th>Fecha de registro</th>
-                            <th>Opción</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        $modelos = $customersDAO -> getAll('R');
-
-                        if ( $modelos ) {
-                            while($row = mysqli_fetch_assoc($modelos)){
-                            ?>
-                            <tr>
-                                <td><?php echo $row['nombres']; ?></td>
-                                <td><?php echo $row['apellidos']; ?></td>
-                                <td><?php echo $row['telefono']; ?></td>
-                                <td><?php echo $row['email']; ?></td>
-                                <td><?php echo $row['edad']; ?></td>
-                                <td><?php echo $row['comentario']; ?></td>
-                                <td><span class="badge bg-dark"><?php echo $row['estado']; ?></span></td>
-                                <td><?php echo $row['fecha_registro']; ?></td>
-                                <td>
-                                  <button type="button" class="btn" onclick="seleccionar(<?php echo $row['_id']?>)">
-                                    <img src="../media/img/comprobado.svg" height="30" alt="aprobar">
-                                  </button>
-                                </td>
-                            </tr>
-                            <?php
-                            }
-                        }else{
-
-                        }
-                        ?>
-                    </tbody>
-                </table>
-            </div>
+            <?php include('./customers-rejected.php'); ?>
           </div>
         </div>
       </section>

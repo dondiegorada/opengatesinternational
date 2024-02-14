@@ -182,12 +182,17 @@
         $modeloDAO = new customersDAO();
 
         $status = htmlspecialchars( $_REQUEST['status'], ENT_QUOTES );
-        
         $resp = $modeloDAO -> getAll( $status );
-        $data = array();
 
-        while ( $row = $resp -> fetch_object() ) {
-          array_push($data, $row);
+        if ( $resp ) {
+          $data = array();
+
+          while ( $row = $resp -> fetch_object() ) {
+            array_push($data, $row);
+          }
+        
+        } else {
+          $data = $resp;
         }
 
         echo json_encode([
@@ -205,8 +210,9 @@
         $modeloDAO = new customersDAO();
         
         $search = htmlspecialchars( $_REQUEST['search'], ENT_QUOTES );
+        $status = htmlspecialchars( $_REQUEST['status'], ENT_QUOTES );
         
-        $resp = $modeloDAO -> getByTerm( $search );
+        $resp = $modeloDAO -> getByTerm( $search, $status );
         $data = array();
 
         while ( $row = $resp -> fetch_object() ) {

@@ -1,8 +1,8 @@
 $( document ).ready( function () {
   terminosCondiciones();
   
-  if ( document.querySelector('tbody') )
-    getAll();
+  if ( document.getElementsByClassName('tbody') )
+    ['P', 'A', 'R'].forEach(( value, index ) => getAll( value, index ));
 })
 
 const seleccionar = (_id) => {
@@ -132,40 +132,83 @@ if ( document.querySelector('form') ) {
   });
 }
 
-const getAll = async () => {
-  const response = await fetch(`../process/customers.process.php?FUNCION=getAll&status=P`, {
+const getAll = async ( status, index ) => {
+  const response = await fetch(`../process/customers.process.php?FUNCION=getAll&status=${ status }`, {
     method: 'GET',
     redirect: 'follow'
   });
 
   const { data } = await response.json();
 
-  renderRow(data);
+  renderRow( data, index );
 }
 
 const search = async ( event ) => {
+  const param = event.parentNode.className.split(' ')[1];
+
   if ( event.value.length > 1 ) {
-    const response = await fetch(`../process/customers.process.php?FUNCION=search&search=${ event.value }`, {
+    let status;
+    let index;
+
+    switch ( param ) {
+      case 'pending':
+        index = 0;
+        status = 'P';
+        break;
+
+      case 'approved':
+        index = 1;
+        status = 'A';
+        break;
+    
+      default:
+        index = 1;
+        status = 'R';
+        break;
+    }
+
+    const response = await fetch(`../process/customers.process.php?FUNCION=search&search=${ event.value }&status=${ status }`, {
       method: 'GET',
       redirect: 'follow'
     });
 
     const { data } = await response.json();
 
-    renderRow( data );
+    renderRow( data, index );
   
   } else {
-    getAll();
+    ['P', 'A', 'R'].forEach(( value, index ) => getAll( value, index ));
   }
 }
 
-const renderRow = ( data ) => {
-  document.getElementById('tbody').innerHTML = '';
-  document.getElementById('count-registers').innerHTML = `<strong>Registros: ${ data.length }</strong>`;
+const renderRow = ( data, index ) => {
+  document.getElementsByClassName('tbody')[index].innerHTML = '';
+  document.getElementsByClassName('count-registers')[index].innerHTML = `<strong>Registros: ${ data.length }</strong>`;
   
   if (  data.length > 0 ) {
     for ( let i = 0; i < data.length; i++ ) {
       const { _id, nombres, telefono, email, edad, comentario, estado, fecha_registro } = data[i];
+      let badge;
+
+      if ( estado == 'Pendiente' ) badge = 'bg-secondary';
+      if ( estado == 'Aprobado' ) badge = 'bg-success';
+      if ( estado == 'Rechazado' ) badge = 'bg-danger';
+
+      const btnAprobar = `
+        <td>
+          <button type="button" class="btn" onclick="seleccionar(${ _id })">
+            <img src="../media/img/comprobado.svg" height="30" alt="aprobar" />
+          </button>
+        </td>
+      `;
+
+      const btnDeclinar = `
+        <td>
+          <button type="button" class="btn" onclick="declinar(${ _id })">
+            <img src="../media/img/cerrar.svg" height="30" alt="declinar" />
+          </button>
+        </td>
+      `;
 
       const html = `
         <tr>
@@ -174,22 +217,15 @@ const renderRow = ( data ) => {
           <td>${ email }</td>
           <td>${ edad }</td>
           <td>${ comentario }</td>
-          <td><span class="badge bg-danger">${ estado }</span></td>
+          <td><span class="badge ${ badge }">${ estado }</span></td>
           <td>${ fecha_registro }</td>
-          <td>
-            <button type="button" class="btn" onclick="seleccionar(${ _id })">
-              <img src="../media/img/comprobado.svg" height="30" alt="aprobar" />
-            </button>
-          </td>
-          <td>
-            <button type="button" class="btn" onclick="declinar(${ _id })">
-              <img src="../media/img/cerrar.svg" height="30" alt="declinar" />
-            </button>
-          </td>
+          ${ ( estado == 'Pendiente' )  && btnAprobar + btnDeclinar }
+          ${ ( estado == 'Aprobado' )  && btnDeclinar }
+          ${ ( estado == 'Rechazado' )  && btnAprobar }
         </tr>
       `;
 
-      $('#tbody').append( html );
+      $('.tbody').append( html );
     }
   
   } else {
@@ -201,6 +237,6 @@ const renderRow = ( data ) => {
       </tr>
     `;
 
-    $('#tbody').append( html );
+    document.getElementsByClassName('tbody')[index].innerHTML = html;
   }
 }

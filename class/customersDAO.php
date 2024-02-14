@@ -32,10 +32,10 @@
     return false;
   }
 
-  public function getByTerm ( String $term ) : bool | mysqli_result {
+  public function getByTerm ( String $term, String $status ) : bool | mysqli_result {
     $sql = "SELECT *, (CASE estado WHEN 'P' THEN 'Pendiente' WHEN 'A' THEN 'Aprobado' ELSE 'Rechazado' END) AS estado
             FROM customers
-            WHERE nombres LIKE '%$term%'";
+            WHERE estado = '$status' AND nombres LIKE '%$term%'";
     
     $result = $this -> query( $sql );
 
