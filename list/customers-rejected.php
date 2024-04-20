@@ -17,7 +17,7 @@
         <th>Dudas</th>
         <th>Estado</th>
         <th>Fecha de registro</th>
-        <th colspan="2">Opción</th>
+        <th>Opción</th>
       </tr>
     </thead>
     

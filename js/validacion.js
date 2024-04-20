@@ -18,10 +18,10 @@ const validaKeyword = async() => {
         };
 
         fetch(`./process/validacion.process.php?FUNCION=validaKeyword&password=${password}`, requestOptions)
-            .then(response => response.text())
+            .then(response => response.json())
             .then(result => {
-                console.log(JSON.parse(result));
-                const { resp, exito } = JSON.parse(result);
+                console.log(result);
+                const { resp, exito } = result;
 
                 if (exito) {
 

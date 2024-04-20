@@ -6,6 +6,8 @@
   <div class="col-md-2 text-center count-registers"></div>
 </div>
 
+<?php include('../components/pagination.html'); ?>
+
 <div class="table-responseve mt-5">
   <table class="table table-striped table-bordered">
     <thead>
