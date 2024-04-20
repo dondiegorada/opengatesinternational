@@ -145,28 +145,27 @@ const getAll = async ( status, index ) => {
 
 const search = async ( event ) => {
   const param = event.parentNode.className.split(' ')[1];
+  let status;
+  let index;
+
+  switch ( param ) {
+    case 'pending':
+      index = 0;
+      status = 'P';
+      break;
+
+    case 'approved':
+      index = 1;
+      status = 'A';
+      break;
+  
+    default:
+      index = 2;
+      status = 'R';
+      break;
+  }
 
   if ( event.value.length > 1 ) {
-    let status;
-    let index;
-
-    switch ( param ) {
-      case 'pending':
-        index = 0;
-        status = 'P';
-        break;
-
-      case 'approved':
-        index = 1;
-        status = 'A';
-        break;
-    
-      default:
-        index = 1;
-        status = 'R';
-        break;
-    }
-
     const response = await fetch(`../process/customers.process.php?FUNCION=search&search=${ event.value }&status=${ status }`, {
       method: 'GET',
       redirect: 'follow'
@@ -177,7 +176,7 @@ const search = async ( event ) => {
     renderRow( data, index );
   
   } else {
-    ['P', 'A', 'R'].forEach(( value, index ) => getAll( value, index ));
+    getAll( status, index );
   }
 }
 
@@ -189,11 +188,8 @@ const renderRow = ( data, index ) => {
     for ( let i = 0; i < data.length; i++ ) {
       const { _id, nombres, telefono, email, edad, comentario, estado, fecha_registro } = data[i];
       let badge;
-
-      if ( estado == 'Pendiente' ) badge = 'bg-secondary';
-      if ( estado == 'Aprobado' ) badge = 'bg-success';
-      if ( estado == 'Rechazado' ) badge = 'bg-danger';
-
+      let options;
+      
       const btnAprobar = `
         <td>
           <button type="button" class="btn" onclick="seleccionar(${ _id })">
@@ -210,6 +206,21 @@ const renderRow = ( data, index ) => {
         </td>
       `;
 
+      if ( estado == 'Pendiente' ) {
+        badge = 'bg-secondary';
+        options = btnAprobar + btnDeclinar;
+      }
+
+      if ( estado == 'Aprobado' ) {
+        badge = 'bg-success';
+        options = btnDeclinar;
+      }
+
+      if ( estado == 'Rechazado' ) {
+        badge = 'bg-danger';
+        options = btnAprobar;
+      }
+
       const html = `
         <tr>
           <td>${ nombres }</td>
@@ -219,13 +230,11 @@ const renderRow = ( data, index ) => {
           <td>${ comentario }</td>
           <td><span class="badge ${ badge }">${ estado }</span></td>
           <td>${ fecha_registro }</td>
-          ${ ( estado == 'Pendiente' )  && btnAprobar + btnDeclinar }
-          ${ ( estado == 'Aprobado' )  && btnDeclinar }
-          ${ ( estado == 'Rechazado' )  && btnAprobar }
+          ${ options }
         </tr>
       `;
 
-      $('.tbody').append( html );
+      document.getElementsByClassName('tbody')[index].innerHTML += html;
     }
   
   } else {
