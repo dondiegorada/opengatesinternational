@@ -1,3 +1,5 @@
+const registers = [];
+
 $( document ).ready( function () {
   terminosCondiciones();
   
@@ -183,10 +185,20 @@ const search = async ( event ) => {
 const renderRow = ( data, index ) => {
   document.getElementsByClassName('tbody')[index].innerHTML = '';
   document.getElementsByClassName('count-registers')[index].innerHTML = `<strong>Registros: ${ data.length }</strong>`;
+
+  const rows = 30;
+
+  const dataPagination = {
+    page: 1, // Página actual
+    pages: Math.ceil(data.length / rows), // Número total de páginas
+    rows // Cantidad de elementos por página
+  }
+
+  const customers = showPage( dataPagination, data );
   
-  if (  data.length > 0 ) {
-    for ( let i = 0; i < data.length; i++ ) {
-      const { _id, nombres, telefono, email, edad, comentario, estado, fecha_registro } = data[i];
+  if ( data.length > 0 ) {
+    for ( let i = 0; i < customers.length; i++ ) {
+      const { _id, nombres, telefono, email, edad, comentario, estado, fecha_registro } = customers[i];
       let badge;
       let options;
       
@@ -236,6 +248,8 @@ const renderRow = ( data, index ) => {
 
       document.getElementsByClassName('tbody')[index].innerHTML += html;
     }
+
+    // pagination(dataPagination);
   
   } else {
     const html = `
@@ -247,5 +261,31 @@ const renderRow = ( data, index ) => {
     `;
 
     document.getElementsByClassName('tbody')[index].innerHTML = html;
+  }
+}
+
+const showPage = ({ page, rows }, data) => {
+  const indiceInicial = (page - 1) * rows;
+  const indiceFinal = indiceInicial + rows;
+
+  const customers = data.slice(indiceInicial, indiceFinal);
+
+  return customers;
+}
+
+const pagination = ({ page, pages }) => {
+  const botonesVisibles = 5; // Cantidad de botones visibles
+  const paginaInicio = Math.max(1, page - Math.floor(botonesVisibles / 2));
+  const paginaFin = Math.min(pages, page + Math.floor(botonesVisibles / 2));
+
+  const pagination = document.getElementsByClassName('pagination')[0];
+
+  // Crea los botones HTML y agrega eventos de clic
+  for (let pagina = paginaInicio; pagina <= paginaFin; pagina++) {
+    const li = document.createElement('li');
+    li.className = 'page-item';
+    li.innerHTML = `<a class="page-link" href="javascript:showPage(${ {page, pages} })">${ pagina }</a>`
+
+    pagination.insertBefore(li, pagination.getElementsByTagName('li')[pagina]);
   }
 }
