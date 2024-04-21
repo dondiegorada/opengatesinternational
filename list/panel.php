@@ -74,7 +74,7 @@
               <div class="card-body">
                 <h5 class="card-title text-light">Personas registradas</h5>
                 <p class="card-text text-light">Clasifica los registros y ten un control.</p>
-                <a href="./customers.php" class="btn btn-primary">Entrar</a>
+                <a href="./customers.html" class="btn btn-primary">Entrar</a>
               </div>
             </div>
           </div>

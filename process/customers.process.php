@@ -153,18 +153,18 @@
       }
     }
 
-    private function seleccionarModelo(){
+    private function approvedRow() {
       try {
-        //code...
-        $_id = filter_input(INPUT_GET, "_id", FILTER_SANITIZE_STRING);
+        // code...
+        $_id = filter_input(INPUT_GET, "_id", FILTER_VALIDATE_INT);
 
         $modeloDAO = new customersDAO();
-
         $resp = $modeloDAO -> seleccionar($_id);
 
-        if(count($resp)>0){
+        if (count($resp) > 0) {
           echo json_encode($resp);
-        }else{
+        
+        } else {
           echo json_encode([
             "msg"=>"ocurrio una inconsistencia",
             "exito"=>false
@@ -200,30 +200,6 @@
           "success" => true
         ]);
 
-      } catch ( Exception $ex ) {
-        echo "Ha sucedido el siguiente error: ".$ex -> getMessage();
-      }
-    }
-
-    public function search () {
-      try {
-        $modeloDAO = new customersDAO();
-        
-        $search = htmlspecialchars( $_REQUEST['search'], ENT_QUOTES );
-        $status = htmlspecialchars( $_REQUEST['status'], ENT_QUOTES );
-        
-        $resp = $modeloDAO -> getByTerm( $search, $status );
-        $data = array();
-
-        while ( $row = $resp -> fetch_object() ) {
-          array_push($data, $row);
-        }
-
-        echo json_encode([
-          "data" => $data ? $data : [],
-          "success" => true
-        ]);
-      
       } catch ( Exception $ex ) {
         echo "Ha sucedido el siguiente error: ".$ex -> getMessage();
       }
