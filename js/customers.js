@@ -1,3 +1,16 @@
+function phoneRender (params) {
+  const prefijo = params.value.substr(1, 2);
+
+  if ( prefijo == 57 )
+    return `<a href="https://wa.me/${params.value}" target="_blank">${params.value}</a>`;
+  else
+    return `<a href="https://wa.me/57${params.value}" target="_blank">${params.value}</a>`;
+}
+
+function emailRender (params) {
+  return `<a href="mailto:${params.value}" target="_blank">${params.value}</a>`;
+}
+
 let gridApiPending;
 let gridApiApproved;
 let gridApiRefused;
@@ -13,8 +26,8 @@ const gridOptions = {
       editable: true,
       cellEditor: "agSelectCellEditor",
     },
-    { field: "telefono", filter: "numericColumn" },
-    { field: "email" },
+    { field: "telefono", filter: "numericColumn", cellRenderer: phoneRender },
+    { field: "email", cellRenderer: emailRender },
     { field: "edad" },
     { field: "fecha_registro", headerName: "Fecha Registro" }
   ],
