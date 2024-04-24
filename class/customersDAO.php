@@ -44,6 +44,18 @@
     return $result;
   }
 
+  public function getById ( int $id ) : bool | object | null {
+    $sql = "SELECT * FROM customers WHERE _id = $id";
+    $result = $this -> query( $sql );
+
+    if ( mysqli_num_rows($result) > 0 ) {
+      return $result -> fetch_object();
+    
+    } else {
+      return false;
+    }
+  }
+
   public function create ( $nombres, $email, $comentario, $telefono, $ruta ) {
 
     date_default_timezone_set('America/Bogota');
@@ -100,20 +112,22 @@
     }
   }
 
-  public function seleccionar($_id){
+  public function seleccionar( $_id ) {
     $update = "UPDATE customers SET estado = 'A' WHERE _id = $_id";
     $result = $this -> query($update);
     
-    if ($result) {
+    if ( $result ) {
+      $row = $this -> getById( $_id );
+
       return [
-        "msg"=>"Modelo seleccionada exitosamente",
-        "exito"=>true
+        "message" => "El registro ".$row -> nombres." se aceptó correctamente",
+        "success" => true
       ];
 
     }else{
       return[
-        "msg"=>"Inconsistencia actualizando la modelo",
-        "exito"=>false
+        "message" => "Inconsistencia aprobando",
+        "success" => false
       ];
     }
   }
@@ -123,15 +137,17 @@
     $result = $this -> query($update);
     
     if ($result) {
+      $row = $this -> getById( $_id );
+
       return [
-        "msg" => "Declinado exitosamente",
-        "exito" => true
+        "message" => "El registro ".$row -> nombres." se rechazó correctamente",
+        "success" => true
       ];
 
     } else {
       return [
-        "msg" => "Inconsistencia declinando",
-        "exito" => false
+        "message" => "Inconsistencia declinando",
+        "success" => false
       ];
     }
   }

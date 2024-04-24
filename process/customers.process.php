@@ -166,8 +166,8 @@
         
         } else {
           echo json_encode([
-            "msg"=>"ocurrio una inconsistencia",
-            "exito"=>false
+            "message" => "ocurrio una inconsistencia",
+            "success" => false
           ]);
         }
 
@@ -205,21 +205,21 @@
       }
     }
 
-    private function declinar(){
+    private function declinar() {
       try {
         //code...
-        $_id = filter_input(INPUT_GET, "_id", FILTER_SANITIZE_STRING);
+        $_id = filter_input(INPUT_GET, "_id", FILTER_VALIDATE_INT);
 
         $modeloDAO = new customersDAO();
 
         $resp = $modeloDAO -> declinar($_id);
 
-        if(count($resp)>0){
+        if (count($resp) > 0) {
           echo json_encode($resp);
-        }else{
+        } else {
           echo json_encode([
-            "msg"=>"ocurrio una inconsistencia",
-            "exito"=>false
+            "message" => "ocurrio una inconsistencia",
+            "success" => false
           ]);
         }
 

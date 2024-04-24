@@ -1,11 +1,11 @@
-const toastTrigger = document.getElementById('liveToastBtn')
-const toastLiveExample = document.getElementById('liveToast')
+const showToast = (message) => {
+  const toastLive = document.getElementById('liveToast');
+  const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLive)
+  
+  const toastBody = document.getElementsByClassName('toast-body')[0];
+  toastBody.innerText = message;
 
-if (toastTrigger) {
-  const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
-  toastTrigger.addEventListener('click', () => {
-    toastBootstrap.show()
-  })
+  toastBootstrap.show();
 }
 
 const alertSuccess = (msg, timer) => {

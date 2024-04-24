@@ -99,7 +99,7 @@ const getCustomersApproved = async () => {
 const getCustomersRefused = async () => {
   const gridrefused = document.querySelector("#refused-tab-pane");
   gridApiRefused = agGrid.createGrid(gridrefused, gridOptions);
-  const data = await getData('A');
+  const data = await getData('R');
 
   gridApiRefused.setGridOption('rowData', data.map(customer => ({ ...customer, fecha_registro: customer.fecha_registro.split(' ')[0] })));
 }
@@ -121,19 +121,11 @@ const approved = async () => {
     redirect: 'follow'
   });
 
-  const { msg, exito } = await response.json();
+  const { success, message } = await response.json();
 
-  if ( exito ) {
-    Swal.fire({
-      position: 'top-end',
-      icon: 'success',
-      title: msg,
-      showConfirmButton: false,
-      timer: 2500
-    })
-  
-  } else {
-    Swal.fire('Atención', msg, 'warning');
+  if ( success ) {
+    showToast(message);
+    getCustomersApproved();
   }
 }
 
@@ -143,18 +135,10 @@ const refused = async () => {
     redirect: 'follow'
   });
 
-  const { msg, exito } = await response.json();
+  const { success, message } = await response.json();
 
-  if ( exito ) {
-    Swal.fire({
-      position: 'top-end',
-      icon: 'success',
-      title: msg,
-      showConfirmButton: false,
-      timer: 2500
-    })
-  
-  } else {
-    Swal.fire('Atención', msg, 'warning');
+  if ( success ) {
+    showToast(message);
+    getCustomersRefused();
   }
 }
