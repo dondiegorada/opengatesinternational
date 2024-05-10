@@ -2,27 +2,8 @@ $(document).ready(function() {
     new WOW().init();
     saveCanvas()
     savePregunta()
-    terminosCondiciones();
     save();
 })
-
-function terminosCondiciones() {
-    $("#check-terminos").change(function() {
-      if ($(this).is(':checked')) {
-        $("#enviar").prop('disabled', false);
-      } else {
-        $("#enviar").prop('disabled', true);
-      }
-    })
-  
-    $("#check-terminos-canvas").change(function() {
-      if ($(this).is(':checked')) {
-        $("#enviar-canvas").prop('disabled', false);
-      } else {
-        $("#enviar-canvas").prop('disabled', true);
-      }
-    })
-  }
 
 function saveCanvas() {
 
@@ -187,8 +168,6 @@ function save() {
 }
 
 if ( document.getElementsByClassName('mySwiperTeams')[0] ) {
-  console.log('Estamos vivos');
-
   const swiper = new Swiper(".mySwiperTeams", {
     navigation: {
       nextEl: ".swiper-button-next",

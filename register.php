@@ -43,8 +43,8 @@
                 </div>
                 
                 <div class="col-md-6 mb-4">
-                  <label for="inputPassword5" class="form-label">Edad</label>
-                  <select class="form-select" id="edad" name="edad" aria-label="Floating label seleccione edad" required> <?php
+                  <label for="years" class="form-label">Edad</label>
+                  <select class="form-select" id="years" name="years" aria-label="Floating label seleccione edad" required> <?php
                     $year = array(18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39); ?>
 
                     <option selected>Seleccione</option> <?php
@@ -62,17 +62,19 @@
                   <input type="email" id="email" name="email" class="form-control" aria-describedby="passwordHelpBlock" required />
                 </div>
 
-                <!-- <div class="col-md-12 mb-4">
-                  <label for="formFileSm" class="form-label">Hoja de vida</label>
-                  <input class="form-control form-control" id="cv" name="cv" type="file">
-                </div> -->
+                <div class="col-md-6 mb-4">
+                  <label for="country" class="form-label">País</label>
+                  <select class="form-select" id="country" name="country" aria-label="Floating label seleccione country" required>
+                    <option selected>Seleccione</option>
+                  </select>
+                </div>
 
-                <div class="col-md-12 mb-4">
+                <!-- <div class="col-md-12 mb-4">
                   <div class="mb-3">
                     <label for="exampleFormControlTextarea1" class="form-label">Testimonios</label>
                     <textarea class="form-control" id="testimonio" name="testimonio" rows="3"></textarea>
                   </div>
-                </div>
+                </div> -->
               
                 <div class="form-check form-switch mb-3">
                   <input class="form-check-input" type="checkbox" role="switch" id="check-terminos">
@@ -95,6 +97,16 @@
       <?php require('./components/footer.html'); ?>
     </footer>
 
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+      <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+          <strong class="me-auto">Tu registro fue exitoso</strong>
+          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body"></div>
+      </div>
+    </div>
+
     <script src="./librerias/jquery-3.5.1.min.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
@@ -104,7 +116,8 @@
     <script src="./librerias/popper.min.js"></script>
     <script src="./librerias/sweetalert2/dist/sweetalert2.js"></script>
     <script src="./librerias/wow/dist/wow.min.js"></script>
-    <!-- <script src="./js/users.js?v=<?php echo rand(1, 1000); ?>"></script> -->
-    <script src="./js/index.js?v=<?php echo rand(1, 1000); ?>"></script>
+    <script src="./js/alerts.js"></script>
+    <script src="./js/utils.js"></script>
+    <script src="./js/register.js?v=<?php echo rand(1, 1000); ?>"></script>
   </body>
 </html>
