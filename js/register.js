@@ -1,6 +1,50 @@
-$(document).ready(() => {
+$( document ).ready(() => {
   setCountries();
 })
+
+// Renderizamos opciones del select para los paises
+const setCountries = async () => {
+  const select = document.getElementById('country');
+  const countries = await getCountries();
+
+  countries.forEach(({ _id, name }) => {
+    const option = document.createElement('option');
+
+    option.value = _id;
+    option.text = name;
+
+    select.add( option );
+  });
+}
+
+// Obtenemos states despues de seleccionar un país
+document.getElementById('country').addEventListener('change', async ( event ) => {
+  removeOptions();
+
+  const select = document.getElementById('state');
+  const states = await getStates( event.target.value );
+  
+  states.forEach(({ name }) => {
+    const option = document.createElement('option');
+
+    option.value = name;
+    option.text = name;
+
+    select.add( option );
+  });
+});
+
+// remove options the select
+const removeOptions = () => {
+  document.querySelectorAll('#state option').forEach(option => option.remove());
+
+  const option = document.createElement('option');
+
+  option.selected = true;
+  option.text = '[ Selecciona ]';
+
+  document.getElementById('state').add( option );
+}
 
 // Validamos check de terminos y condiciones
 document.getElementById('check-terminos').addEventListener('change', ( event ) => {
@@ -9,21 +53,6 @@ document.getElementById('check-terminos').addEventListener('change', ( event ) =
   else
     document.getElementById('enviar').disabled = true;
 });
-
-// Renderizamos opciones del select para los paises
-const setCountries = async () => {
-  const select = document.getElementById('country');
-  const countries = await getCountries();
-  
-  countries.forEach(({ country_name, country_phone_code }) => {
-    const option = document.createElement('option');
-
-    option.value = country_name;
-    option.text = country_name;
-
-    select.add(option);
-  });
-}
 
 document.getElementById('form').addEventListener('submit', ( event ) => {
   event.preventDefault();
@@ -35,7 +64,7 @@ document.getElementById('form').addEventListener('submit', ( event ) => {
   const country = document.getElementById('country').value;
 
   const data = `FUNCION=create&name=${ name }&phone=${ phone }&email=${ mail }&year=${ year }&country=${ country }`;
-  
+
   $.ajax({
     url: './process/customers.process.php',
     type: 'POST',
@@ -45,7 +74,7 @@ document.getElementById('form').addEventListener('submit', ( event ) => {
       const { success, message, duplicate } = response;
 
       if ( success ) {
-        showToast(message);
+        showToast('Tu registro fue exitoso', message);
         document.getElementById('form').reset();
       
       } else {
