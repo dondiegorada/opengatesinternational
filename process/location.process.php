@@ -41,5 +41,23 @@
         echo json_encode( $data );
 
       break;
+
+    case 'getCities':
+      # code...
+      $state = filter_input(INPUT_GET, "state", FILTER_VALIDATE_INT);
+
+      $locationDAO = new locationDAO();
+      $response = $locationDAO -> getCities( $state );
+      
+      if ( $response )
+        $data = array();
+
+        for ($i = 0 ; $row = $response -> fetch_object(); $i++) {
+          $data[$i] = $row;
+        }
+
+        echo json_encode( $data );
+
+      break;
   }
 ?>

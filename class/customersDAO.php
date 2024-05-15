@@ -5,7 +5,7 @@
       parent::__construct();
     }
 
-    public function getMaxId($Table,$Column){
+    public function getMaxId($Table, $Column) {
       $increment = 1;
 	    $select = "SELECT MAX($Column) AS max_consecutive FROM $Table";
       $Max = $this -> query($select);
@@ -22,9 +22,11 @@
     }
 
   public function getAll ( String $estado ) : bool | mysqli_result {
-    $sql = "SELECT _id, nombres, apellidos, telefono, email, edad, comentario, fecha_registro,
-          (CASE estado WHEN 'P' THEN 'Pendiente' WHEN 'A' THEN 'Aprobado' ELSE 'Rechazado' END)AS estado FROM customers WHERE estado = '$estado' ORDER BY _id DESC";
-    
+    $sql = "SELECT customers.*,
+              (CASE status WHEN 'P' THEN 'Pendiente' WHEN 'A' THEN 'Aprobado' ELSE 'Rechazado' END) AS status,
+              (SELECT name FROM city WHERE _id = customers.city) as city
+            FROM customers WHERE status = '$estado' ORDER BY _id DESC";
+
     $result = $this -> query($sql);
 
     if ( mysqli_num_rows( $result ) > 0 ) return $result;
@@ -56,7 +58,7 @@
     }
   }
 
-  public function create ( String $name, int $phone, String $email, int $year, String $country ) {
+  public function create ( String $name, int $phone, String $email, int $year, int $city ) {
     date_default_timezone_set('America/Bogota');
     $createdAt = date('Y-m-d H:i:s');
 
@@ -73,8 +75,8 @@
 
     $_id = $this -> getMaxId('customers','_id');
 
-    $sql = "INSERT INTO customers (_id, name, phone, email, year, country, createdAt) 
-               VALUES ($_id, '$name', '$phone', '$email', $year, '$country', '$createdAt')";
+    $sql = "INSERT INTO customers (_id, name, phone, email, year, city, createdAt) 
+               VALUES ($_id, '$name', '$phone', '$email', $year, $city, '$createdAt')";
 
     $result = $this -> query( $sql );
 
@@ -94,15 +96,13 @@
     }
   }
 
-  public function seleccionar( $_id ) {
-    $update = "UPDATE customers SET estado = 'A' WHERE _id = $_id";
+  public function approved( $_id ) {
+    $update = "UPDATE customers SET status = 'A' WHERE _id = $_id";
     $result = $this -> query($update);
     
     if ( $result ) {
-      $row = $this -> getById( $_id );
-
       return [
-        "message" => "El registro ".$row -> nombres." se aceptó correctamente",
+        "message" => "El registro fue aprobado correctamente",
         "success" => true
       ];
 
@@ -114,15 +114,13 @@
     }
   }
 
-  public function declinar($_id) {
-    $update = "UPDATE customers SET estado = 'R' WHERE _id = $_id";
+  public function refused( $_id ) {
+    $update = "UPDATE customers SET status = 'R' WHERE _id = $_id";
     $result = $this -> query($update);
     
     if ($result) {
-      $row = $this -> getById( $_id );
-
       return [
-        "message" => "El registro ".$row -> nombres." se rechazó correctamente",
+        "message" => "El registro se rechazó correctamente",
         "success" => true
       ];
 

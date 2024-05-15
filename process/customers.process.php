@@ -55,10 +55,10 @@
         $phone = filter_input(INPUT_POST, "phone", FILTER_VALIDATE_INT);
         $email = htmlspecialchars( $_REQUEST['email'], ENT_QUOTES );
         $year = filter_input(INPUT_POST, "year", FILTER_VALIDATE_INT);
-        $country = htmlspecialchars( $_REQUEST['country'], ENT_QUOTES ) ?? '';
+        $city = htmlspecialchars( $_REQUEST['city'], ENT_QUOTES );
         
         // Create register
-        $response = $customersDAO -> create( $name, $phone, $email, $year, $country );
+        $response = $customersDAO -> create( $name, $phone, $email, $year, $city );
           
         if ( !$response -> duplicate ) {
           $mail = new PHPMailer;
@@ -148,30 +148,6 @@
       }
     }
 
-    private function approvedRow() {
-      try {
-        // code...
-        $_id = filter_input(INPUT_GET, "_id", FILTER_VALIDATE_INT);
-
-        $modeloDAO = new customersDAO();
-        $resp = $modeloDAO -> seleccionar($_id);
-
-        if (count($resp) > 0) {
-          echo json_encode($resp);
-        
-        } else {
-          echo json_encode([
-            "message" => "ocurrio una inconsistencia",
-            "success" => false
-          ]);
-        }
-
-
-      } catch (Exception $ex) {
-        echo "Ha sucedido el siguiente error: ".$ex->getMessage();
-      }
-    }
-
     function getAll() {
       try {
         $modeloDAO = new customersDAO();
@@ -200,17 +176,17 @@
       }
     }
 
-    private function declinar() {
+    private function approvedRow() {
       try {
-        //code...
+        // code...
         $_id = filter_input(INPUT_GET, "_id", FILTER_VALIDATE_INT);
 
         $modeloDAO = new customersDAO();
-
-        $resp = $modeloDAO -> declinar($_id);
+        $resp = $modeloDAO -> approved( $_id );
 
         if (count($resp) > 0) {
           echo json_encode($resp);
+        
         } else {
           echo json_encode([
             "message" => "ocurrio una inconsistencia",
@@ -218,6 +194,28 @@
           ]);
         }
 
+      } catch (Exception $ex) {
+        echo "Ha sucedido el siguiente error: ".$ex->getMessage();
+      }
+    }
+
+    private function declinar() {
+      try {
+        //code...
+        $_id = filter_input(INPUT_GET, "_id", FILTER_VALIDATE_INT);
+
+        $modeloDAO = new customersDAO();
+        $resp = $modeloDAO -> refused( $_id );
+
+        if (count($resp) > 0) {
+          echo json_encode($resp);
+
+        } else {
+          echo json_encode([
+            "message" => "ocurrio una inconsistencia",
+            "success" => false
+          ]);
+        }
 
       } catch (Exception $ex) {
         echo "Ha sucedido el siguiente error: ".$ex->getMessage();

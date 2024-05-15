@@ -21,15 +21,22 @@ let selectedRows;
 const gridOptions = {
   columnDefs: [
     {
-      field: "nombres",
+      cellEditor: "agSelectCellEditor",
       checkboxSelection: true,
       editable: true,
-      cellEditor: "agSelectCellEditor",
+      field: "name",
+      headerName: "Nombre"
     },
-    { field: "telefono", filter: "numericColumn", cellRenderer: phoneRender },
-    { field: "email", cellRenderer: emailRender },
-    { field: "edad" },
-    { field: "fecha_registro", headerName: "Fecha Registro" }
+    { 
+      cellRenderer: phoneRender,
+      field: "phone",
+      filter: "numericColumn",
+      headerName: "Teléfono"
+    },
+    { cellRenderer:emailRender, field: "email" },
+    { field: "year", headerName: "Edad" },
+    { field: "city", headerName: "Ciudad" },
+    { field: "createdAt", headerName: "Fecha Registro" }
   ],
   defaultColDef: {
     flex: 1,
@@ -80,39 +87,34 @@ document.addEventListener("DOMContentLoaded", async () => {
 // Metodo para obtener registros pendientes
 const getCustomersPending = async () => {
   const gridPending = document.querySelector("#pending-tab-pane");
-  gridApiPending = agGrid.createGrid(gridPending, gridOptions);
-  const data = await getData('P');
+  gridPending.innerHTML = ''; // Limpiamos table
 
-  gridApiPending.setGridOption('rowData', data.map(customer => ({ ...customer, fecha_registro: customer.fecha_registro.split(' ')[0] })));
+  gridApiPending = agGrid.createGrid(gridPending, gridOptions);
+  const data = await getCustomers('P');
+
+  gridApiPending.setGridOption('rowData', data.map(customer => ({ ...customer, createdAt: customer.createdAt.split(' ')[0] })));
 }
 
 // Metodo para obtener registros aprovados
 const getCustomersApproved = async () => {
   const gridapproved = document.querySelector("#approved-tab-pane");
+  gridapproved.innerHTML = ''; // Limpiamos table
+  
   gridApiApproved = agGrid.createGrid(gridapproved, gridOptions);
-  const data = await getData('A');
+  const data = await getCustomers('A');
 
-  gridApiApproved.setGridOption('rowData', data.map(customer => ({ ...customer, fecha_registro: customer.fecha_registro.split(' ')[0] })));
+  gridApiApproved.setGridOption('rowData', data.map(customer => ({ ...customer, createdAt: customer.createdAt.split(' ')[0] })));
 }
 
 // Metodo para obtener registros rechazados
 const getCustomersRefused = async () => {
   const gridrefused = document.querySelector("#refused-tab-pane");
+  gridrefused.innerHTML = ''; // Limpiamos table
+
   gridApiRefused = agGrid.createGrid(gridrefused, gridOptions);
-  const data = await getData('R');
+  const data = await getCustomers('R');
 
-  gridApiRefused.setGridOption('rowData', data.map(customer => ({ ...customer, fecha_registro: customer.fecha_registro.split(' ')[0] })));
-}
-
-// Función para consumir endpoint
-const getData = async ( status ) => {
-  const response = await fetch(`../process/customers.process.php?FUNCION=getAll&status=${ status }`, {
-    method: 'GET',
-    redirect: 'follow'
-  });
-
-  const { data } = await response.json();
-  return data;
+  gridApiRefused.setGridOption('rowData', data.map(customer => ({ ...customer, createdAt: customer.createdAt.split(' ')[0] })));
 }
 
 const approved = async () => {
@@ -124,7 +126,8 @@ const approved = async () => {
   const { success, message } = await response.json();
 
   if ( success ) {
-    showToast(message);
+    showToast(selectedRows[0].name, message);
+    getCustomersPending();
     getCustomersApproved();
   }
 }
@@ -138,7 +141,8 @@ const refused = async () => {
   const { success, message } = await response.json();
 
   if ( success ) {
-    showToast(message);
+    showToast(selectedRows[0].name, message);
+    getCustomersPending();
     getCustomersRefused();
   }
 }

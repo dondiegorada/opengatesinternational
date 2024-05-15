@@ -76,6 +76,13 @@
                   </select>
                 </div>
 
+                <div class="col-md-6 mb-4">
+                  <label for="city" class="form-label">Ciudad</label>
+                  <select class="form-select" id="city" name="city" aria-label="Floating label seleccione state" required>
+                    <option selected>[ Selecciona un estado ]</option>
+                  </select>
+                </div>
+
                 <!-- <div class="col-md-12 mb-4">
                   <div class="mb-3">
                     <label for="exampleFormControlTextarea1" class="form-label">Testimonios</label>

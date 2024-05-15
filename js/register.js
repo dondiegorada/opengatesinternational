@@ -19,15 +19,32 @@ const setCountries = async () => {
 
 // Obtenemos states despues de seleccionar un país
 document.getElementById('country').addEventListener('change', async ( event ) => {
-  removeOptions();
+  removeOptions('state');
 
   const select = document.getElementById('state');
   const states = await getStates( event.target.value );
   
-  states.forEach(({ name }) => {
+  states.forEach(({ _id, name }) => {
     const option = document.createElement('option');
 
-    option.value = name;
+    option.value = _id;
+    option.text = name;
+
+    select.add( option );
+  });
+});
+
+// Obtenemos citie despues de seleccionar un estado o departamento
+document.getElementById('state').addEventListener('change', async ( event ) => {
+  removeOptions('city');
+
+  const select = document.getElementById('city');
+  const states = await getCities( event.target.value );
+  
+  states.forEach(({ _id, name }) => {
+    const option = document.createElement('option');
+
+    option.value = _id;
     option.text = name;
 
     select.add( option );
@@ -35,15 +52,15 @@ document.getElementById('country').addEventListener('change', async ( event ) =>
 });
 
 // remove options the select
-const removeOptions = () => {
-  document.querySelectorAll('#state option').forEach(option => option.remove());
+const removeOptions = ( select ) => {
+  document.querySelectorAll(`#${ select } option`).forEach(option => option.remove());
 
   const option = document.createElement('option');
 
   option.selected = true;
   option.text = '[ Selecciona ]';
 
-  document.getElementById('state').add( option );
+  document.getElementById(select).add( option );
 }
 
 // Validamos check de terminos y condiciones
@@ -61,9 +78,9 @@ document.getElementById('form').addEventListener('submit', ( event ) => {
   const phone = document.getElementById('phone').value;
   const mail = document.getElementById('email').value;
   const year = document.getElementById('years').value;
-  const country = document.getElementById('country').value;
+  const city = document.getElementById('city').value;
 
-  const data = `FUNCION=create&name=${ name }&phone=${ phone }&email=${ mail }&year=${ year }&country=${ country }`;
+  const data = `FUNCION=create&name=${ name }&phone=${ phone }&email=${ mail }&year=${ year }&city=${ city }`;
 
   $.ajax({
     url: './process/customers.process.php',
