@@ -15,12 +15,12 @@
         <?php require('./components/navbar.html'); ?>
       </header>
       
-      <main class="container z-index-1">
-        <div class="row pt-8">
-          <div class="col-md-5 content-form mb-5">
-            <h3 class="fw-bold">¿Estás buscando una forma confiable y segura de obtener tu visa y tu empleo?</h3>
+      <main class="container z-index-1 mt-5">
+        <div class="row content-form">
+          <div class="col-md-5 mb-5">
+            <h4 class="fw-bold">¿Estás buscando una forma confiable y segura de obtener tu visa y tu empleo?</h4>
 
-            <p class="h5 mt-4">
+            <p class="h6 mt-4">
               registrate y deja tus datos de contacto, podrás acceder a un servicio personalizado y gratuito que te ayudará a encontrar el trabajo y la visa que mejor se adapten a tu perfil y a tus expectativas.
             </p>
           </div>
@@ -29,76 +29,99 @@
 
           <div class="col-md-6">
             <h2 class="fw-bold">¡Registrate ahora!</h2>
-          
-            <form id="form" class="p-2" method="POST" enctype="multipart/form-data">
-              <div class="row">
-                <div class="col-md-12 mb-4">
-                  <label for="inputPassword5" class="form-label">Nombres y Apellidos</label>
-                  <input type="text" id="name" name="name" class="form-control" aria-describedby="passwordHelpBlock" required />
+
+            <form id="form" method="POST" enctype="multipart/form-data">
+              <!-- One "tab" for each step in the form: -->
+
+              <div class="row tab mb-4">
+                <div class="mb-3">Nombres</div>
+
+                <div class="col-md-12 mb-3">
+                  <input class="form-control" id="fname" name="fname" oninput="this.className = 'form-control'" placeholder="First name" type="text" required />
                 </div>
 
-                <div class="col-md-6 mb-4">
-                  <label for="inputPassword5" class="form-label">Telefóno</label>
-                  <input type="number" id="phone" name="phone" class="form-control" aria-describedby="passwordHelpBlock" required>
+                <div class="col-md-12">
+                  <input class="form-control" id="lname" name="lname" oninput="this.className = 'form-control'" placeholder="Last name" type="text" required />
                 </div>
-                
-                <div class="col-md-6 mb-4">
-                  <label for="years" class="form-label">Edad</label>
-                  <select class="form-select" id="years" name="years" aria-label="Floating label seleccione edad" required> <?php
+              </div>
+
+              <div class="row tab mb-4">
+                <div class="mb-3">Información de residencia</div>
+
+                <div class="col-md-12 mb-3">
+                  <select class="form-select" id="country" name="country" oninput="this.className = 'form-control'" required>
+                    <option selected>Selecciona un país...</option>
+                  </select>
+                </div>
+
+                <div class="col-md-12 mb-3">
+                  <select class="form-select" id="state" name="state" oninput="this.className = 'form-control'" required>
+                    <option selected>Selecciona un departamento...</option>
+                  </select>
+                </div>
+
+                <div class="col-md-12">
+                  <select class="form-select" id="city" name="city" oninput="this.className = 'form-control'" required>
+                    <option selected>Selecciona una ciudad...</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="row tab mb-4">
+                <div class="mb-3">Información de contacto</div>
+
+                <div class="col-md-12 mb-3">
+                  <input class="form-control" id="phone" name="phone" oninput="this.className = 'form-control'" placeholder="Phone" type="number" required />
+                </div>
+
+                <div class="col-md-12 mb-3">
+                  <input class="form-control" id="email" name="email" oninput="this.className = 'form-control'" placeholder="E-mail" type="email" required />
+                </div>
+
+                <div class="col-md-12">
+                  <select class="form-select" id="year" name="year" oninput="this.className = 'form-control'" required> <?php
                     $year = array(18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39); ?>
 
-                    <option selected>[ Selecciona ]</option> <?php
-                    
+                    <option selected>Edad</option> <?php
+
                     foreach ($year as $value) { ?>
                       <option value="<?php echo $value; ?>"><?php echo $value; ?></option> <?php
                     } ?>
-                    
+
                     <option value="40">40+</option>
                   </select>
                 </div>
+              </div>
 
-                <div class="col-md-12 mb-4">
-                  <label for="inputPassword5" class="form-label">Email</label>
-                  <input type="email" id="email" name="email" class="form-control" aria-describedby="passwordHelpBlock" required />
+              <div class="row tab mb-4">
+                <div class="mb-3">Testimonio</div>
+
+                <div class="col-md-12 mb-3">
+                  <textarea class="form-control" id="testimony" name="testimony" rows="4"></textarea>
                 </div>
 
-                <div class="col-md-6 mb-4">
-                  <label for="country" class="form-label">País</label>
-                  <select class="form-select" id="country" name="country" aria-label="Floating label seleccione country" required>
-                    <option selected>[ Selecciona ]</option>
-                  </select>
-                </div>
-
-                <div class="col-md-6 mb-4">
-                  <label for="state" class="form-label">Departamento o Estado</label>
-                  <select class="form-select" id="state" name="state" aria-label="Floating label seleccione state" required>
-                    <option selected>[ Selecciona un país ]</option>
-                  </select>
-                </div>
-
-                <div class="col-md-6 mb-4">
-                  <label for="city" class="form-label">Ciudad</label>
-                  <select class="form-select" id="city" name="city" aria-label="Floating label seleccione state" required>
-                    <option selected>[ Selecciona un estado ]</option>
-                  </select>
-                </div>
-
-                <!-- <div class="col-md-12 mb-4">
-                  <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label">Testimonios</label>
-                    <textarea class="form-control" id="testimonio" name="testimonio" rows="3"></textarea>
-                  </div>
-                </div> -->
-              
-                <div class="form-check form-switch mb-3">
+                <div class="form-check form-switch mb-3" style="padding-left: 3.3em;">
                   <input class="form-check-input" type="checkbox" role="switch" id="check-terminos">
                   <label class="form-check-label" for="flexSwitchCheckDefault">
                     Aceptar <a href="./terminos.php" class="text-primary">terminos y condiciones</a>
                   </label>
                 </div>
-              
-                <div class="gap-2">
-                  <button type="submit" class="btn btn-primary" id="enviar" disabled>Enviar</button>
+              </div>
+
+              <div id="finish-content" class="row p-3 fw-bold"></div>
+
+              <div id="steps-buttons" style="overflow:auto;">
+              <!-- Circles which indicates the steps of the form: -->
+                <div style="float: right;">
+                  <span class="step"></span>
+                  <span class="step"></span>
+                  <span class="step"></span>
+                  <span class="step"></span>
+                </div>
+
+                <div style="float: left;">
+                  <button class="btn btn-sm btn-secondary" type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                  <button class="btn btn-sm btn-primary" type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
                 </div>
               </div>
             </form>
@@ -130,7 +153,6 @@
     <script src="./librerias/popper.min.js"></script>
     <script src="./librerias/sweetalert2/dist/sweetalert2.js"></script>
     <script src="./librerias/wow/dist/wow.min.js"></script>
-    <script src="./js/alerts.js"></script>
     <script src="./js/utils.js"></script>
     <script src="./js/register.js?v=<?php echo rand(1, 1000); ?>"></script>
   </body>

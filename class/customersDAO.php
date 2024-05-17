@@ -68,7 +68,7 @@
     if ( mysqli_num_rows( $result ) > 0 ) {
       return (object) [
         "success" => false,
-        "message" => "Ya te registraste anteriormente, si no es así intenta cambiando el email o el numero de télefono",
+        "message" => "Ya te registraste anteriormente, si no es así intenta cambiando el email o el numero de télefono.",
         "duplicate" => true
       ];
     }
@@ -83,7 +83,7 @@
     if ( $result ) {
       return (object) [
         "success" => true,
-        "message" => "En un rango maximo de 24 horas nos comunicaremos contigo",
+        "message" => "En un rango maximo de 24 horas nos comunicaremos contigo.",
         "duplicate" => false
       ];
     
