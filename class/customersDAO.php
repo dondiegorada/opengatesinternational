@@ -24,6 +24,7 @@
   public function getAll ( String $estado ) : bool | mysqli_result {
     $sql = "SELECT customers.*,
               (CASE status WHEN 'P' THEN 'Pendiente' WHEN 'A' THEN 'Aprobado' ELSE 'Rechazado' END) AS status,
+              (CASE passport WHEN 0 THEN 'No tiene' ELSE 'Si tiene' END) AS passport,
               (SELECT name FROM city WHERE _id = customers.city) as city
             FROM customers WHERE status = '$estado' ORDER BY _id DESC";
 
@@ -58,7 +59,7 @@
     }
   }
 
-  public function create ( String $name, int $phone, String $email, int $year, int $city ) {
+  public function create ( String $name, int $phone, String $email, int $year, int $city, int $passport ) {
     date_default_timezone_set('America/Bogota');
     $createdAt = date('Y-m-d H:i:s');
 
@@ -75,8 +76,8 @@
 
     $_id = $this -> getMaxId('customers','_id');
 
-    $sql = "INSERT INTO customers (_id, name, phone, email, year, city, createdAt) 
-               VALUES ($_id, '$name', '$phone', '$email', $year, $city, '$createdAt')";
+    $sql = "INSERT INTO customers (_id, name, phone, email, year, city, passport, createdAt) 
+               VALUES ($_id, '$name', '$phone', '$email', $year, $city, $passport, '$createdAt')";
 
     $result = $this -> query( $sql );
 

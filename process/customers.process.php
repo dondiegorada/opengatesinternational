@@ -1,6 +1,7 @@
 <?php
   require("../class/db.class.php");
   require("../class/customersDAO.php");
+  require("../class/locationDAO.php");
 
   use PHPMailer\PHPMailer\PHPMailer;
   use PHPMailer\PHPMailer\SMTP;
@@ -22,6 +23,7 @@
     private function create() {
       try {
         $customersDAO = new customersDAO();
+        $locationDAO = new locationDAO();
         $mail = new PHPMailer();
 
         // if ( mime_content_type($_FILES['cv']['tmp_name']) !== 'application/pdf' ) {
@@ -51,14 +53,19 @@
         //   ]));
         // }
 
-        $name = htmlspecialchars( $_REQUEST['name'], ENT_QUOTES );
+        $name = htmlspecialchars( $_REQUEST['fname'], ENT_QUOTES ).' '.htmlspecialchars( $_REQUEST['lname'], ENT_QUOTES );
         $phone = filter_input(INPUT_POST, "phone", FILTER_VALIDATE_INT);
         $email = htmlspecialchars( $_REQUEST['email'], ENT_QUOTES );
         $year = filter_input(INPUT_POST, "year", FILTER_VALIDATE_INT);
+        $country = htmlspecialchars( $_REQUEST['country'], ENT_QUOTES );
         $city = htmlspecialchars( $_REQUEST['city'], ENT_QUOTES );
+        $passport = htmlspecialchars( $_REQUEST['passport'], ENT_QUOTES ) == 'si' ? 1 : 0;
         
+        // Obtenemos prefijo de país
+        $code = $locationDAO -> getCountryById($country) -> fetch_object();
+
         // Create register
-        $response = $customersDAO -> create( $name, $phone, $email, $year, $city );
+        $response = $customersDAO -> create( $name, $code -> code.$phone, $email, $year, $city, $passport );
           
         if ( !$response -> duplicate ) {
           $mail = new PHPMailer;

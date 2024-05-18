@@ -33,15 +33,20 @@ const gridOptions = {
       filter: "numericColumn",
       headerName: "Teléfono"
     },
-    { cellRenderer:emailRender, field: "email" },
+    {
+      cellRenderer: emailRender,
+      field: "email",
+      headerName: "E-mail"
+    },
     { field: "year", headerName: "Edad" },
     { field: "city", headerName: "Ciudad" },
+    { field: "passport", headerName: "Pasaporte" },
     { field: "createdAt", headerName: "Fecha Registro" }
   ],
   defaultColDef: {
     flex: 1,
     filter: true,
-    floatingFilter: true,
+    floatingFilter: true
   },
   dataTypeDefinitions: {
     object: {
@@ -52,6 +57,8 @@ const gridOptions = {
         params.value == null ? "" : params.value.name,
     }
   },
+  suppressExcelExport: true,
+  popupParent: document.body,
   rowSelection: "multiple",
   pagination: true,
   paginationPageSize: 10,
@@ -64,17 +71,37 @@ function onSelectionChanged() {
   selectedRows = gridApiPending.getSelectedRows();
 
   if ( selectedRows.length > 0 ) {
-    for (let i = 0; i < document.getElementsByClassName('dropdown-item').length; i++) {
-      document.getElementsByClassName('dropdown-item')[i].classList.remove('disabled');
+    for (let i = 0; i < document.getElementsByClassName('dropdown-item-sg').length; i++) {
+      document.getElementsByClassName('dropdown-item-sg')[i].classList.remove('disabled');
     }
 
   } else {
-    for (let i = 0; i < document.getElementsByClassName('dropdown-item').length; i++) {
-      document.getElementsByClassName('dropdown-item')[i].classList.add('disabled');
+    for (let i = 0; i < document.getElementsByClassName('dropdown-item-sg').length; i++) {
+      document.getElementsByClassName('dropdown-item-sg')[i].classList.add('disabled');
     }
   }
 
   console.log(gridApiPending.getSelectedRows());
+}
+
+function getParams() {
+  return {
+    suppressQuotes: true
+  };
+}
+
+const onBtnExport = () => {
+  const params = getParams();
+
+  for (let i = 0; i < document.getElementsByClassName('tab-pane').length; i++) {
+    const table = document.getElementsByClassName('tab-pane')[i];
+
+    if ( table.className.split(' ').includes('show') ) {
+      if ( i == 0 ) gridApiPending.exportDataAsCsv( params );
+      if ( i == 1 ) gridApiApproved.exportDataAsCsv( params );
+      if ( i == 2 ) gridApiRefused.exportDataAsCsv( params );
+    }
+  }
 }
 
 // Configurar la cuadrícula después de que la página haya terminado de cargarse

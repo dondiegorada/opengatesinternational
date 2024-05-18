@@ -5,6 +5,15 @@ class locationDAO extends db {
     parent::__construct();
   }
 
+  public function getCountryById(int $_id) {
+    $sql = "SELECT * FROM country WHERE _id = $_id";
+    $query = $this -> query($sql);
+
+    if ( mysqli_num_rows( $query ) > 0 ) return $query;
+
+    return false;
+  }
+
   public function getStateById(int $_id) {
     $sql = "SELECT * FROM state WHERE _id = $_id";
     $query = $this -> query($sql);
