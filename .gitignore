@@ -1,3 +1,6 @@
 ## Connection for DB ##
 class/db.class.php
 oei.sql
+
+## Dir Images
+./media

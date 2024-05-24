@@ -1,10 +1,7 @@
 function phoneRender (params) {
   const prefijo = params.value.substr(1, 2);
 
-  if ( prefijo == 57 )
-    return `<a href="https://wa.me/${params.value}" target="_blank">${params.value}</a>`;
-  else
-    return `<a href="https://wa.me/57${params.value}" target="_blank">${params.value}</a>`;
+  return `<a href="https://wa.me/${params.value}" target="_blank">${params.value}</a>`;
 }
 
 function emailRender (params) {
