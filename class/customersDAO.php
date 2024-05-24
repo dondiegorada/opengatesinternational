@@ -5,7 +5,7 @@
       parent::__construct();
     }
 
-    public function getMaxId($Table,$Column){
+    public function getMaxId($Table, $Column) {
       $increment = 1;
 	    $select = "SELECT MAX($Column) AS max_consecutive FROM $Table";
       $Max = $this -> query($select);
@@ -22,9 +22,12 @@
     }
 
   public function getAll ( String $estado ) : bool | mysqli_result {
-    $sql = "SELECT _id, nombres, apellidos, telefono, email, edad, comentario, fecha_registro,
-          (CASE estado WHEN 'P' THEN 'Pendiente' WHEN 'A' THEN 'Aprobado' ELSE 'Rechazado' END)AS estado FROM customers WHERE estado = '$estado' ORDER BY _id DESC";
-    
+    $sql = "SELECT customers.*,
+              (CASE status WHEN 'P' THEN 'Pendiente' WHEN 'A' THEN 'Aprobado' ELSE 'Rechazado' END) AS status,
+              (CASE passport WHEN 0 THEN 'No tiene' ELSE 'Si tiene' END) AS passport,
+              (SELECT name FROM city WHERE _id = customers.city) as city
+            FROM customers WHERE status = '$estado' ORDER BY _id DESC";
+
     $result = $this -> query($sql);
 
     if ( mysqli_num_rows( $result ) > 0 ) return $result;
@@ -56,71 +59,51 @@
     }
   }
 
-  public function create ( $nombres, $email, $comentario, $telefono, $ruta ) {
-
+  public function create ( String $name, int $phone, String $email, int $year, int $city, int $passport ) {
     date_default_timezone_set('America/Bogota');
+    $createdAt = date('Y-m-d H:i:s');
 
-    $edad = filter_input(INPUT_POST, "edad", FILTER_SANITIZE_NUMBER_INT);
-    $fecha_registro = date('Y-m-d H:i:s');
-    $apellidos = '';
+    $sql = "SELECT * FROM customers WHERE email = '$email' OR phone = '$phone'";
+    $result = $this -> query( $sql );
 
-    // Debemos partir los nombre
-    $posiciones = explode(" ", $nombres);
-
-    if(count($posiciones)>3){
-      $nombres = $posiciones[0].' '.$posiciones[1];
-      $apellidos = $posiciones[2].' '.$posiciones[3];
-    }else if(count($posiciones)>2){
-       $nombres = $posiciones[0].' '.$posiciones[1];
-       $apellidos = $posiciones[2];
-    }else if(count($posiciones)>1){
-      $nombres = $posiciones[0].' '.$posiciones[1];
-    }else{
-      $nombres = $posiciones[0];
-    }
-
-    $select="SELECT * FROM customers WHERE email = '$email' OR telefono = '$telefono'";
-    $result = $this -> query($select);
-
-    if (mysqli_num_rows($result) > 0) {
-      return [
-        "exito" => false,
-        "msg" => "Ya te registraste anteriormente, si no es así intenta cambiando el email o el numero de télefono",
-        "duplicado" => true
+    if ( mysqli_num_rows( $result ) > 0 ) {
+      return (object) [
+        "success" => false,
+        "message" => "Ya te registraste anteriormente, si no es así intenta cambiando el email o el numero de télefono.",
+        "duplicate" => true
       ];
     }
 
-    $modelo_id = $this -> getMaxId('customers','_id');
+    $_id = $this -> getMaxId('customers','_id');
 
-    $insert = "INSERT INTO customers (_id,nombres,apellidos,telefono,email,edad,comentario,fecha_registro) 
-             VALUES ($modelo_id,'$nombres','$apellidos','$telefono','$email',$edad,'$comentario','$fecha_registro')";
-    $result = $this -> query($insert);
+    $sql = "INSERT INTO customers (_id, name, phone, email, year, city, passport, createdAt) 
+               VALUES ($_id, '$name', '$phone', '$email', $year, $city, $passport, '$createdAt')";
 
-    if ($result) {
-      return [
-        "exito" => true,
-        "msg" => "En un rango maximo de 24 horas nos comunicaremos contigo",
-        "duplicado" => false
+    $result = $this -> query( $sql );
+
+    if ( $result ) {
+      return (object) [
+        "success" => true,
+        "message" => "En un rango maximo de 24 horas nos comunicaremos contigo.",
+        "duplicate" => false
       ];
     
     } else {
-      return [
-        "exito" => false,
-        "msg" => "A ocurrido una inconsistenca, por favor intenta mas tarde.",
-        "duplicado" => false
+      return (object) [
+        "success" => false,
+        "message" => "A ocurrido una inconsistenca, por favor intenta mas tarde.",
+        "duplicate" => false
       ];
     }
   }
 
-  public function seleccionar( $_id ) {
-    $update = "UPDATE customers SET estado = 'A' WHERE _id = $_id";
+  public function approved( $_id ) {
+    $update = "UPDATE customers SET status = 'A' WHERE _id = $_id";
     $result = $this -> query($update);
     
     if ( $result ) {
-      $row = $this -> getById( $_id );
-
       return [
-        "message" => "El registro ".$row -> nombres." se aceptó correctamente",
+        "message" => "El registro fue aprobado correctamente",
         "success" => true
       ];
 
@@ -132,15 +115,13 @@
     }
   }
 
-  public function declinar($_id) {
-    $update = "UPDATE customers SET estado = 'R' WHERE _id = $_id";
+  public function refused( $_id ) {
+    $update = "UPDATE customers SET status = 'R' WHERE _id = $_id";
     $result = $this -> query($update);
     
     if ($result) {
-      $row = $this -> getById( $_id );
-
       return [
-        "message" => "El registro ".$row -> nombres." se rechazó correctamente",
+        "message" => "El registro se rechazó correctamente",
         "success" => true
       ];
 

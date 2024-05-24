@@ -1,6 +1,7 @@
 <?php
   require("../class/db.class.php");
   require("../class/customersDAO.php");
+  require("../class/locationDAO.php");
 
   use PHPMailer\PHPMailer\PHPMailer;
   use PHPMailer\PHPMailer\SMTP;
@@ -22,6 +23,7 @@
     private function create() {
       try {
         $customersDAO = new customersDAO();
+        $locationDAO = new locationDAO();
         $mail = new PHPMailer();
 
         // if ( mime_content_type($_FILES['cv']['tmp_name']) !== 'application/pdf' ) {
@@ -51,128 +53,104 @@
         //   ]));
         // }
 
-        $nombres = htmlspecialchars( $_REQUEST['name'], ENT_QUOTES );
+        $name = htmlspecialchars( $_REQUEST['fname'], ENT_QUOTES ).' '.htmlspecialchars( $_REQUEST['lname'], ENT_QUOTES );
+        $phone = filter_input(INPUT_POST, "phone", FILTER_VALIDATE_INT);
         $email = htmlspecialchars( $_REQUEST['email'], ENT_QUOTES );
-        $telefono = htmlspecialchars( $_REQUEST['phone'], ENT_QUOTES );
-        $comentario = htmlspecialchars( $_REQUEST['comentario'], ENT_QUOTES ) ?? '';
+        $year = filter_input(INPUT_POST, "year", FILTER_VALIDATE_INT);
+        $country = htmlspecialchars( $_REQUEST['country'], ENT_QUOTES );
+        $city = htmlspecialchars( $_REQUEST['city'], ENT_QUOTES );
+        $passport = htmlspecialchars( $_REQUEST['passport'], ENT_QUOTES ) == 'si' ? 1 : 0;
         
-        // Apuntamos a la funcion
-        $resp = $customersDAO -> create( $nombres, $email, $comentario, $telefono, $ruta );
+        // Obtenemos prefijo de país
+        $code = $locationDAO -> getCountryById($country) -> fetch_object();
 
-        if ( count($resp) > 0 ) {
-
-          $duplicado = $resp['duplicado'];
+        // Create register
+        $response = $customersDAO -> create( $name, $code -> code.$phone, $email, $year, $city, $passport );
           
-          if ( !$duplicado ) {
-            $mail = new PHPMailer;
-            $mail->isSMTP();
-            $mail->SMTPDebug = 0;
-            $mail->Host = 'smtp.hostinger.com';
-            $mail->Port = 587;
-            $mail->SMTPAuth = true;
-            $mail ->CharSet="UTF-8";
-            $mail->Username = 'no-reply@oginternational.com.co';
-            $mail->Password = 'Opengates2023)';
-            $mail->setFrom('no-reply@oginternational.com.co', 'oginternational.com.co'); 
-            $mail->addReplyTo($email, $nombres);
-            $mail->addAddress('info@oginternational.com.co', 'Opening Gates International');   // Establecer a donde se enviará el mensaje
+        if ( !$response -> duplicate ) {
+          $mail = new PHPMailer;
+          $mail->isSMTP();
+          $mail->SMTPDebug = 0;
+          $mail->Host = 'smtp.hostinger.com';
+          $mail->Port = 587;
+          $mail->SMTPAuth = true;
+          $mail ->CharSet="UTF-8";
+          $mail->Username = 'no-reply@oginternational.com.co';
+          $mail->Password = 'Opengates2023)';
+          $mail->setFrom('no-reply@oginternational.com.co', 'oginternational.com.co'); 
+          $mail->addReplyTo($email, $name);
+          $mail->addAddress('info@oginternational.com.co', 'Opening Gates International');   // Establecer a donde se enviará el mensaje
 
-            // Archivos adjuntos
-            //$mail->addAttachment('/var/tmp/file.tar.gz');   // Agregar archivos adjuntos
-            //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');   // Nombre opcional
+          // Archivos adjuntos
+          //$mail->addAttachment('/var/tmp/file.tar.gz');   // Agregar archivos adjuntos
+          //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');   // Nombre opcional
 
-            // Contenido
-            $mail -> isHTML(true);   // Establecer el formato de correo electrónico en HTML
-            $mail -> Subject = 'Solicitud para encontrar empleo en Europa desde Centro y Sur América';   //Asunto del mensaje
-            $mail -> Body = "<!DOCTYPE html>
-            <html>
-              <head>
-                <style>
+          // Contenido
+          $mail -> isHTML(true);   // Establecer el formato de correo electrónico en HTML
+          $mail -> Subject = 'Solicitud para encontrar empleo en Europa desde Centro y Sur América';   //Asunto del mensaje
+          $mail -> Body = "<!DOCTYPE html>
+          <html>
+            <head>
+              <style>
 
-                  .cuerpo_mensaje{
-                    width:100%;
-                    background-color:#110E0C;
-                    color: #ffffff;
-                    height: auto;
-                    padding: 15px;
-                    display: inline-flex
-                  }
+                .cuerpo_mensaje{
+                  width:100%;
+                  background-color:#110E0C;
+                  color: #ffffff;
+                  height: auto;
+                  padding: 15px;
+                  display: inline-flex
+                }
 
-                  .image{
-                    padding: 5px;
-                    width: 30%;
-                  }
+                .image{
+                  padding: 5px;
+                  width: 30%;
+                }
 
-                  .text{
-                    padding: 5px;
-                    width: 60%;
-                  }
+                .text{
+                  padding: 5px;
+                  width: 60%;
+                }
 
-                  .im{
-                    color: #ffffff;
-                  }
+                .im{
+                  color: #ffffff;
+                }
 
-                </style>
-              </head>
-              <body>
-                <div class='cuerpo_mensaje'>
+              </style>
+            </head>
+            <body>
+              <div class='cuerpo_mensaje'>
 
-                    <div class='image'>
-                        <img src='https://oginternational.com.co/media/img/logo.jpg' width='80%' height='auto' style='border-radius: 50%'></img>
-                    </div>
+                  <div class='image'>
+                      <img src='https://oginternational.com.co/media/img/logo.jpg' width='80%' height='auto' style='border-radius: 50%'></img>
+                  </div>
 
 
-                    <div class='text'>
-                    <span style='style'color: #ffffff !important'>
-                          <h1 style'color: #ffffff !important'>Solicitud para encontrar empleo en Europa desde Centro y Sur América</h1>
-                          <h2 style'color: #ffa500 !important'>Descripción</h2>
-                          $comentario
-                          <p>Telefono: $telefono</p>
-                          <p>Email: $email</p>
-                    </span>
-                    </div>
+                  <div class='text'>
+                  <span style='style'color: #ffffff !important'>
+                        <h1 style'color: #ffffff !important'>Solicitud para encontrar empleo en Europa desde Centro y Sur América</h1>
+                        <p>Telefono: $phone</p>
+                        <p>Email: $email</p>
+                  </span>
+                  </div>
 
-                </div>
+              </div>
 
-              </body>
-            </html>";
+            </body>
+          </html>";
 
-            if (!$mail->send()) {
-              echo "error: ".$mail->ErrorInfo;
-              echo json_encode(['msg' => 'Ocurrio una inconsistencia por favor intenta mas tarde', 'exito'=>false]);
-            } else {
-              echo json_encode($resp);
-            }
-          } else{
-            echo json_encode($resp);
+          if (!$mail->send()) {
+            echo "error: ".$mail->ErrorInfo;
+            echo json_encode(['msg' => 'Ocurrio una inconsistencia por favor intenta mas tarde', 'exito'=>false]);
+          
+          } else {
+            echo json_encode($response);
           }
+        } else{
+          echo json_encode($response);
         }
 
       } catch(Exception $ex) {
-        echo "Ha sucedido el siguiente error: ".$ex->getMessage();
-      }
-    }
-
-    private function approvedRow() {
-      try {
-        // code...
-        $_id = filter_input(INPUT_GET, "_id", FILTER_VALIDATE_INT);
-
-        $modeloDAO = new customersDAO();
-        $resp = $modeloDAO -> seleccionar($_id);
-
-        if (count($resp) > 0) {
-          echo json_encode($resp);
-        
-        } else {
-          echo json_encode([
-            "message" => "ocurrio una inconsistencia",
-            "success" => false
-          ]);
-        }
-
-
-      } catch (Exception $ex) {
         echo "Ha sucedido el siguiente error: ".$ex->getMessage();
       }
     }
@@ -205,17 +183,17 @@
       }
     }
 
-    private function declinar() {
+    private function approvedRow() {
       try {
-        //code...
+        // code...
         $_id = filter_input(INPUT_GET, "_id", FILTER_VALIDATE_INT);
 
         $modeloDAO = new customersDAO();
-
-        $resp = $modeloDAO -> declinar($_id);
+        $resp = $modeloDAO -> approved( $_id );
 
         if (count($resp) > 0) {
           echo json_encode($resp);
+        
         } else {
           echo json_encode([
             "message" => "ocurrio una inconsistencia",
@@ -223,6 +201,28 @@
           ]);
         }
 
+      } catch (Exception $ex) {
+        echo "Ha sucedido el siguiente error: ".$ex->getMessage();
+      }
+    }
+
+    private function declinar() {
+      try {
+        //code...
+        $_id = filter_input(INPUT_GET, "_id", FILTER_VALIDATE_INT);
+
+        $modeloDAO = new customersDAO();
+        $resp = $modeloDAO -> refused( $_id );
+
+        if (count($resp) > 0) {
+          echo json_encode($resp);
+
+        } else {
+          echo json_encode([
+            "message" => "ocurrio una inconsistencia",
+            "success" => false
+          ]);
+        }
 
       } catch (Exception $ex) {
         echo "Ha sucedido el siguiente error: ".$ex->getMessage();
