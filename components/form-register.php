@@ -84,6 +84,36 @@
       </div>
 
       <div class="row tab mb-4">
+        <div class="col-md-12">
+          <p class="my-2">¿Cual es tu interes principal?</p>
+          
+          <div class="my-3">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="check_option" id="check_pasaporte" value="Pasaporte">
+              <label class="form-check-label" for="check_pasaporte">
+                Pasaporte
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="check_option" id="check_viajar_eur" value="Viajar a europa">
+              <label class="form-check-label" for="check_viajar_eur">
+                Viajar a Europa
+              </label>
+            </div>
+            <div class="form-check mb-3">
+              <input class="form-check-input" type="radio" name="check_option" id="check_visa" value="Visa">
+              <label class="form-check-label" for="check_visa">
+                Visa
+              </label>
+            </div>
+
+            <select class="form-select" id="tipo_visa" name="tipo_visa" oninput="this.className = 'form-control'">
+              <option value="" selected>Selecciona un tipo de visa...</option>
+            </select>
+
+          </div>
+        </div>
+
         <div class="mb-3">Testimonio</div>
 
         <div class="col-md-12 mb-3">

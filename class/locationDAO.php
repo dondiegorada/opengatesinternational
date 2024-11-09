@@ -49,4 +49,13 @@ class locationDAO extends db {
 
     return $this -> getStateById( $state );
   }
+
+  public function getTiposVisa(): bool | mysqli_result {
+    $sql = "SELECT * FROM tipos_visa WHERE status = 1 ORDER BY _id DESC";
+    $query = $this -> query($sql);
+
+    if ( mysqli_num_rows( $query ) > 0 ) return $query;
+
+    return false;
+  }
 }

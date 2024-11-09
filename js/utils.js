@@ -9,6 +9,22 @@ const getCustomers = async ( status ) => {
   return data;
 }
 
+// Obtenemos tipos visa de API
+const getTiposVisa = async () => {
+  const myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+
+  const requestOptions = {
+    method: "GET",
+    headers: myHeaders,
+    redirect: "follow"
+  };
+
+  const response = await fetch("./process/location.process.php?method=getTiposVisa", requestOptions);
+  const data = await response.json();
+  return data;
+}
+
 // Obtenemos countries de API
 const getCountries = async () => {
   const myHeaders = new Headers();
@@ -22,7 +38,6 @@ const getCountries = async () => {
 
   const response = await fetch("./process/location.process.php?method=getCountries", requestOptions);
   const data = await response.json();
-
   return data;
 }
 

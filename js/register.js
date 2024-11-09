@@ -1,5 +1,9 @@
 document.addEventListener("DOMContentLoaded", async () => {
   setCountries();
+  setTiposVisa();
+
+  const selectTipoVisa = document.getElementById('tipo_visa');
+  selectTipoVisa.style.display = 'none';
 });
 
 // Renderizamos opciones del select para los paises
@@ -8,6 +12,20 @@ const setCountries = async () => {
   const countries = await getCountries();
 
   countries.forEach(({ _id, name }) => {
+    const option = document.createElement('option');
+
+    option.value = _id;
+    option.text = name;
+
+    select.add( option );
+  });
+}
+
+const setTiposVisa = async () => {
+  const select = document.getElementById('tipo_visa');
+  const tipos_visa = await getTiposVisa();
+
+  tipos_visa.forEach(({ _id, name }) => {
     const option = document.createElement('option');
 
     option.value = _id;
@@ -151,9 +169,45 @@ document.getElementById('check-terminos').addEventListener('change', ( event ) =
     document.getElementById('nextBtn').disabled = true;
 });
 
+document.getElementById('check_pasaporte').addEventListener('change', ( event ) => {
+  const selectTipoVisa = document.getElementById('tipo_visa');
+
+  if ( event.target.checked ){
+    selectTipoVisa.style.display = 'none';
+    selectTipoVisa.value = ''; 
+  }
+});
+
+document.getElementById('check_viajar_eur').addEventListener('change', ( event ) => {
+  const selectTipoVisa = document.getElementById('tipo_visa');
+
+  if ( event.target.checked ){
+    selectTipoVisa.style.display = 'none';
+    selectTipoVisa.value = ''; 
+  }
+});
+
+document.getElementById('check_visa').addEventListener('change', ( event ) => {
+  const selectTipoVisa = document.getElementById('tipo_visa');
+
+  if ( event.target.checked ){
+    selectTipoVisa.style.display = 'block';
+  }
+});
+
 if ( document.querySelector('form') ) {
   document.querySelector('form').addEventListener('submit', async ( event ) => {
     event.preventDefault();
+
+    const radioButtons = document.getElementsByName('check_option');
+    let selectedOption = null;
+
+    for (const radio of radioButtons) {
+      if (radio.checked) {
+        selectedOption = radio.value;
+        break;
+      }
+    }
 
     const finishContent = document.getElementById('finish-content');
     finishContent.innerText = 'Gracias por dejar tus datos, espera unos segundos...';
@@ -163,6 +217,10 @@ if ( document.querySelector('form') ) {
 
     const formdata = new FormData( event.target );
     formdata.append("FUNCION", "create");
+
+    if (selectedOption) {
+      formdata.append("interes", selectedOption);
+    }
 
     const response = await fetch('./process/customers.process.php', {
       method: 'POST',

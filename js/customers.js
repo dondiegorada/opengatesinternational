@@ -37,6 +37,9 @@ const gridOptions = {
     },
     { field: "year", headerName: "Edad" },
     { field: "city", headerName: "Ciudad" },
+    { field: "interes", headerName: "Interes" },
+    { field: "tipo_visa", headerName: "Tipo visa" },
+    { field: "comentario", headerName: "Observación" },
     { field: "passport", headerName: "Pasaporte" },
     { field: "createdAt", headerName: "Fecha Registro" }
   ],

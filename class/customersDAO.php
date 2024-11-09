@@ -25,7 +25,8 @@
     $sql = "SELECT customers.*,
               (CASE status WHEN 'P' THEN 'Pendiente' WHEN 'A' THEN 'Aprobado' ELSE 'Rechazado' END) AS status,
               (CASE passport WHEN 0 THEN 'No tiene' ELSE 'Si tiene' END) AS passport,
-              (SELECT name FROM city WHERE _id = customers.city) as city
+              (SELECT name FROM city WHERE _id = customers.city) as city,
+              (SELECT name FROM tipos_visa WHERE _id = customers.tipo_visa) as tipo_visa
             FROM customers WHERE status = '$estado' ORDER BY _id DESC";
 
     $result = $this -> query($sql);
@@ -59,7 +60,7 @@
     }
   }
 
-  public function create ( String $name, int $phone, String $email, int $year, int $city, int $passport ) {
+  public function create ( String $name, int $phone, String $email, String $testimony, int $year, int $city, int $passport, $tipo_visa, String $interes ) {
     date_default_timezone_set('America/Bogota');
     $createdAt = date('Y-m-d H:i:s');
 
@@ -76,9 +77,11 @@
 
     $_id = $this -> getMaxId('customers','_id');
 
-    $sql = "INSERT INTO customers (_id, name, phone, email, year, city, passport, createdAt) 
-               VALUES ($_id, '$name', '$phone', '$email', $year, $city, $passport, '$createdAt')";
+     // Si tipo_visa está vacío o no se proporciona, asignar NULL
+     $tipo_visa = (!empty($tipo_visa) && $tipo_visa != 0) ? (int)$tipo_visa : 'NULL';
 
+    $sql = "INSERT INTO customers (_id, name, phone, email, comentario, year, city, passport, interes, tipo_visa, createdAt) 
+               VALUES ($_id, '$name', '$phone', '$email', '$testimony', $year, $city, $passport, '$interes', $tipo_visa, '$createdAt')";
     $result = $this -> query( $sql );
 
     if ( $result ) {
