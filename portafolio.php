@@ -99,7 +99,7 @@
                 </div>
                 <div>
                   <span class="badge rounded-pill badge-secondary"
-                    style="color: #5BC0BE; width: auto;">$2.600.000</span>
+                    style="color: #5BC0BE; width: auto;">PLN</span>
                 </div>
               </div>
               <div style="display: flex; align-items:center; justify-content: space-between">
@@ -107,7 +107,7 @@
                   <p class="fs-6">14 Ofertas laborales como turistas para personas en Colombia</p>
                 </div>
                 <div>
-                  <span class="badge rounded-pill badge-secondary" style="color: #5BC0BE; width: 100%">$3.150.000</span>
+                  <span class="badge rounded-pill badge-secondary" style="color: #5BC0BE; width: 100%">PLN</span>
                 </div>
               </div>
               <div style="display: flex; align-items:center; justify-content: space-between">
@@ -115,7 +115,7 @@
                   <p class="fs-6">4 Ofertas laborales para tramitar visa</p>
                 </div>
                 <div>
-                  <span class="badge rounded-pill badge-secondary" style="color: #5BC0BE; width: 100%">$4.250.000</span>
+                  <span class="badge rounded-pill badge-secondary" style="color: #5BC0BE; width: 100%">PLN</span>
                 </div>
               </div>
               <div style="display: flex; align-items:center; justify-content: space-between">
@@ -123,7 +123,7 @@
                   <p class="fs-6">Según la disponibilidad para personas en familia.</p>
                 </div>
                 <div>
-                  <span class="badge rounded-pill badge-secondary" style="color: #5BC0BE; width: 100%">$750.000</span>
+                  <span class="badge rounded-pill badge-secondary" style="color: #5BC0BE; width: 100%">PLN</span>
                 </div>
               </div>
             </div>
@@ -141,7 +141,7 @@
                 </div>
                 <div>
                   <span class="badge rounded-pill badge-secondary"
-                    style="color: #5BC0BE; width: auto;">$3.150.000</span>
+                    style="color: #5BC0BE; width: auto;">EUR</span>
                 </div>
               </div>
             </div>
@@ -159,7 +159,7 @@
                 </div>
                 <div>
                   <span class="badge rounded-pill badge-secondary"
-                    style="color: #5BC0BE; width: auto;">$3.150.000</span>
+                    style="color: #5BC0BE; width: auto;">USD</span>
                 </div>
               </div>
             </div>
@@ -177,7 +177,7 @@
                 </div>
                 <div>
                   <span class="badge rounded-pill badge-secondary"
-                    style="color: #5BC0BE; width: auto;">$7.099.972</span>
+                    style="color: #5BC0BE; width: auto;">EUR</span>
                 </div>
               </div>
 
@@ -187,7 +187,7 @@
                 </div>
                 <div>
                   <span class="badge rounded-pill badge-secondary"
-                    style="color: #5BC0BE; width: auto;">$3.173.912</span>
+                    style="color: #5BC0BE; width: auto;">EUR</span>
                 </div>
               </div>
             </div>
@@ -205,7 +205,7 @@
                 </div>
                 <div>
                   <span class="badge rounded-pill badge-secondary"
-                    style="color: #5BC0BE; width: auto;">$13.173.917</span>
+                    style="color: #5BC0BE; width: auto;">EUR</span>
                 </div>
               </div>
 
@@ -224,7 +224,7 @@
                 </div>
                 <div>
                   <span class="badge rounded-pill badge-secondary"
-                    style="color: #5BC0BE; width: auto;">$10.700.000</span>
+                    style="color: #5BC0BE; width: auto;">EUR</span>
                 </div>
               </div>
 
